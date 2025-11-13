@@ -1,0 +1,48 @@
+------------[ cut here ]------------
+WARNING: CPU: 1 PID: 3000 at mm/page_alloc.c:5159 __alloc_frozen_pages_noprof+0xe6/0x2fc mm/page_alloc.c:5159
+Modules linked in:
+CPU: 1 UID: 0 PID: 3000 Comm: kunit_try_catch Tainted: G                 N  6.18.0-rc4-gdc20452e6caf #1 PREEMPT 
+Tainted: [N]=TEST
+Hardware name: riscv-virtio,qemu (DT)
+epc : __alloc_frozen_pages_noprof+0xe6/0x2fc mm/page_alloc.c:5159
+ ra : __alloc_frozen_pages_noprof+0xc8/0x2fc mm/page_alloc.c:5153
+epc : ffffffff979fedc2 ra : ffffffff979feda4 sp : ff20000003d07800
+ gp : ffffffffa10503cc tp : ff6000001c683500 t0 : ff20000003d07868
+ t1 : ff20000003d07840 t2 : ffe3ffff007a0f0d s0 : ff20000003d07900
+ s1 : ffe3ffff007a0f04 a0 : ffffffffa0f2cdb2 a1 : 0000000000000001
+ a2 : 0000000000000000 a3 : ff20000003d07868 a4 : 000000000000006c
+ a5 : ffffffff9cd09d78 a6 : ff20000003d07867 a7 : 1fe40000007a0f0c
+ s2 : 0000000000000000 s3 : ff20000003d07840 s4 : 0000000000040dc0
+ s5 : 0000000000000000 s6 : 0000000000000013 s7 : 0000000000040dc0
+ s8 : dfffffff00000000 s9 : fffffffef5091ff4 s10: 0000000000000006
+ s11: 0000000000000dc0 t3 : 1fe40000007a0f08 t4 : ffe3ffff007a0f0d
+ t5 : 0000000000000005 t6 : ffffffff9fea32e0
+status: 0000000200000120 badaddr: ffffffff979fedc2 cause: 0000000000000003
+[<ffffffff979fedc2>] __alloc_frozen_pages_noprof+0xe6/0x2fc mm/page_alloc.c:5159
+[<ffffffff97a974bc>] alloc_pages_mpol+0x1b8/0x498 mm/mempolicy.c:2416
+[<ffffffff97a97b3c>] alloc_frozen_pages_noprof+0x118/0x2f0 mm/mempolicy.c:2487
+[<ffffffff97a23702>] ___kmalloc_large_node+0x86/0x244 mm/slub.c:5583
+[<ffffffff97a239b4>] __kmalloc_large_node_noprof+0x20/0x114 mm/slub.c:5614
+[<ffffffff97a24564>] __do_kmalloc_node mm/slub.c:5630 [inline]
+[<ffffffff97a24564>] __kmalloc_noprof+0x218/0x880 mm/slub.c:5654
+[<ffffffff970e89aa>] kmalloc_noprof include/linux/slab.h:961 [inline]
+[<ffffffff970e89aa>] kmalloc_array_noprof include/linux/slab.h:1003 [inline]
+[<ffffffff970e89aa>] test_kprobe_riscv+0x126/0x584 arch/riscv/kernel/tests/kprobes/test-kprobes.c:23
+[<ffffffff98628aaa>] kunit_run_case_internal lib/kunit/test.c:448 [inline]
+[<ffffffff98628aaa>] kunit_try_run_case+0x1c6/0x46c lib/kunit/test.c:493
+[<ffffffff9862ed8e>] kunit_generic_run_threadfn_adapter+0x76/0x10c lib/kunit/try-catch.c:30
+[<ffffffff97242b82>] kthread+0x65a/0x79c kernel/kthread.c:463
+[<ffffffff970d683a>] ret_from_fork_kernel+0x36/0xa6c arch/riscv/kernel/process.c:214
+[<ffffffff9cd2e97e>] ret_from_fork_kernel_asm+0x16/0x1c arch/riscv/kernel/entry.S:118
+irq event stamp: 7265
+hardirqs last  enabled at (7265): [<ffffffff9cd0bdd2>] irqentry_exit+0xf2/0x120 kernel/entry/common.c:214
+hardirqs last disabled at (7264): [<ffffffff9cd0ae7a>] do_irq+0x12/0x4c arch/riscv/kernel/traps.c:395
+softirqs last  enabled at (7262): [<ffffffff971c5968>] softirq_handle_end kernel/softirq.c:468 [inline]
+softirqs last  enabled at (7262): [<ffffffff971c5968>] handle_softirqs+0xbc0/0xe28 kernel/softirq.c:650
+softirqs last disabled at (7257): [<ffffffff971c5f06>] __do_softirq kernel/softirq.c:656 [inline]
+softirqs last disabled at (7257): [<ffffffff971c5f06>] invoke_softirq kernel/softirq.c:496 [inline]
+softirqs last disabled at (7257): [<ffffffff971c5f06>] __irq_exit_rcu+0xc6/0x488 kernel/softirq.c:723
+---[ end trace 0000000000000000 ]---
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
