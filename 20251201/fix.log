@@ -1,0 +1,161 @@
+[   78.171508][ T9707]
+[   78.172491][ T9707] ======================================================
+[   78.174721][ T9707] WARNING: possible circular locking dependency detected
+[   78.177776][ T9707] 6.18.0-dirty #2 Not tainted
+[   78.179566][ T9707] ------------------------------------------------------
+[   78.182315][ T9707] a.out/9707 is trying to acquire lock:
+[   78.184518][ T9707] ffff88802b5910f8 (&sbi->alloc_mutex){+.+.}-{4:4}, at: hfsplus_block_allocate+0xd2/0xc00
+[   78.188724][ T9707]
+[   78.188724][ T9707] but task is already holding lock:
+[   78.191203][ T9707] ffff8880278b2b08 (&HFSPLUS_I(inode)->extents_lock){+.+.}-{4:4}, at: hfsplus_file_extend+0x451/0x1270
+[   78.195643][ T9707]
+[   78.195643][ T9707] which lock already depends on the new lock.
+[   78.195643][ T9707]
+[   78.199984][ T9707]
+[   78.199984][ T9707] the existing dependency chain (in reverse order) is:
+[   78.204238][ T9707]
+[   78.204238][ T9707] -> #1 (&HFSPLUS_I(inode)->extents_lock){+.+.}-{4:4}:
+[   78.207485][ T9707]        __mutex_lock+0x178/0x1dd0
+[   78.209634][ T9707]        hfsplus_get_block+0x27d/0xa80
+[   78.211412][ T9707]        block_read_full_folio+0x31a/0x870
+[   78.214432][ T9707]        filemap_read_folio+0xbf/0x2a0
+[   78.216258][ T9707]        do_read_cache_folio+0x24d/0x590
+[   78.218798][ T9707]        read_cache_page+0x5d/0x150
+[   78.220490][ T9707]        hfsplus_block_allocate+0x131/0xc00
+[   78.223594][ T9707]        hfsplus_file_extend+0x443/0x1270
+[   78.225442][ T9707]        hfsplus_get_block+0x1b4/0xa80
+[   78.227753][ T9707]        __block_write_begin_int+0x506/0x1680
+[   78.229835][ T9707]        block_write_begin+0x9a/0x1d0
+[   78.231486][ T9707]        cont_write_begin+0x5f3/0x980
+[   78.234024][ T9707]        hfsplus_write_begin+0x62/0x120
+[   78.235029][ T9707]        cont_write_begin+0x6dd/0x980
+[   78.235987][ T9707]        hfsplus_write_begin+0x62/0x120
+[   78.236960][ T9707]        generic_cont_expand_simple+0x11b/0x200
+[   78.238238][ T9707]        hfsplus_setattr+0x255/0x320
+[   78.239423][ T9707]        notify_change+0x6ff/0x12f0
+[   78.240955][ T9707]        do_truncate+0x1be/0x220
+[   78.241667][ T9707]        vfs_truncate+0x5e8/0x6e0
+[   78.242421][ T9707]        do_sys_truncate.part.0+0xfa/0x140
+[   78.243216][ T9707]        __x64_sys_truncate+0x6d/0xa0
+[   78.243944][ T9707]        do_syscall_64+0x72/0xfa0
+[   78.244593][ T9707]        entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[   78.245417][ T9707]
+[   78.245417][ T9707] -> #0 (&sbi->alloc_mutex){+.+.}-{4:4}:
+[   78.246423][ T9707]        __lock_acquire+0x1653/0x2760
+[   78.247093][ T9707]        lock_acquire+0x17b/0x340
+[   78.247731][ T9707]        __mutex_lock+0x178/0x1dd0
+[   78.248407][ T9707]        hfsplus_block_allocate+0xd2/0xc00
+[   78.249788][ T9707]        hfsplus_file_extend+0x9f3/0x1270
+[   78.250765][ T9707]        hfsplus_get_block+0x1b4/0xa80
+[   78.251538][ T9707]        __block_write_begin_int+0x506/0x1680
+[   78.253566][ T9707]        block_write_begin+0x9a/0x1d0
+[   78.254434][ T9707]        cont_write_begin+0x5f3/0x980
+[   78.255839][ T9707]        hfsplus_write_begin+0x62/0x120
+[   78.256591][ T9707]        cont_write_begin+0x6dd/0x980
+[   78.257267][ T9707]        hfsplus_write_begin+0x62/0x120
+[   78.257957][ T9707]        generic_cont_expand_simple+0x11b/0x200
+[   78.258761][ T9707]        hfsplus_setattr+0x255/0x320
+[   78.259437][ T9707]        notify_change+0x6ff/0x12f0
+[   78.260108][ T9707]        do_truncate+0x1be/0x220
+[   78.260737][ T9707]        vfs_truncate+0x5e8/0x6e0
+[   78.261395][ T9707]        do_sys_truncate.part.0+0xfa/0x140
+[   78.262127][ T9707]        __x64_sys_truncate+0x6d/0xa0
+[   78.262790][ T9707]        do_syscall_64+0x72/0xfa0
+[   78.263405][ T9707]        entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[   78.264208][ T9707]
+[   78.264208][ T9707] other info that might help us debug this:
+[   78.264208][ T9707]
+[   78.265462][ T9707]  Possible unsafe locking scenario:
+[   78.265462][ T9707]
+[   78.266379][ T9707]        CPU0                    CPU1
+[   78.267029][ T9707]        ----                    ----
+[   78.267701][ T9707]   lock(&HFSPLUS_I(inode)->extents_lock);
+[   78.268438][ T9707]                                lock(&sbi->alloc_mutex);
+[   78.269395][ T9707]                                lock(&HFSPLUS_I(inode)->extents_lock);
+[   78.270498][ T9707]   lock(&sbi->alloc_mutex);
+[   78.271094][ T9707]
+[   78.271094][ T9707]  *** DEADLOCK ***
+[   78.271094][ T9707]
+[   78.272129][ T9707] 3 locks held by a.out/9707:
+[   78.272710][ T9707]  #0: ffff88802212e420 (sb_writers#12){.+.+}-{0:0}, at: vfs_truncate+0x345/0x6e0
+[   78.273878][ T9707]  #1: ffff8880278b2cf8 (&sb->s_type->i_mutex_key#18){+.+.}-{4:4}, at: do_truncate+0x12c/0x220
+[   78.275167][ T9707]  #2: ffff8880278b2b08 (&HFSPLUS_I(inode)->extents_lock){+.+.}-{4:4}, at: hfsplus_file_extend+0x451/0x1270
+[   78.276626][ T9707]
+[   78.276626][ T9707] stack backtrace:
+[   78.277352][ T9707] CPU: 0 UID: 0 PID: 9707 Comm: a.out Not tainted 6.18.0-dirty #2 PREEMPT(full)
+[   78.277362][ T9707] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[   78.277367][ T9707] Call Trace:
+[   78.277371][ T9707]  <TASK>
+[   78.277375][ T9707]  dump_stack_lvl+0x116/0x1b0
+[   78.277386][ T9707]  print_circular_bug+0x274/0x340
+[   78.277401][ T9707]  check_noncircular+0x12f/0x150
+[   78.277414][ T9707]  ? schedule+0x2d4/0x3a0
+[   78.277424][ T9707]  __lock_acquire+0x1653/0x2760
+[   78.277433][ T9707]  lock_acquire+0x17b/0x340
+[   78.277441][ T9707]  ? hfsplus_block_allocate+0xd2/0xc00
+[   78.277455][ T9707]  __mutex_lock+0x178/0x1dd0
+[   78.277466][ T9707]  ? hfsplus_block_allocate+0xd2/0xc00
+[   78.277480][ T9707]  ? hfsplus_block_allocate+0xd2/0xc00
+[   78.277493][ T9707]  ? __pfx___mutex_lock+0x10/0x10
+[   78.277504][ T9707]  ? __mutex_lock+0x275/0x1dd0
+[   78.277515][ T9707]  ? __pfx___mutex_unlock_slowpath+0x10/0x10
+[   78.277528][ T9707]  ? __pfx___mutex_lock+0x10/0x10
+[   78.277539][ T9707]  ? hfsplus_block_allocate+0xd2/0xc00
+[   78.277552][ T9707]  hfsplus_block_allocate+0xd2/0xc00
+[   78.277567][ T9707]  hfsplus_file_extend+0x9f3/0x1270
+[   78.277577][ T9707]  ? __pfx_hfsplus_file_extend+0x10/0x10
+[   78.277586][ T9707]  ? __pfx_submit_bio_noacct_nocheck+0x10/0x10
+[   78.277609][ T9707]  hfsplus_get_block+0x1b4/0xa80
+[   78.277619][ T9707]  __block_write_begin_int+0x506/0x1680
+[   78.277629][ T9707]  ? __pfx_hfsplus_get_block+0x10/0x10
+[   78.277639][ T9707]  ? __pfx___block_write_begin_int+0x10/0x10
+[   78.277648][ T9707]  ? __filemap_get_folio+0x32e/0xc10
+[   78.277659][ T9707]  ? __pfx_hfsplus_get_block+0x10/0x10
+[   78.277668][ T9707]  block_write_begin+0x9a/0x1d0
+[   78.277677][ T9707]  cont_write_begin+0x5f3/0x980
+[   78.277686][ T9707]  ? unwind_get_return_address+0x59/0xa0
+[   78.277698][ T9707]  ? __pfx_stack_trace_consume_entry+0x10/0x10
+[   78.277711][ T9707]  ? arch_stack_walk+0x9c/0xf0
+[   78.277723][ T9707]  ? __pfx_hfsplus_get_block+0x10/0x10
+[   78.277732][ T9707]  ? __pfx_cont_write_begin+0x10/0x10
+[   78.277741][ T9707]  ? stack_trace_save+0x8e/0xc0
+[   78.277753][ T9707]  ? __pfx_stack_trace_save+0x10/0x10
+[   78.277766][ T9707]  hfsplus_write_begin+0x62/0x120
+[   78.277774][ T9707]  ? __pfx_hfsplus_get_block+0x10/0x10
+[   78.277783][ T9707]  cont_write_begin+0x6dd/0x980
+[   78.277792][ T9707]  ? __lock_acquire+0x13fa/0x2760
+[   78.277800][ T9707]  ? __pfx_hfsplus_get_block+0x10/0x10
+[   78.277810][ T9707]  ? __pfx_cont_write_begin+0x10/0x10
+[   78.277820][ T9707]  hfsplus_write_begin+0x62/0x120
+[   78.277828][ T9707]  ? __pfx_hfsplus_get_block+0x10/0x10
+[   78.277838][ T9707]  generic_cont_expand_simple+0x11b/0x200
+[   78.277850][ T9707]  ? __pfx_generic_cont_expand_simple+0x10/0x10
+[   78.277862][ T9707]  ? inode_newsize_ok+0x190/0x210
+[   78.277871][ T9707]  ? setattr_prepare+0x13e/0x9d0
+[   78.277879][ T9707]  ? make_vfsgid+0xf9/0x150
+[   78.277888][ T9707]  hfsplus_setattr+0x255/0x320
+[   78.277896][ T9707]  ? __pfx_hfsplus_setattr+0x10/0x10
+[   78.277904][ T9707]  notify_change+0x6ff/0x12f0
+[   78.277914][ T9707]  ? do_truncate+0x1be/0x220
+[   78.277925][ T9707]  do_truncate+0x1be/0x220
+[   78.277938][ T9707]  ? __pfx_do_truncate+0x10/0x10
+[   78.277951][ T9707]  ? mnt_get_write_access+0x1ef/0x2d0
+[   78.277960][ T9707]  vfs_truncate+0x5e8/0x6e0
+[   78.277972][ T9707]  ? __pfx_vfs_truncate+0x10/0x10
+[   78.277984][ T9707]  ? putname.part.0+0x11b/0x160
+[   78.277992][ T9707]  ? putname.part.0+0x11b/0x160
+[   78.278001][ T9707]  do_sys_truncate.part.0+0xfa/0x140
+[   78.278014][ T9707]  ? __pfx_do_sys_truncate.part.0+0x10/0x10
+[   78.278027][ T9707]  ? __pfx_fput_close_sync+0x10/0x10
+[   78.278037][ T9707]  __x64_sys_truncate+0x6d/0xa0
+[   78.278049][ T9707]  do_syscall_64+0x72/0xfa0
+[   78.278060][ T9707]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[   78.278068][ T9707] RIP: 0033:0x7fce81ddefc9
+[   78.278075][ T9707] Code: 00 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 8
+[   78.278083][ T9707] RSP: 002b:00007ffc5a76bbc8 EFLAGS: 00000246 ORIG_RAX: 000000000000004c
+[   78.278091][ T9707] RAX: ffffffffffffffda RBX: 0000000000000000 RCX: 00007fce81ddefc9
+[   78.278096][ T9707] RDX: 0031656c69662f2e RSI: 0000000000000eba RDI: 0000200000000240
+[   78.278101][ T9707] RBP: 00007ffc5a76bbd0 R08: 0000000000000000 R09: 00007ffc5a76bc00
+[   78.278106][ T9707] R10: 00007ffc5a76ba20 R11: 0000000000000246 R12: 000056181bf9c260
+[   78.278111][ T9707] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[   78.278118][ T9707]  </TASK>
