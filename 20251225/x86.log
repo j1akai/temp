@@ -1,0 +1,126 @@
+[  425.486017][T16217] BUG: Bad page state in process a.out  pfn:3de67
+[  425.486646][T16217] page: refcount:0 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x3de67
+[  425.487507][T16217] flags: 0xfff00000000000(node=0|zone=1|lastcpupid=0x7ff)
+[  425.488202][T16217] raw: 00fff00000000000 dead000000000040 ff1100001bbe3000 0000000000000000
+[  425.489025][T16217] raw: 0000000000000000 0000000000000001 00000000ffffffff 0000000000000000
+[  425.489853][T16217] page dumped because: page_pool leak
+[  425.490374][T16217] page_owner tracks the page as allocated
+[  425.490921][T16217] page last allocated via order 0, migratetype Unmovable, gfp_mask 0x2820(GFP_ATOMIC|__GFP_NOWARN), pid 16217, tgid 16217 (a.out), ts 425270433549, free_ts 425265887979
+[  425.492491][T16217]  post_alloc_hook+0x1ca/0x240
+[  425.492972][T16217]  get_page_from_freelist+0xdb3/0x2a70
+[  425.493515][T16217]  __alloc_frozen_pages_noprof+0x256/0x20f0
+[  425.494111][T16217]  alloc_pages_bulk_noprof+0x776/0x1310
+[  425.494663][T16217]  __page_pool_alloc_netmems_slow+0x1c7/0xc60
+[  425.495263][T16217]  page_pool_alloc_netmems+0xc4/0x190
+[  425.495796][T16217]  skb_pp_cow_data+0x7bf/0x1010
+[  425.496300][T16217]  skb_cow_data_for_xdp+0x88/0xc0
+[  425.496839][T16217]  do_xdp_generic+0x515/0x1320
+[  425.497325][T16217]  __netif_receive_skb_core.constprop.0+0xc74/0x3280
+[  425.497994][T16217]  __netif_receive_skb_one_core+0xaf/0x1e0
+[  425.498580][T16217]  __netif_receive_skb+0x1d/0x160
+[  425.499090][T16217]  netif_receive_skb+0x135/0x750
+[  425.499589][T16217]  tun_rx_batched.isra.0+0x3da/0x750
+[  425.500127][T16217]  tun_get_user+0x1dcf/0x3b30
+[  425.500597][T16217]  tun_chr_write_iter+0xd9/0x200
+[  425.501091][T16217] page last free pid 23 tgid 23 stack trace:
+[  425.501678][T16217]  __free_frozen_pages+0x83e/0x1130
+[  425.502213][T16217]  tlb_remove_table_rcu+0x2c7/0x390
+[  425.502749][T16217]  rcu_core+0x7a1/0x1600
+[  425.503177][T16217]  handle_softirqs+0x1d4/0x8e0
+[  425.503673][T16217]  run_ksoftirqd+0x3a/0x60
+[  425.504137][T16217]  smpboot_thread_fn+0x3d4/0xaa0
+[  425.504636][T16217]  kthread+0x3d0/0x780
+[  425.505055][T16217]  ret_from_fork+0x966/0xaf0
+[  425.505523][T16217]  ret_from_fork_asm+0x1a/0x30
+[  425.506031][T16217] Modules linked in:
+[  425.506431][T16217] CPU: 1 UID: 0 PID: 16217 Comm: a.out Tainted: G    B               6.19.0-rc2-00002-gb927546677c8 #1 PREEMPT(full) 
+[  425.506470][T16217] Tainted: [B]=BAD_PAGE
+[  425.506480][T16217] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+[  425.506495][T16217] Call Trace:
+[  425.506504][T16217]  <TASK>
+[  425.506514][T16217]  dump_stack_lvl+0x180/0x1b0
+[  425.506558][T16217]  bad_page+0x8c/0x1c0
+[  425.506593][T16217]  __free_frozen_pages+0x860/0x1130
+[  425.506638][T16217]  ? rcu_is_watching+0x12/0xc0
+[  425.506669][T16217]  page_frag_free+0x27f/0x2e0
+[  425.506704][T16217]  __xdp_return+0x26e/0xb20
+[  425.506729][T16217]  ? kfree_skbmem+0x18a/0x1f0
+[  425.506757][T16217]  bpf_xdp_adjust_tail+0x889/0xca0
+[  425.506796][T16217]  bpf_prog_5d7dc57dfd7f985a+0x1e/0x24
+[  425.506819][T16217]  bpf_prog_run_generic_xdp+0x60c/0x1590
+[  425.506862][T16217]  do_xdp_generic+0x8d6/0x1320
+[  425.506896][T16217]  ? __pfx_do_xdp_generic+0x10/0x10
+[  425.506930][T16217]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  425.506967][T16217]  ? rcu_is_watching+0x12/0xc0
+[  425.506994][T16217]  ? lock_release+0x1fc/0x2d0
+[  425.507030][T16217]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  425.507062][T16217]  ? __handle_mm_fault+0x5b4/0x2ac0
+[  425.507094][T16217]  __netif_receive_skb_core.constprop.0+0xc74/0x3280
+[  425.507130][T16217]  ? rcu_watching_snap_stopped_since+0x100/0x110
+[  425.507163][T16217]  ? __sanitizer_cov_trace_switch+0x54/0x90
+[  425.507198][T16217]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  425.507230][T16217]  ? __skb_flow_dissect+0x77e/0x6c80
+[  425.507262][T16217]  ? __pfx___netif_receive_skb_core.constprop.0+0x10/0x10
+[  425.507302][T16217]  ? __pfx___skb_flow_dissect+0x10/0x10
+[  425.507329][T16217]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  425.507361][T16217]  ? __entry_text_end+0xfe3b5/0x1020b9
+[  425.507392][T16217]  ? lock_release+0x1fc/0x2d0
+[  425.507428][T16217]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  425.507459][T16217]  ? rcu_is_watching+0x12/0xc0
+[  425.507486][T16217]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  425.507518][T16217]  ? trace_irq_enable.constprop.0+0xd4/0x110
+[  425.507556][T16217]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  425.507588][T16217]  ? irqentry_exit+0x1e9/0x780
+[  425.507631][T16217]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  425.507668][T16217]  __netif_receive_skb_one_core+0xaf/0x1e0
+[  425.507701][T16217]  ? __pfx___netif_receive_skb_one_core+0x10/0x10
+[  425.507737][T16217]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  425.507770][T16217]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  425.507802][T16217]  ? lock_acquire+0x1c2/0x330
+[  425.507839][T16217]  __netif_receive_skb+0x1d/0x160
+[  425.507871][T16217]  netif_receive_skb+0x135/0x750
+[  425.507904][T16217]  ? __pfx_netif_receive_skb+0x10/0x10
+[  425.507936][T16217]  ? _copy_from_iter+0x14a/0x1700
+[  425.507963][T16217]  ? __pfx__copy_from_iter+0x10/0x10
+[  425.507992][T16217]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  425.508026][T16217]  tun_rx_batched.isra.0+0x3da/0x750
+[  425.508070][T16217]  ? __pfx_tun_rx_batched.isra.0+0x10/0x10
+[  425.508111][T16217]  ? __pfx___virtio_net_hdr_to_skb+0x10/0x10
+[  425.508138][T16217]  ? copy_page_from_iter+0x146/0x180
+[  425.508166][T16217]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  425.508198][T16217]  ? rcu_is_watching+0x12/0xc0
+[  425.508224][T16217]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  425.508256][T16217]  ? lock_acquire+0x1c2/0x330
+[  425.508288][T16217]  ? tun_get_user+0x1c3c/0x3b30
+[  425.508313][T16217]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  425.508345][T16217]  ? rcu_is_watching+0x12/0xc0
+[  425.508375][T16217]  tun_get_user+0x1dcf/0x3b30
+[  425.508410][T16217]  ? __pfx_tun_get_user+0x10/0x10
+[  425.508435][T16217]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  425.508468][T16217]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  425.508501][T16217]  ? __pfx_ref_tracker_alloc+0x10/0x10
+[  425.508534][T16217]  ? __pfx___sys_bpf+0x10/0x10
+[  425.508576][T16217]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  425.508609][T16217]  ? rcu_is_watching+0x12/0xc0
+[  425.508636][T16217]  ? tun_get+0x186/0x370
+[  425.508676][T16217]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  425.508708][T16217]  ? rcu_is_watching+0x12/0xc0
+[  425.508735][T16217]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  425.508767][T16217]  ? lock_release+0x1fc/0x2d0
+[  425.508805][T16217]  tun_chr_write_iter+0xd9/0x200
+[  425.508833][T16217]  vfs_write+0xc0d/0x1170
+[  425.508870][T16217]  ? __pfx_tun_chr_write_iter+0x10/0x10
+[  425.508899][T16217]  ? __pfx_vfs_write+0x10/0x10
+[  425.508948][T16217]  ksys_write+0x121/0x240
+[  425.508985][T16217]  ? __pfx_ksys_write+0x10/0x10
+[  425.509025][T16217]  ? srso_alias_return_thunk+0x5/0xfbef5
+[  425.509061][T16217]  do_syscall_64+0xcb/0xf80
+[  425.509105][T16217]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[  425.509132][T16217] RIP: 0033:0x7f7dc6d11513
+[  425.509152][T16217] Code: 8b 15 81 29 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b7 0f 1f 00 64 8b 04 25 18 00 00 00 85 c0 75 14 b8 01 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 55 c3 0f 1f 40 00 48 83 ec 28 48 89 54 24 18
+[  425.509178][T16217] RSP: 002b:00007ffe1bff4d18 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+[  425.509202][T16217] RAX: ffffffffffffffda RBX: 0000000000000000 RCX: 00007f7dc6d11513
+[  425.509220][T16217] RDX: 0000000000011dc0 RSI: 0000200000000740 RDI: 00000000000000c8
+[  425.509238][T16217] RBP: 00007ffe1bff4d50 R08: 00007ffe1bff4d70 R09: 00007ffe1bff4d70
+[  425.509256][T16217] R10: 00007ffe1bff4d70 R11: 0000000000000246 R12: 0000564926f43300
+[  425.509274][T16217] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
