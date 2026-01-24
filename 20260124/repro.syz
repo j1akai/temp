@@ -1,0 +1,5 @@
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+r2 = ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_SET_ONE_REG(r2, 0x4010aeac, &(0x7f0000000180)=@riscv64_sbi_sta={0x803000000a000000, &(0x7f0000000140)=0x6})
+ioctl$KVM_RUN(r2, 0xae80, 0x0)

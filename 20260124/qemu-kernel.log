@@ -1,0 +1,51 @@
+[  242.381563][    C1] ------------[ cut here ]------------
+[  242.381992][    C1] WARNING: arch/riscv/kvm/vcpu_sbi_sta.c:49 at kvm_riscv_vcpu_record_steal_time+0x10ce/0x15e4, CPU#1: a.out/3095
+[  242.384027][    C1] Modules linked in:
+[  242.385018][    C1] CPU: 1 UID: 0 PID: 3095 Comm: a.out Not tainted 6.19.0-rc5-g841e47d56cef #1 PREEMPT
+[  242.385580][    C1] Hardware name: riscv-virtio,qemu (DT)
+[  242.385945][    C1] epc : kvm_riscv_vcpu_record_steal_time+0x10ce/0x15e4
+[  242.386368][    C1]  ra : kvm_riscv_vcpu_record_steal_time+0x10ce/0x15e4
+[  242.386714][    C1] epc : ffffffff801330dc ra : ffffffff801330dc sp : ff20000007537960
+[  242.386926][    C1]  gp : ffffffff8a2fe420 tp : ff6000008d030000 t0 : 0000000000000000
+[  242.387115][    C1]  t1 : ffebffff123c15a4 t2 : 0000000200000022 s0 : ff20000007537a90
+[  242.387319][    C1]  s1 : 0000000000000006 a0 : 0000000000000006 a1 : ff60000000000000
+[  242.387511][    C1]  a2 : 0000000000000002 a3 : ffffffff801330dc a4 : 0000000000000000
+[  242.387691][    C1]  a5 : ff6000008d031000 a6 : 0000000000000003 a7 : ff60000091e0ad23
+[  242.387873][    C1]  s2 : ff6000008c5b8000 s3 : ff20000007537a20 s4 : ff6000008c5ba7c0
+[  242.388062][    C1]  s5 : ff6000008c5ba7b8 s6 : 1fe4000000ea6f34 s7 : 1fec0000118b74f7
+[  242.388246][    C1]  s8 : ff60000000000000 s9 : ff60000000000000 s10: 0000000000000000
+[  242.388437][    C1]  s11: 1fec0000118b74f8 t3 : db47ee0b00000000 t4 : ffebffff123c15a4
+[  242.388616][    C1]  t5 : ffebffff123c15a5 t6 : 0000000000000002
+[  242.388769][    C1] status: 0000000200000120 badaddr: ffffffff801330dc cause: 0000000000000003
+[  242.389062][    C1] [<ffffffff801330dc>] kvm_riscv_vcpu_record_steal_time+0x10ce/0x15e4
+[  242.389632][    C1] [<ffffffff8011a174>] kvm_arch_vcpu_ioctl_run+0x18ec/0x32ec
+[  242.390027][    C1] [<ffffffff800d5db6>] kvm_vcpu_ioctl+0x536/0x1236
+[  242.390344][    C1] [<ffffffff80ccfd04>] __riscv_sys_ioctl+0x180/0x1e4
+[  242.390701][    C1] [<ffffffff80077a4c>] syscall_handler+0x94/0x118
+[  242.391008][    C1] [<ffffffff865f97f2>] do_trap_ecall_u+0x404/0x59e
+[  242.391283][    C1] [<ffffffff866239fe>] handle_exception+0x146/0x152
+[  242.392209][    C1] Kernel panic - not syncing: kernel: panic_on_warn set ...
+[  242.392507][    C1] CPU: 1 UID: 0 PID: 3095 Comm: a.out Not tainted 6.19.0-rc5-g841e47d56cef #1 PREEMPT
+[  242.392789][    C1] Hardware name: riscv-virtio,qemu (DT)
+[  242.392913][    C1] Call Trace:
+[  242.393007][    C1] [<ffffffff8007a98e>] dump_backtrace+0x2e/0x3c
+[  242.393309][    C1] [<ffffffff80003346>] show_stack+0x30/0x3c
+[  242.393543][    C1] [<ffffffff80060df2>] dump_stack_lvl+0x10c/0x1a2
+[  242.393885][    C1] [<ffffffff80060ea4>] dump_stack+0x1c/0x24
+[  242.394214][    C1] [<ffffffff80003bac>] vpanic+0x2a4/0x6d4
+[  242.394495][    C1] [<ffffffff8000407c>] trace_suspend_resume+0x0/0x2de
+[  242.394797][    C1] [<ffffffff8014b836>] check_panic_on_warn+0xc0/0xe4
+[  242.395199][    C1] [<ffffffff8014bd44>] __warn+0x34a/0x502
+[  242.395567][    C1] [<ffffffff8655b156>] __report_bug+0x1f4/0x322
+[  242.395937][    C1] [<ffffffff8655b6a6>] report_bug+0xee/0x2be
+[  242.396262][    C1] [<ffffffff8007997a>] handle_break+0x134/0x32a
+[  242.396542][    C1] [<ffffffff865f923c>] do_trap_break+0x18a/0x33c
+[  242.396805][    C1] [<ffffffff866239fe>] handle_exception+0x146/0x152
+[  242.397060][    C1] [<ffffffff801330dc>] kvm_riscv_vcpu_record_steal_time+0x10ce/0x15e4
+[  242.397374][    C1] [<ffffffff8011a174>] kvm_arch_vcpu_ioctl_run+0x18ec/0x32ec
+[  242.397755][    C1] [<ffffffff800d5db6>] kvm_vcpu_ioctl+0x536/0x1236
+[  242.398073][    C1] [<ffffffff80ccfd04>] __riscv_sys_ioctl+0x180/0x1e4
+[  242.398394][    C1] [<ffffffff80077a4c>] syscall_handler+0x94/0x118
+[  242.398670][    C1] [<ffffffff865f97f2>] do_trap_ecall_u+0x404/0x59e
+[  242.398948][    C1] [<ffffffff866239fe>] handle_exception+0x146/0x152
+[  242.399590][    C1] SMP: stopping secondary CPUs
