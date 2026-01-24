@@ -1,0 +1,55 @@
+RISC-V KVM SBI Steal-Time Accounting (STA) Misaligned Shared Memory Reproducer
+=============================================================================
+
+This directory contains a minimal reproducer demonstrating a WARN_ON
+triggered by misconfigured SBI Steal-Time Accounting (STA) shared memory
+via KVM_SET_ONE_REG on RISC-V. The reproducer illustrates a missing
+alignment check in `kvm_sbi_ext_sta_set_reg()` and the potential kernel
+panic when `panic_on_warn` is enabled.
+
+Background
+----------
+The RISC-V SBI STA extension requires the shared memory physical address
+(`shmem_phys_lo`) to be 64-byte aligned, and the shared memory size must
+be at least 64 bytes. Userspace can configure this shared memory address
+via the KVM_SET_ONE_REG ioctl.
+
+The current implementation of `kvm_sbi_ext_sta_set_reg()` does not validate
+the alignment. Setting a misaligned address may later reach runtime code
+paths that assume a valid, aligned shared memory region. In particular,
+`KVM_RUN` may trigger the following WARN_ON:
+
+  WARNING: arch/riscv/kvm/vcpu_sbi_sta.c:49 at
+  kvm_riscv_vcpu_record_steal_time
+
+WARN_ON paths are not expected to be reachable in normal runtime execution,
+and may cause kernel panic if `panic_on_warn` is enabled.
+
+Files
+-----
+- `repro.c`         : Minimal userspace C program that sets a non-64-byte-aligned
+                     `shmem_phys_lo` via KVM_SET_ONE_REG and issues KVM_RUN.
+- `repro.syz`       : Equivalent syzkaller reproducer.
+- `qemu-kernel.log` : Full kernel log capturing the WARN_ON triggered by repro.c.
+- `readme`          : This file.
+- `start.sh`        : Script to launch QEMU.
+- `config`          : Kernel configuration used for testing.
+
+Reproduction Steps
+-----------------
+  1. Boot a RISC-V KVM-enabled kernel with panic_on_warn enabled.
+  2. Run repro.c on the qemu.
+  3. Observe the WARN_ON at:
+       arch/riscv/kvm/vcpu_sbi_sta.c:49
+
+Expected Behavior (Unpatched Kernel)
+------------------------------------
+- The WARN_ON in `kvm_riscv_vcpu_record_steal_time()` is triggered.
+- Kernel may panic if `panic_on_warn` is enabled.
+
+Fixed Behavior (Patched Kernel)
+-------------------------------
+- `kvm_sbi_ext_sta_set_reg()` now validates the alignment of `shmem_phys_lo`.
+- Misaligned addresses are rejected with `-EINVAL` at the KVM_SET_ONE_REG
+  boundary.
+- The WARN_ON path is no longer reachable, and the kernel remains stable.
