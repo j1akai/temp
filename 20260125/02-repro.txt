@@ -1,0 +1,1343 @@
+2026/01/24 09:31:44 pool: reserving instance 0
+2026/01/24 09:31:44 pool: reserving instance 1
+2026/01/24 09:31:44 pool: reserving instance 2
+2026/01/24 09:31:44 pool: reserving instance 3
+2026/01/24 09:31:44 pool: reserving instance 4
+2026/01/24 09:31:44 pool: reserving instance 5
+2026/01/24 09:31:44 pool: reserving instance 6
+2026/01/24 09:31:44 pool: reserving instance 7
+2026/01/24 09:31:44 pool: reserving instance 8
+2026/01/24 09:31:44 pool: reserving instance 9
+2026/01/24 09:31:44 pool: booting instance 3
+2026/01/24 09:31:44 pool: booting instance 0
+2026/01/24 09:31:44 pool: booting instance 9
+2026/01/24 09:31:44 pool: booting instance 4
+2026/01/24 09:31:44 pool: booting instance 5
+2026/01/24 09:31:44 pool: booting instance 6
+2026/01/24 09:31:44 pool: booting instance 7
+2026/01/24 09:31:44 pool: booting instance 8
+2026/01/24 09:31:44 pool: booting instance 1
+2026/01/24 09:31:44 pool: booting instance 2
+2026/01/24 09:31:44 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': extracting reproducer from 24 programs
+2026/01/24 09:31:44 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': first checking the prog from the crash report
+2026/01/24 09:31:44 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': single: executing 1 programs separately with timeout 45s
+2026/01/24 09:31:44 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=45s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_VM-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_CREATE_VCPU-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 09:31:44 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(r2, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+2026/01/24 09:38:56 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program did not crash
+2026/01/24 09:38:56 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': single: failed to extract reproducer
+2026/01/24 09:38:56 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': bisect: bisecting 24 programs with base timeout 45s
+2026/01/24 09:38:56 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=51s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): [9, 30, 7, 34, 30, 13, 30, 22, 30, 11, 3, 5, 30, 25, 29, 17, 36, 10, 26, 20, 10, 12, 6, 6]
+2026/01/24 09:38:56 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 2:
+r0 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+munmap(&(0x7f0000ffb000/0x4000)=nil, 0x4000)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0xe)
+r2 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r3 = ioctl$KVM_CREATE_VM(r2, 0xae01, 0x26)
+dup3(r1, r0, 0x80000)
+r4 = syz_kvm_setup_syzos_vm$riscv64(r3, &(0x7f0000c00000/0x400000)=nil)
+r5 = syz_kvm_add_vcpu$riscv64(r4, &(0x7f0000000000)={0x0, 0x0}, 0x0, 0x0)
+syz_kvm_setup_cpu$riscv64(r1, r5, &(0x7f0000fe8000/0x18000)=nil, 0x0, 0x0, 0x0, 0x0, 0x0)
+executing program 2:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+r2 = ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_SET_ONE_REG(r2, 0x4010aeac, &(0x7f0000000a80)=@riscv64_timer={0x8030000004000001, &(0x7f0000000080)=0x40})
+r3 = eventfd2(0x2, 0x1)
+r4 = openat$kvm(0xffffffffffffff9c, &(0x7f00000004c0), 0x100, 0x0)
+r5 = ioctl$KVM_CREATE_VM(r4, 0xae01, 0x31)
+ioctl$KVM_IOEVENTFD(r5, 0x4040ae79, &(0x7f0000000700)={0xffffffff80000001, 0x54000, 0x1, 0xffffffffffffffff, 0x3})
+r6 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000080), 0x4201c0, 0x0)
+r7 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r8 = ioctl$KVM_GET_STATS_FD_vm(r7, 0xaece)
+mmap(&(0x7f0000ffe000/0x1000)=nil, 0x1000, 0x8, 0x10010, r8, 0x9000)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r7, 0x5460)
+r9 = ioctl$KVM_CREATE_VM(r6, 0xae01, 0x16)
+ioctl$KVM_IRQFD(r9, 0x4020ae76, &(0x7f00000000c0)={r3, 0x7, 0x2, r3})
+r10 = eventfd2(0xfdfffff5, 0x0)
+ioctl$KVM_IRQFD(r9, 0x4020ae76, &(0x7f0000000000)={r10, 0x0, 0x3, r3})
+r11 = openat$kvm(0x0, &(0x7f0000000100), 0x608441, 0x0)
+r12 = ioctl$KVM_CREATE_VM(r11, 0xae01, 0x0)
+ioctl$KVM_CAP_DIRTY_LOG_RING_ACQ_REL(r12, 0x4068aea3, &(0x7f0000000140)={0xdf, 0x0, 0x2000})
+ioctl$KVM_CLEAR_DIRTY_LOG(r9, 0xc018aec0, &(0x7f00000001c0)={0x1, 0x340, 0x0, 0x0})
+r13 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+ioctl$KVM_CREATE_VM(r13, 0xae01, 0x11)
+r14 = ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x10)
+syz_kvm_assert_reg$riscv64(r14, 0x8030000001000007, 0x4000000000000000)
+r15 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r16 = ioctl$KVM_CREATE_VM(r15, 0xae01, 0x8)
+dup(r11)
+ioctl$KVM_CREATE_DEVICE(r16, 0xc00caee0, &(0x7f0000000080)={0xb})
+ioctl$KVM_HAS_DEVICE_ATTR(r8, 0x4018aee3, &(0x7f00000000c0)=@attr_other={0x0, 0xfffffffd, 0x10000000000000, 0x0})
+executing program 3:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f00000000c0)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, &(0x7f0000000180)=@attr_other={0x0, 0x1, 0x1, &(0x7f0000000080)=0x20704})
+r3 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x410002, 0x0)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r3, 0xc0045878)
+executing program 0:
+r0 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+r2 = syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000c00000/0x400000)=nil)
+r3 = syz_kvm_add_vcpu$riscv64(r2, &(0x7f0000000080)={0x0, &(0x7f00000004c0)=[@uexit={0x0, 0x18, 0x1000}, @code={0xa, 0x46, {"8398457712b5efb98bcba01c48d15c7eab954a9e5db80b1ec3cb2dd202db0f19df40fa936fde7a4a4ca88d2cdae331b89179"}}], 0x5e}, 0x0, 0x0)
+ioctl$KVM_RUN(r3, 0xae80, 0x0)
+r4 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r5 = ioctl$KVM_CREATE_VM(r4, 0xae01, 0x0)
+r6 = ioctl$KVM_CREATE_VCPU(r5, 0xae41, 0x0)
+ioctl$KVM_SET_ONE_REG(r6, 0x4010aeac, &(0x7f0000000b00)=@arm64_ccsidr={0x602000000011000b, 0x0})
+r7 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r8 = ioctl$KVM_CREATE_VM(r7, 0xae01, 0x8)
+ioctl$KVM_CAP_DIRTY_LOG_RING_ACQ_REL(r8, 0x4068aea3, &(0x7f0000000100)={0xdf, 0x0, 0x4000})
+r9 = syz_kvm_add_vcpu$riscv64(0x0, 0x0, &(0x7f0000000080)=[@featur2={0x1, 0x8}], 0x1)
+syz_kvm_setup_cpu$riscv64(r8, r9, &(0x7f0000fe5000/0x18000)=nil, 0x0, 0x0, 0x0, 0x0, 0x0)
+ioctl$KVM_RESET_DIRTY_RINGS(r8, 0xaec7)
+ioctl$KVM_RUN(r3, 0xae80, 0x0)
+ioctl$KVM_RUN(r3, 0xae80, 0x0)
+openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0) (async)
+ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0) (async)
+syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000c00000/0x400000)=nil) (async)
+syz_kvm_add_vcpu$riscv64(r2, &(0x7f0000000080)={0x0, &(0x7f00000004c0)=[@uexit={0x0, 0x18, 0x1000}, @code={0xa, 0x46, {"8398457712b5efb98bcba01c48d15c7eab954a9e5db80b1ec3cb2dd202db0f19df40fa936fde7a4a4ca88d2cdae331b89179"}}], 0x5e}, 0x0, 0x0) (async)
+ioctl$KVM_RUN(r3, 0xae80, 0x0) (async)
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0) (async)
+ioctl$KVM_CREATE_VM(r4, 0xae01, 0x0) (async)
+ioctl$KVM_CREATE_VCPU(r5, 0xae41, 0x0) (async)
+ioctl$KVM_SET_ONE_REG(r6, 0x4010aeac, &(0x7f0000000b00)=@arm64_ccsidr={0x602000000011000b, 0x0}) (async)
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0) (async)
+ioctl$KVM_CREATE_VM(r7, 0xae01, 0x8) (async)
+ioctl$KVM_CAP_DIRTY_LOG_RING_ACQ_REL(r8, 0x4068aea3, &(0x7f0000000100)={0xdf, 0x0, 0x4000}) (async)
+syz_kvm_add_vcpu$riscv64(0x0, 0x0, &(0x7f0000000080)=[@featur2={0x1, 0x8}], 0x1) (async)
+syz_kvm_setup_cpu$riscv64(r8, r9, &(0x7f0000fe5000/0x18000)=nil, 0x0, 0x0, 0x0, 0x0, 0x0) (async)
+ioctl$KVM_RESET_DIRTY_RINGS(r8, 0xaec7) (async)
+ioctl$KVM_RUN(r3, 0xae80, 0x0) (async)
+ioctl$KVM_RUN(r3, 0xae80, 0x0) (async)
+executing program 3:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x29)
+r2 = ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+dup3(r0, r2, 0x80000)
+r3 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r4 = ioctl$KVM_CREATE_VM(r3, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r4, 0xc00caee0, &(0x7f0000000080)={0xb, <r5=>0xffffffffffffffff})
+r6 = openat$kvm(0x0, &(0x7f0000000040), 0x109e02, 0x0)
+r7 = ioctl$KVM_CREATE_VM(r6, 0xae01, 0x8020)
+r8 = syz_kvm_setup_syzos_vm$riscv64(r7, &(0x7f0000993000/0x400000)=nil)
+r9 = syz_kvm_add_vcpu$riscv64(r8, &(0x7f0000000000)={0x0, 0x0}, 0x0, 0x0)
+r10 = ioctl$KVM_GET_VCPU_MMAP_SIZE(r6, 0xae04)
+r11 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r12 = eventfd2(0x2, 0x1)
+r13 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000040), 0xa00, 0x0)
+r14 = ioctl$KVM_CREATE_VM(r13, 0xae01, 0x16)
+ioctl$KVM_IRQFD(r14, 0x4020ae76, &(0x7f00000000c0)={r12, 0x7, 0x2, r12})
+r15 = eventfd2(0xfdfffff5, 0x0)
+ioctl$KVM_IRQFD(r14, 0x4020ae76, &(0x7f0000000240)={r15, 0x200, 0x2, r12})
+r16 = ioctl$KVM_CREATE_VM(r11, 0xae01, 0xf)
+r17 = syz_kvm_setup_syzos_vm$riscv64(r16, &(0x7f0000c00000/0x400000)=nil)
+r18 = syz_kvm_add_vcpu$riscv64(r17, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+r19 = ioctl$KVM_GET_STATS_FD_cpu(r18, 0xaece)
+close(r19)
+r20 = eventfd2(0xd, 0x800)
+ioctl$KVM_IRQFD(r14, 0x4020ae76, &(0x7f0000000000)={r19, 0x5, 0x2, r20})
+mmap$KVM_VCPU(&(0x7f0000ffc000/0x1000)=nil, r10, 0x3, 0x11, r9, 0x0)
+mmap(&(0x7f0000000000/0xa000)=nil, 0xa000, 0x0, 0x32, 0xffffffffffffffff, 0x0)
+mmap(&(0x7f0000004000/0x4000)=nil, 0x4000, 0x3, 0x32, 0xffffffffffffffff, 0x0)
+mmap(&(0x7f0000003000/0x3000)=nil, 0x3000, 0x3000000, 0x11, r5, 0x39073000)
+executing program 1:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+mmap(&(0x7f0000000000/0xa000)=nil, 0xa000, 0xc, 0x1031, 0xffffffffffffffff, 0x64d81000)
+r2 = ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_GET_STATS_FD_cpu(0xffffffffffffffff, 0xaece)
+syz_kvm_setup_cpu$riscv64(r1, r2, &(0x7f0000e80000/0x180000)=nil, &(0x7f0000000000)=[{0x0, 0x0}], 0x1, 0x0, 0x0, 0x0)
+r3 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r4 = ioctl$KVM_CREATE_VM(r3, 0xae01, 0x2a)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r0, 0xae04)
+syz_kvm_setup_syzos_vm$riscv64(r4, &(0x7f0000c00000/0x400000)=nil)
+r5 = syz_kvm_setup_syzos_vm$riscv64(r4, &(0x7f0000a04000/0x400000)=nil)
+r6 = syz_kvm_add_vcpu$riscv64(r5, &(0x7f0000000080)={0x0, &(0x7f00000000c0)=[@csrr={0x14, 0x18}], 0x18}, 0x0, 0x0)
+ioctl$KVM_RUN(r6, 0xae80, 0x0)
+executing program 2:
+r0 = openat$kvm(0x0, &(0x7f0000000140), 0x2ec1c2, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000c00000/0x400000)=nil)
+r2 = syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000a04000/0x400000)=nil)
+syz_kvm_add_vcpu$riscv64(r2, &(0x7f0000000080)={0x0, &(0x7f00000000c0)=[@csrr={0x14, 0x18}], 0x18}, 0x0, 0x0)
+munmap(&(0x7f0000bd3000/0x400000)=nil, 0x400000)
+mmap(&(0x7f0000800000/0x800000)=nil, 0x800000, 0x4000005, 0x8010, 0xffffffffffffffff, 0xd7eb7000)
+r3 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+mmap(&(0x7f0000800000/0x800000)=nil, 0x800000, 0x2000002, 0x10031, 0xffffffffffffffff, 0x77af2000)
+r4 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r5 = ioctl$KVM_CREATE_VM(r4, 0xae01, 0x0)
+r6 = openat$kvm(0x0, 0xfffffffffffffffc, 0x531940, 0x0)
+r7 = syz_kvm_setup_syzos_vm$riscv64(r5, &(0x7f0000c00000/0x400000)=nil)
+r8 = syz_kvm_add_vcpu$riscv64(r7, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RUN(r8, 0xae80, 0x0)
+openat$kvm(0x0, &(0x7f0000000040), 0x4802, 0x0)
+ioctl$KVM_CREATE_VM(r4, 0xae01, 0x33)
+r9 = ioctl$KVM_CREATE_VM(r6, 0xae01, 0xc)
+r10 = syz_kvm_setup_syzos_vm$riscv64(r9, &(0x7f0000c00000/0x400000)=nil)
+r11 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+ioctl$KVM_CREATE_VM(r11, 0xae01, 0x8)
+ioctl$KVM_IRQFD(r3, 0x4020ae76, &(0x7f0000001140)={0xffffffffffffffff, 0x1, 0x5})
+r12 = syz_kvm_add_vcpu$riscv64(r10, &(0x7f0000000000)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RUN(r12, 0xae80, 0x0)
+r13 = openat$kvm(0x0, &(0x7f0000000040), 0x684c02, 0x0)
+r14 = ioctl$KVM_CREATE_VM(r13, 0xae01, 0x0)
+r15 = syz_kvm_setup_syzos_vm$riscv64(r14, &(0x7f0000c00000/0x400000)=nil)
+r16 = syz_kvm_add_vcpu$riscv64(r15, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_INTERRUPT(r16, 0x4004ae86, &(0x7f0000000000)=0x4a9d)
+ioctl$KVM_RUN(r16, 0xae80, 0x0)
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x29)
+r2 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r3 = ioctl$KVM_CREATE_VM(r2, 0xae01, 0x32)
+r4 = openat$kvm(0xffffffffffffff9c, &(0x7f00000000c0), 0x402802, 0x0)
+ioctl$KVM_CREATE_VM(r4, 0xae01, 0x33)
+ioctl$KVM_IRQFD(r3, 0x4020ae76, &(0x7f0000001240)={0xffffffffffffffff, 0x8000, 0x1})
+r5 = ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+dup3(r0, r5, 0x80000)
+r6 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r7 = ioctl$KVM_CREATE_VM(r6, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r7, 0xc00caee0, &(0x7f0000000080)={0xb, <r8=>0xffffffffffffffff})
+r9 = openat$kvm(0x0, &(0x7f0000000040), 0x109e02, 0x0)
+r10 = ioctl$KVM_CREATE_VM(r9, 0xae01, 0x8020)
+r11 = syz_kvm_setup_syzos_vm$riscv64(r10, &(0x7f0000993000/0x400000)=nil)
+r12 = syz_kvm_add_vcpu$riscv64(r11, &(0x7f0000000000)={0x0, 0x0}, 0x0, 0x0)
+r13 = ioctl$KVM_GET_VCPU_MMAP_SIZE(r9, 0xae04)
+mmap$KVM_VCPU(&(0x7f0000ffc000/0x1000)=nil, r13, 0x3, 0x11, r12, 0x0)
+mmap(&(0x7f0000000000/0xa000)=nil, 0xa000, 0x0, 0x32, 0xffffffffffffffff, 0x0)
+mmap(&(0x7f0000004000/0x4000)=nil, 0x4000, 0x3, 0x32, 0xffffffffffffffff, 0x0)
+mmap(&(0x7f0000003000/0x3000)=nil, 0x3000, 0x3000000, 0x11, r8, 0x39073000)
+close(r1)
+executing program 1:
+r0 = ioctl$KVM_GET_STATS_FD_cpu(0xffffffffffffffff, 0xaece)
+mmap(&(0x7f0000000000/0xa000)=nil, 0xa000, 0x2a, 0x4c833, 0xffffffffffffffff, 0x200000)
+mmap(&(0x7f0000000000/0xa000)=nil, 0xa000, 0x0, 0x48032, 0xffffffffffffffff, 0x0) (async)
+ioctl$KVM_GET_DEVICE_ATTR(r0, 0x4018aee2, &(0x7f0000000080)=@attr_arm64={0x0, 0x0, 0x0, &(0x7f0000000040)=0x7fffffffffffffff}) (async)
+r1 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r2 = ioctl$KVM_CREATE_VM(r1, 0xae01, 0x0) (async)
+r3 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r4 = ioctl$KVM_CREATE_VM(r3, 0xae01, 0x0)
+r5 = syz_kvm_setup_syzos_vm$riscv64(r4, &(0x7f0000c00000/0x400000)=nil)
+r6 = syz_kvm_add_vcpu$riscv64(r5, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_INTERRUPT(r6, 0x4004ae86, &(0x7f0000000000)=0xffffffff) (async)
+r7 = ioctl$KVM_CREATE_VCPU(r2, 0xae41, 0x1)
+ioctl$KVM_RUN(r7, 0xae80, 0x0) (async)
+ioctl$KVM_SET_ONE_REG(r7, 0x4010aeac, &(0x7f0000000680)=@riscv64_config={0x8030000001000003, &(0x7f00000006c0)=0x8})
+r8 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0) (async)
+r9 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r10 = ioctl$KVM_CREATE_VM(r9, 0xae01, 0x0)
+r11 = syz_kvm_setup_syzos_vm$riscv64(r10, &(0x7f0000c00000/0x400000)=nil)
+r12 = syz_kvm_add_vcpu$riscv64(r11, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+r13 = ioctl$KVM_GET_STATS_FD_cpu(r12, 0xaece)
+close(r13) (async)
+ioctl$KVM_CAP_PTP_KVM(r13, 0x4068aea3, &(0x7f0000000140)) (async)
+r14 = eventfd2(0x0, 0x80001) (async)
+r15 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r16 = ioctl$KVM_CREATE_VM(r15, 0xae01, 0x32)
+ioctl$KVM_IOEVENTFD(r16, 0x4040ae79, &(0x7f0000000100)={0x3, 0xfec00000, 0x8, r14}) (async)
+ioctl$KVM_IOEVENTFD(r16, 0x4040ae79, &(0x7f0000000000)={0x7fb, 0xfec00000, 0x0, r13, 0x5}) (async)
+r17 = ioctl$KVM_CREATE_VM(r8, 0xae01, 0x0)
+r18 = ioctl$KVM_CREATE_VCPU(r17, 0xae41, 0x0)
+ioctl$KVM_GET_REG_LIST(r18, 0xc008aeb0, &(0x7f0000000c00)={0x105})
+executing program 1:
+r0 = openat$kvm(0x0, &(0x7f0000000040), 0x40080, 0x0)
+r1 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r2 = ioctl$KVM_CREATE_VM(r1, 0xae01, 0x8) (async)
+r3 = eventfd2(0x1, 0x0)
+ioctl$KVM_IRQFD(r2, 0x4020ae76, &(0x7f0000000040)={r3, 0x9, 0x3, r3})
+r4 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+r5 = syz_kvm_setup_syzos_vm$riscv64(r4, &(0x7f0000c00000/0x400000)=nil)
+r6 = syz_kvm_add_vcpu$riscv64(r5, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RUN(r6, 0xae80, 0x0) (async)
+close(r6) (async)
+close(r4)
+executing program 3:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+executing program 2:
+r0 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+r2 = syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000c00000/0x400000)=nil)
+r3 = syz_kvm_add_vcpu$riscv64(r2, &(0x7f0000000200)={0x0, &(0x7f0000000b80)=[@code={0xa, 0x46, {"cc5e97cbcc0b8de774459c6455f5c84f7baccc62be0dba2a52235e571d1ccbfd6fd7783e302d826a65cd0000000000000000"}}], 0x46}, 0x0, 0x0)
+ioctl$KVM_RUN(r3, 0xae80, 0x0)
+executing program 0:
+r0 = ioctl$KVM_CREATE_VM(0xffffffffffffffff, 0xae01, 0x22)
+ioctl$KVM_GET_DEVICE_ATTR_vm(r0, 0x4018aee2, &(0x7f0000000040)=@attr_arm64={0x0, 0x0, 0x0, &(0x7f0000000000)={0x7, 0xa0}})
+r1 = ioctl$KVM_CREATE_VM(0xffffffffffffffff, 0xae01, 0x1d)
+ioctl$KVM_GET_DIRTY_LOG(r1, 0x4010ae42, &(0x7f0000000080)={0x5, 0x0, &(0x7f0000ffc000/0x4000)=nil})
+close(r1)
+ioctl$KVM_PPC_ALLOCATE_HTAB(0xffffffffffffffff, 0xc004aea7, &(0x7f00000000c0)=0xe)
+r2 = ioctl$KVM_CREATE_VM(0xffffffffffffffff, 0xae01, 0x2d)
+r3 = ioctl$KVM_CREATE_VM(0xffffffffffffffff, 0xae01, 0x11)
+ioctl$KVM_SET_GSI_ROUTING(r3, 0x4008ae6a, &(0x7f0000000100)={0x6, 0x0, [{0x400, 0x4, 0x0, 0x0, @irqchip={0x3, 0x7}}, {0x8001, 0x5, 0x0, 0x0, @msi={0xe, 0x7, 0x4, 0x40000}}, {0x0, 0x4, 0x0, 0x0, @irqchip={0x6, 0x1000}}, {0x1, 0x0, 0x0, 0x0, @sint={0x2, 0x40}}, {0xa, 0x2, 0x0, 0x0, @msi={0xcb, 0x619, 0x6, 0x7}}, {0x7, 0x1, 0x1, 0x0, @irqchip={0x0, 0x4}}]})
+r4 = eventfd2(0x2, 0x1)
+ioctl$KVM_IOEVENTFD(r2, 0x4040ae79, &(0x7f0000000240)={0x3, 0xb000, 0x0, r4, 0xc})
+ioctl$KVM_CAP_HALT_POLL(r1, 0x4068aea3, &(0x7f0000000280)={0xb6, 0x0, 0x2})
+ioctl$KVM_CAP_DIRTY_LOG_RING(r3, 0x4068aea3, &(0x7f0000000300)={0xc0, 0x0, 0x1000})
+ioctl$KVM_IOEVENTFD(r1, 0x4040ae79, &(0x7f0000000380)={0x7, 0xdddd1000, 0x4, r4, 0xd})
+r5 = syz_kvm_add_vcpu$riscv64(0x0, &(0x7f0000000580)={0x0, &(0x7f00000003c0)=[@csrw={0x1e, 0x20, {0x141, 0x65}}, @code={0xa, 0x46, {"270b94ea1ea7235d644e00f0feef52120cc7dfd5666584dc6d9d9fe6491a16515c651b7ab352b44554d03b54f23fb644665c"}}, @code={0xa, 0x46, {"61d01b52d0e88470acaec33a74c430068058f1275a1f29cf610e9a8f4c6a90a8a27a2bb5d669460a297ab95de022e91a165a"}}, @csrw={0x1e, 0x20, {0x141, 0x1}}, @csrw={0x1e, 0x20, {0x0, 0x269}}, @csrr={0x14, 0x18, {0x180}}, @csrw={0x1e, 0x20, {0x105, 0x2}}, @uexit={0x0, 0x18, 0x3}, @csrw={0x1e, 0x20, {0x104, 0x3}}, @uexit={0x0, 0x18, 0x77}, @code={0xa, 0x46, {"70277d65bec6e8b273feb4b091ab55abd599800c21461a3c798f1140b4b46d98fba65eb611099bd79c5d8cb7fa20f2e21491"}}], 0x1ba}, &(0x7f00000005c0)=[@featur2={0x1, 0x1}], 0x1)
+syz_kvm_setup_cpu$riscv64(r2, r5, &(0x7f0000fe8000/0x18000)=nil, &(0x7f0000000640)=[{0x0, &(0x7f0000000600)="46c114609747bfd4e3c300396e2cda02400cc4bc28629245c4ea73eb69dcf30f04915fc368649e229058f8009d81e6d6d51f", 0x32}], 0x1, 0x0, &(0x7f0000000680)=[@featur2={0x1, 0x4d}], 0x1)
+ioctl$KVM_SET_DEVICE_ATTR_vcpu(r5, 0x4018aee1, &(0x7f00000006c0)=@attr_pvtime_ipa={0x0, 0x1, 0x1, 0x7})
+ioctl$KVM_HAS_DEVICE_ATTR_vm(r0, 0x4018aee3, &(0x7f0000000740)=@attr_other={0x0, 0xeb89, 0x4, &(0x7f0000000700)=0xfffffffffffffffd})
+ioctl$KVM_CREATE_DEVICE(r3, 0xc00caee0, &(0x7f0000000780)={0x2})
+ioctl$KVM_SET_USER_MEMORY_REGION(r0, 0x4020ae46, &(0x7f00000007c0)={0x0, 0x0, 0xffff1000, 0x1000, &(0x7f0000ff4000/0x1000)=nil})
+r6 = dup3(r5, r0, 0x80000)
+ioctl$KVM_GET_DEVICE_ATTR_vm(r6, 0x4018aee2, &(0x7f0000000840)=@attr_arm64={0x0, 0x0, 0x0, &(0x7f0000000800)={0x7, 0x316f6548}})
+ioctl$KVM_IRQ_LINE(r2, 0x4008ae61, &(0x7f0000000880)={0x0, 0x9})
+ioctl$KVM_HAS_DEVICE_ATTR_vm(r3, 0x4018aee3, &(0x7f0000000900)=@attr_other={0x0, 0x100, 0x8, &(0x7f00000008c0)=0xffff})
+ioctl$KVM_CAP_PTP_KVM(r1, 0x4068aea3, &(0x7f0000000940))
+ioctl$KVM_HAS_DEVICE_ATTR_vm(r3, 0x4018aee3, &(0x7f0000000a00)=@attr_other={0x0, 0x64838203, 0x7, &(0x7f00000009c0)=0xfffffffffffffe00})
+ioctl$KVM_SET_USER_MEMORY_REGION2(r2, 0x40a0ae49, &(0x7f0000000a40)={0x10000, 0x1, 0x60000, 0x2000, &(0x7f0000ff0000/0x2000)=nil, 0x8, r6})
+ioctl$KVM_RUN(r6, 0xae80, 0x0)
+ioctl$KVM_SET_USER_MEMORY_REGION(r1, 0x4020ae46, &(0x7f0000000b00)={0x10000, 0x1, 0x5000, 0x1000, &(0x7f0000ffc000/0x1000)=nil})
+ioctl$KVM_CREATE_IRQCHIP(r3, 0xae60)
+executing program 3:
+mmap(&(0x7f0000800000/0x800000)=nil, 0x800000, 0x2000002, 0x10031, 0xffffffffffffffff, 0x77af2000) (async)
+r0 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+r2 = syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000c00000/0x400000)=nil)
+r3 = syz_kvm_add_vcpu$riscv64(r2, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RUN(r3, 0xae80, 0x0) (async)
+r4 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0) (async)
+r5 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x23) (async)
+r6 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r7 = ioctl$KVM_CREATE_VM(r6, 0xae01, 0x0)
+r8 = syz_kvm_setup_syzos_vm$riscv64(r7, &(0x7f0000c00000/0x400000)=nil)
+r9 = syz_kvm_add_vcpu$riscv64(r8, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+r10 = ioctl$KVM_GET_STATS_FD_cpu(r9, 0xaece)
+close(r10) (async)
+r11 = eventfd2(0x0, 0x80001) (async)
+r12 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r13 = ioctl$KVM_CREATE_VM(r12, 0xae01, 0x32)
+ioctl$KVM_IOEVENTFD(r13, 0x4040ae79, &(0x7f0000000100)={0x3, 0xfec00000, 0x8, r11}) (async)
+ioctl$KVM_IOEVENTFD(r13, 0x4040ae79, &(0x7f0000000000)={0x7fb, 0xfec00000, 0x0, r10, 0x5}) (async)
+ioctl$KVM_SET_USER_MEMORY_REGION2(r5, 0x40a0ae49, &(0x7f00000000c0)={0x0, 0x6, 0x30000, 0x1000, &(0x7f0000ffc000/0x1000)=nil, 0xffffffff00000001, r10}) (async)
+syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f00009d2000/0x400000)=nil)
+r14 = ioctl$KVM_CREATE_VM(r4, 0xae01, 0x26)
+r15 = syz_kvm_setup_syzos_vm$riscv64(r14, &(0x7f0000c00000/0x400000)=nil)
+r16 = syz_kvm_add_vcpu$riscv64(r15, &(0x7f0000000000)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RUN(r16, 0xae80, 0x0)
+executing program 2:
+r0 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r0, 0x801c581f)
+r1 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r2 = ioctl$KVM_CREATE_VM(r1, 0xae01, 0x0)
+r3 = syz_kvm_setup_syzos_vm$riscv64(r2, &(0x7f0000c00000/0x400000)=nil)
+r4 = syz_kvm_add_vcpu$riscv64(r3, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+r5 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r6 = ioctl$KVM_CREATE_VM(r5, 0xae01, 0x0)
+r7 = syz_kvm_setup_syzos_vm$riscv64(r6, &(0x7f0000c00000/0x400000)=nil)
+r8 = syz_kvm_add_vcpu$riscv64(r7, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RUN(r8, 0xae80, 0x0) (async)
+r9 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r10 = ioctl$KVM_CREATE_VM(r9, 0xae01, 0x0)
+r11 = syz_kvm_setup_syzos_vm$riscv64(r10, &(0x7f0000c00000/0x400000)=nil)
+r12 = syz_kvm_add_vcpu$riscv64(r11, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RUN(r12, 0xae80, 0x0) (async)
+r13 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r14 = ioctl$KVM_CREATE_VM(r13, 0xae01, 0x0)
+r15 = ioctl$KVM_CREATE_VCPU(r14, 0xae41, 0x0)
+syz_kvm_assert_reg$riscv64(r15, 0x8030000002000020, 0x80200000)
+ioctl$KVM_RUN(r4, 0xae80, 0x0)
+ioctl$KVM_CREATE_VM(0xffffffffffffffff, 0xae01, 0x0) (async)
+syz_kvm_setup_syzos_vm$riscv64(0xffffffffffffffff, &(0x7f0000c00000/0x400000)=nil) (async)
+mmap(&(0x7f0000800000/0x800000)=nil, 0x800000, 0x2000002, 0x10031, 0xffffffffffffffff, 0x77af2000) (async)
+r16 = syz_kvm_setup_syzos_vm$riscv64(0xffffffffffffffff, &(0x7f0000c00000/0x400000)=nil)
+r17 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+syz_kvm_add_vcpu$riscv64(r16, &(0x7f00000000c0)={0x0, &(0x7f0000000540)=[@csrr={0x14, 0x18, {0x104}}, @csrr={0x14, 0x18, {0x106}}, @csrr={0x14, 0x18, {0x104}}, @uexit={0x0, 0x18, 0x2}, @csrr={0x14, 0x18, {0x106}}, @code={0xa, 0x46, {"76929649bd947a361a1c09b248313e4fdceba08f3df104356f8685b977e8ad457a6985720e6e04c6c918e09d876c20e9d452"}}, @uexit={0x0, 0x18, 0xffffffffffffffff}, @uexit={0x0, 0x18, 0x82}, @csrw={0x1e, 0x20, {0x5, 0x5}}, @csrw={0x1e, 0x20, {0x140, 0x2}}, @csrw={0x1e, 0x20, {0x104, 0x4}}, @csrw={0x1e, 0x20, {0x106, 0xff}}, @csrw={0x1e, 0x20, {0x140, 0x3}}, @uexit={0x0, 0x18, 0x46f8030e}, @csrr={0x14, 0x18, {0x10a}}, @csrr={0x14, 0x18, {0x143}}, @code={0xa, 0x46, {"5e87aa72f7ec46d7f2b82903774645ee8b02344e2afec596a8f984e1cfcab8d197e4aaad2410c9960e6d2dd7a20ea70f2f38"}}, @uexit={0x0, 0x18, 0xffffffffffffffff}, @code={0xa, 0x46, {"ecb1468b16ff724586aa1f2448aa1ff744ace18a406c399233ad52a7b6297367ab13dd20f54cd8dc7f006fe40f84ed5de92b"}}, @code={0xa, 0x46, {"c5b9143167d7ab0ac44ded641415805d0ae2ee3c6da37e9498e6894b81c77551181264a754c85f991c04fb0610edd4b8594c"}}, @csrr={0x14, 0x18}, @code={0xa, 0x46, {"7cb23a4310a05863f98932027c37c0412a376452eeb00cb895f097ae8847cd505b8a16a0c1f73011c0aff251856583b031de"}}, @code={0xa, 0x46, {"e4a55b4d093531efb3595832207f6fac0014fc6eac61404462b797f1ad52ea335d652c5c09836d38dcd13440756835066ba5"}}, @csrw={0x1e, 0x20, {0x141, 0x7f}}, @csrr={0x14, 0x18, {0x100}}, @code={0xa, 0x46, {"defb43be791c399c5e45de1b365862de7470a08065999c2b8159ddbe2577691eded0a29cb5618df90d206e528dd814447849"}}, @csrr={0x14, 0x18, {0x10a}}, @csrr={0x14, 0x18, {0x249}}, @uexit={0x0, 0x18, 0x8}, @csrr={0x14, 0x18}], 0x442}, &(0x7f0000000100)=[@featur2={0x1, 0x4}], 0x1) (async)
+r18 = ioctl$KVM_CREATE_VM(r17, 0xae01, 0x0)
+syz_kvm_setup_cpu$riscv64(r18, 0xffffffffffffffff, &(0x7f0000e80000/0x180000)=nil, 0x0, 0x0, 0x0, 0x0, 0x0)
+executing program 1:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+ioctl$KVM_CAP_DIRTY_LOG_RING_ACQ_REL(r1, 0x4068aea3, &(0x7f0000000100)={0xdf, 0x0, 0x4000})
+r2 = openat$kvm(0x0, &(0x7f0000000040), 0x109e02, 0x0)
+r3 = ioctl$KVM_CREATE_VM(r2, 0xae01, 0x8020)
+r4 = syz_kvm_setup_syzos_vm$riscv64(r3, &(0x7f0000993000/0x400000)=nil)
+r5 = syz_kvm_add_vcpu$riscv64(r4, &(0x7f0000000000)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_SET_ONE_REG(r5, 0x4010aeac, &(0x7f0000000180)=@riscv64_v={0x8030000009000002, &(0x7f0000000140)=0x7})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x1)
+ioctl$KVM_SET_ONE_REG(r5, 0x4010aeac, &(0x7f00000001c0)=@riscv64_timer={0x8030000004000002, &(0x7f00000000c0)=0xf1})
+r6 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r7 = ioctl$KVM_CREATE_VM(r6, 0xae01, 0x0)
+ioctl$KVM_CREATE_DEVICE(r7, 0xc00caee0, &(0x7f0000000000)={0xb})
+ioctl$KVM_IRQ_LINE_STATUS(r7, 0xc008ae67, &(0x7f0000000000)={0x4, 0x1})
+r8 = syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000a7b000/0x400000)=nil)
+syz_kvm_add_vcpu$riscv64(r8, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RESET_DIRTY_RINGS(r1, 0xaec7)
+executing program 0:
+r0 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+r2 = syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000c00000/0x400000)=nil)
+r3 = syz_kvm_add_vcpu$riscv64(r2, &(0x7f0000000080)={0x0, &(0x7f0000000000)=[@csrr={0x14, 0x0, {0x143}}, @uexit={0x0, 0x18, 0x1ff}], 0x80}, 0x0, 0x0)
+r4 = ioctl$KVM_GET_VCPU_MMAP_SIZE(r0, 0xae04)
+r5 = mmap$KVM_VCPU(&(0x7f0000009000/0x1000)=nil, r4, 0x3, 0x11, r3, 0x0)
+ioctl$KVM_RUN(r3, 0xae80, 0x0)
+syz_kvm_assert_syzos_uexit$riscv64(r3, r5, 0x0)
+r6 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r7 = ioctl$KVM_CREATE_VM(r6, 0xae01, 0x0)
+syz_kvm_setup_syzos_vm$riscv64(r7, &(0x7f0000c00000/0x400000)=nil)
+ioctl$KVM_IRQ_LINE(r7, 0x4008ae61, &(0x7f00000000c0)={0x4, 0x6})
+r8 = ioctl$KVM_GET_VCPU_MMAP_SIZE(r6, 0xae04)
+mmap$KVM_VCPU(&(0x7f0000c96000/0x2000)=nil, r8, 0x1000008, 0x13, 0xffffffffffffffff, 0x0)
+ioctl$KVM_RUN(r3, 0xae80, 0x0)
+syz_kvm_assert_syzos_uexit$riscv64(r3, r5, 0xaaaa)
+syz_kvm_assert_syzos_kvm_exit$riscv64(r5, 0x6)
+syz_kvm_assert_syzos_uexit$riscv64(r3, r5, 0xffffffffffffffff)
+openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0) (async)
+ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0) (async)
+syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000c00000/0x400000)=nil) (async)
+syz_kvm_add_vcpu$riscv64(r2, &(0x7f0000000080)={0x0, &(0x7f0000000000)=[@csrr={0x14, 0x0, {0x143}}, @uexit={0x0, 0x18, 0x1ff}], 0x80}, 0x0, 0x0) (async)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r0, 0xae04) (async)
+mmap$KVM_VCPU(&(0x7f0000009000/0x1000)=nil, r4, 0x3, 0x11, r3, 0x0) (async)
+ioctl$KVM_RUN(r3, 0xae80, 0x0) (async)
+syz_kvm_assert_syzos_uexit$riscv64(r3, r5, 0x0) (async)
+openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0) (async)
+ioctl$KVM_CREATE_VM(r6, 0xae01, 0x0) (async)
+syz_kvm_setup_syzos_vm$riscv64(r7, &(0x7f0000c00000/0x400000)=nil) (async)
+ioctl$KVM_IRQ_LINE(r7, 0x4008ae61, &(0x7f00000000c0)={0x4, 0x6}) (async)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r6, 0xae04) (async)
+mmap$KVM_VCPU(&(0x7f0000c96000/0x2000)=nil, r8, 0x1000008, 0x13, 0xffffffffffffffff, 0x0) (async)
+ioctl$KVM_RUN(r3, 0xae80, 0x0) (async)
+syz_kvm_assert_syzos_uexit$riscv64(r3, r5, 0xaaaa) (async)
+syz_kvm_assert_syzos_kvm_exit$riscv64(r5, 0x6) (async)
+syz_kvm_assert_syzos_uexit$riscv64(r3, r5, 0xffffffffffffffff) (async)
+executing program 3:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0) (async)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_CAP_DIRTY_LOG_RING_ACQ_REL(r1, 0x4068aea3, &(0x7f0000000100)={0xdf, 0x0, 0x4000})
+r2 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r3 = ioctl$KVM_CREATE_VM(r2, 0xae01, 0x2d)
+r4 = ioctl$KVM_CREATE_VCPU(r3, 0xae41, 0x0)
+ioctl$KVM_SET_ONE_REG(r4, 0x4010aeac, &(0x7f00000000c0)=@riscv64_sbi_fwft={0x803000000a010002}) (async)
+ioctl$KVM_SET_ONE_REG(r4, 0x4010aeac, &(0x7f00000000c0)=@riscv64_sbi_fwft={0x803000000a010002})
+executing program 1:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r2 = ioctl$KVM_CREATE_VM(r1, 0xae01, 0x0)
+r3 = ioctl$KVM_CREATE_VCPU(r2, 0xae41, 0x0)
+mmap(&(0x7f0000000000/0xa000)=nil, 0xa000, 0x1000003, 0x11, r3, 0xe028d000) (async)
+openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0) (async)
+r4 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r5 = ioctl$KVM_CREATE_VM(r4, 0xae01, 0x0) (async)
+r6 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+dup3(r5, r6, 0x80000) (async)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r6, 0x541b) (async)
+r7 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r8 = ioctl$KVM_CREATE_VM(r7, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r8, 0xc00caee0, &(0x7f0000000080)={0xb, <r9=>0xffffffffffffffff})
+ioctl$KVM_GET_DEVICE_ATTR(r9, 0x4018aee2, &(0x7f00000001c0)=@attr_other={0x0, 0x3, 0x4, &(0x7f00000000c0)=0x5}) (async)
+r10 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r10, 0xc00caee0, &(0x7f0000000080)={0xb, <r11=>0xffffffffffffffff}) (async)
+r12 = openat$kvm(0x0, &(0x7f0000000040), 0x109e02, 0x0)
+r13 = ioctl$KVM_CREATE_VM(r12, 0xae01, 0x8020)
+r14 = syz_kvm_setup_syzos_vm$riscv64(r13, &(0x7f0000993000/0x400000)=nil)
+r15 = syz_kvm_add_vcpu$riscv64(r14, &(0x7f0000000000)={0x0, 0x0}, 0x0, 0x0) (async)
+r16 = ioctl$KVM_GET_VCPU_MMAP_SIZE(r12, 0xae04)
+mmap$KVM_VCPU(&(0x7f0000ffc000/0x1000)=nil, r16, 0x3, 0x11, r15, 0x0) (async)
+mmap(&(0x7f0000000000/0xa000)=nil, 0xa000, 0x0, 0x32, 0xffffffffffffffff, 0x0)
+mmap(&(0x7f0000004000/0x4000)=nil, 0x4000, 0x3, 0x32, 0xffffffffffffffff, 0x0) (async)
+mmap(&(0x7f0000003000/0x3000)=nil, 0x3000, 0x3000000, 0x11, r11, 0x39073000)
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x1)
+r2 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r3 = ioctl$KVM_CREATE_VM(r2, 0xae01, 0x8)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x2)
+ioctl$KVM_CREATE_DEVICE(r3, 0xc00caee0, &(0x7f0000000080)={0xb, <r4=>0xffffffffffffffff})
+mmap(&(0x7f0000004000/0x4000)=nil, 0x4000, 0x3, 0x32, 0xffffffffffffffff, 0x0)
+mmap(&(0x7f0000003000/0x3000)=nil, 0x3000, 0x3000000, 0x11, r4, 0x39073000)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb})
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0) (async)
+ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8) (async)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x1) (async)
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0) (async)
+ioctl$KVM_CREATE_VM(r2, 0xae01, 0x8) (async)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x2) (async)
+ioctl$KVM_CREATE_DEVICE(r3, 0xc00caee0, &(0x7f0000000080)={0xb}) (async)
+mmap(&(0x7f0000004000/0x4000)=nil, 0x4000, 0x3, 0x32, 0xffffffffffffffff, 0x0) (async)
+mmap(&(0x7f0000003000/0x3000)=nil, 0x3000, 0x3000000, 0x11, r4, 0x39073000) (async)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb}) (async)
+executing program 2:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r2 = ioctl$KVM_CREATE_VM(r1, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r2, 0xc00caee0, &(0x7f00000000c0)={0xb})
+r3 = ioctl$KVM_CREATE_GUEST_MEMFD(0xffffffffffffffff, 0xc040aed4, &(0x7f0000000080)={0x7fffffff, 0x6})
+ioctl$KVM_SET_USER_MEMORY_REGION2(r2, 0x40a0ae49, &(0x7f00000000c0)={0x10200, 0x0, 0xfec00000, 0x1000, &(0x7f0000ffe000/0x1000)=nil, 0x7, r3})
+r4 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0xc)
+ioctl$KVM_CREATE_VCPU(r4, 0xae41, 0x0)
+ioctl$KVM_CREATE_DEVICE(0xffffffffffffffff, 0xc00caee0, &(0x7f0000000040)={0x8, <r5=>0xffffffffffffffff})
+mmap(&(0x7f0000ffd000/0x3000)=nil, 0x3000, 0x200000a, 0x2010, r5, 0x0)
+executing program 3:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r0, 0xae04)
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000040), 0x42280, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x25)
+r2 = ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_GET_REG_LIST(r2, 0xc008aeb0, &(0x7f0000000c00)={0x105})
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0) (async)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r0, 0xae04) (async)
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000040), 0x42280, 0x0) (async)
+ioctl$KVM_CREATE_VM(r0, 0xae01, 0x25) (async)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0) (async)
+ioctl$KVM_GET_REG_LIST(r2, 0xc008aeb0, &(0x7f0000000c00)={0x105}) (async)
+executing program 1:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(r2, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000640), 0x1, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x6)
+ioctl$KVM_SIGNAL_MSI(r1, 0x4020aea5, 0x0)
+r2 = openat$kvm(0xffffffffffffff9c, &(0x7f00000004c0), 0x100, 0x0)
+r3 = ioctl$KVM_CREATE_VM(r2, 0xae01, 0x31)
+ioctl$KVM_GET_DIRTY_LOG(r3, 0x4010ae42, &(0x7f0000000640)={0xfe7f, 0x0, &(0x7f0000ffc000/0x2000)=nil})
+2026/01/24 09:38:56 pool: booting instance 0
+2026/01/24 09:43:20 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program did not crash
+2026/01/24 09:43:20 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': replaying the whole log did not cause a kernel crash
+2026/01/24 09:43:20 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': single: executing 1 programs separately with timeout 5m0s
+2026/01/24 09:43:20 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=5m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_VM-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_CREATE_VCPU-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 09:43:20 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(r2, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+2026/01/24 09:43:20 pool: booting instance 5
+2026/01/24 09:51:50 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program did not crash
+2026/01/24 09:51:50 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': single: failed to extract reproducer
+2026/01/24 09:51:50 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': bisect: bisecting 24 programs with base timeout 5m0s
+2026/01/24 09:51:50 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=5m6s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): [9, 30, 7, 34, 30, 13, 30, 22, 30, 11, 3, 5, 30, 25, 29, 17, 36, 10, 26, 20, 10, 12, 6, 6]
+2026/01/24 09:51:50 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 2:
+r0 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+munmap(&(0x7f0000ffb000/0x4000)=nil, 0x4000)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0xe)
+r2 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r3 = ioctl$KVM_CREATE_VM(r2, 0xae01, 0x26)
+dup3(r1, r0, 0x80000)
+r4 = syz_kvm_setup_syzos_vm$riscv64(r3, &(0x7f0000c00000/0x400000)=nil)
+r5 = syz_kvm_add_vcpu$riscv64(r4, &(0x7f0000000000)={0x0, 0x0}, 0x0, 0x0)
+syz_kvm_setup_cpu$riscv64(r1, r5, &(0x7f0000fe8000/0x18000)=nil, 0x0, 0x0, 0x0, 0x0, 0x0)
+executing program 2:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+r2 = ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_SET_ONE_REG(r2, 0x4010aeac, &(0x7f0000000a80)=@riscv64_timer={0x8030000004000001, &(0x7f0000000080)=0x40})
+r3 = eventfd2(0x2, 0x1)
+r4 = openat$kvm(0xffffffffffffff9c, &(0x7f00000004c0), 0x100, 0x0)
+r5 = ioctl$KVM_CREATE_VM(r4, 0xae01, 0x31)
+ioctl$KVM_IOEVENTFD(r5, 0x4040ae79, &(0x7f0000000700)={0xffffffff80000001, 0x54000, 0x1, 0xffffffffffffffff, 0x3})
+r6 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000080), 0x4201c0, 0x0)
+r7 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r8 = ioctl$KVM_GET_STATS_FD_vm(r7, 0xaece)
+mmap(&(0x7f0000ffe000/0x1000)=nil, 0x1000, 0x8, 0x10010, r8, 0x9000)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r7, 0x5460)
+r9 = ioctl$KVM_CREATE_VM(r6, 0xae01, 0x16)
+ioctl$KVM_IRQFD(r9, 0x4020ae76, &(0x7f00000000c0)={r3, 0x7, 0x2, r3})
+r10 = eventfd2(0xfdfffff5, 0x0)
+ioctl$KVM_IRQFD(r9, 0x4020ae76, &(0x7f0000000000)={r10, 0x0, 0x3, r3})
+r11 = openat$kvm(0x0, &(0x7f0000000100), 0x608441, 0x0)
+r12 = ioctl$KVM_CREATE_VM(r11, 0xae01, 0x0)
+ioctl$KVM_CAP_DIRTY_LOG_RING_ACQ_REL(r12, 0x4068aea3, &(0x7f0000000140)={0xdf, 0x0, 0x2000})
+ioctl$KVM_CLEAR_DIRTY_LOG(r9, 0xc018aec0, &(0x7f00000001c0)={0x1, 0x340, 0x0, 0x0})
+r13 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+ioctl$KVM_CREATE_VM(r13, 0xae01, 0x11)
+r14 = ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x10)
+syz_kvm_assert_reg$riscv64(r14, 0x8030000001000007, 0x4000000000000000)
+r15 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r16 = ioctl$KVM_CREATE_VM(r15, 0xae01, 0x8)
+dup(r11)
+ioctl$KVM_CREATE_DEVICE(r16, 0xc00caee0, &(0x7f0000000080)={0xb})
+ioctl$KVM_HAS_DEVICE_ATTR(r8, 0x4018aee3, &(0x7f00000000c0)=@attr_other={0x0, 0xfffffffd, 0x10000000000000, 0x0})
+executing program 3:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f00000000c0)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, &(0x7f0000000180)=@attr_other={0x0, 0x1, 0x1, &(0x7f0000000080)=0x20704})
+r3 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x410002, 0x0)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r3, 0xc0045878)
+executing program 0:
+r0 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+r2 = syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000c00000/0x400000)=nil)
+r3 = syz_kvm_add_vcpu$riscv64(r2, &(0x7f0000000080)={0x0, &(0x7f00000004c0)=[@uexit={0x0, 0x18, 0x1000}, @code={0xa, 0x46, {"8398457712b5efb98bcba01c48d15c7eab954a9e5db80b1ec3cb2dd202db0f19df40fa936fde7a4a4ca88d2cdae331b89179"}}], 0x5e}, 0x0, 0x0)
+ioctl$KVM_RUN(r3, 0xae80, 0x0)
+r4 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r5 = ioctl$KVM_CREATE_VM(r4, 0xae01, 0x0)
+r6 = ioctl$KVM_CREATE_VCPU(r5, 0xae41, 0x0)
+ioctl$KVM_SET_ONE_REG(r6, 0x4010aeac, &(0x7f0000000b00)=@arm64_ccsidr={0x602000000011000b, 0x0})
+r7 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r8 = ioctl$KVM_CREATE_VM(r7, 0xae01, 0x8)
+ioctl$KVM_CAP_DIRTY_LOG_RING_ACQ_REL(r8, 0x4068aea3, &(0x7f0000000100)={0xdf, 0x0, 0x4000})
+r9 = syz_kvm_add_vcpu$riscv64(0x0, 0x0, &(0x7f0000000080)=[@featur2={0x1, 0x8}], 0x1)
+syz_kvm_setup_cpu$riscv64(r8, r9, &(0x7f0000fe5000/0x18000)=nil, 0x0, 0x0, 0x0, 0x0, 0x0)
+ioctl$KVM_RESET_DIRTY_RINGS(r8, 0xaec7)
+ioctl$KVM_RUN(r3, 0xae80, 0x0)
+ioctl$KVM_RUN(r3, 0xae80, 0x0)
+openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0) (async)
+ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0) (async)
+syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000c00000/0x400000)=nil) (async)
+syz_kvm_add_vcpu$riscv64(r2, &(0x7f0000000080)={0x0, &(0x7f00000004c0)=[@uexit={0x0, 0x18, 0x1000}, @code={0xa, 0x46, {"8398457712b5efb98bcba01c48d15c7eab954a9e5db80b1ec3cb2dd202db0f19df40fa936fde7a4a4ca88d2cdae331b89179"}}], 0x5e}, 0x0, 0x0) (async)
+ioctl$KVM_RUN(r3, 0xae80, 0x0) (async)
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0) (async)
+ioctl$KVM_CREATE_VM(r4, 0xae01, 0x0) (async)
+ioctl$KVM_CREATE_VCPU(r5, 0xae41, 0x0) (async)
+ioctl$KVM_SET_ONE_REG(r6, 0x4010aeac, &(0x7f0000000b00)=@arm64_ccsidr={0x602000000011000b, 0x0}) (async)
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0) (async)
+ioctl$KVM_CREATE_VM(r7, 0xae01, 0x8) (async)
+ioctl$KVM_CAP_DIRTY_LOG_RING_ACQ_REL(r8, 0x4068aea3, &(0x7f0000000100)={0xdf, 0x0, 0x4000}) (async)
+syz_kvm_add_vcpu$riscv64(0x0, 0x0, &(0x7f0000000080)=[@featur2={0x1, 0x8}], 0x1) (async)
+syz_kvm_setup_cpu$riscv64(r8, r9, &(0x7f0000fe5000/0x18000)=nil, 0x0, 0x0, 0x0, 0x0, 0x0) (async)
+ioctl$KVM_RESET_DIRTY_RINGS(r8, 0xaec7) (async)
+ioctl$KVM_RUN(r3, 0xae80, 0x0) (async)
+ioctl$KVM_RUN(r3, 0xae80, 0x0) (async)
+executing program 3:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x29)
+r2 = ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+dup3(r0, r2, 0x80000)
+r3 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r4 = ioctl$KVM_CREATE_VM(r3, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r4, 0xc00caee0, &(0x7f0000000080)={0xb, <r5=>0xffffffffffffffff})
+r6 = openat$kvm(0x0, &(0x7f0000000040), 0x109e02, 0x0)
+r7 = ioctl$KVM_CREATE_VM(r6, 0xae01, 0x8020)
+r8 = syz_kvm_setup_syzos_vm$riscv64(r7, &(0x7f0000993000/0x400000)=nil)
+r9 = syz_kvm_add_vcpu$riscv64(r8, &(0x7f0000000000)={0x0, 0x0}, 0x0, 0x0)
+r10 = ioctl$KVM_GET_VCPU_MMAP_SIZE(r6, 0xae04)
+r11 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r12 = eventfd2(0x2, 0x1)
+r13 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000040), 0xa00, 0x0)
+r14 = ioctl$KVM_CREATE_VM(r13, 0xae01, 0x16)
+ioctl$KVM_IRQFD(r14, 0x4020ae76, &(0x7f00000000c0)={r12, 0x7, 0x2, r12})
+r15 = eventfd2(0xfdfffff5, 0x0)
+ioctl$KVM_IRQFD(r14, 0x4020ae76, &(0x7f0000000240)={r15, 0x200, 0x2, r12})
+r16 = ioctl$KVM_CREATE_VM(r11, 0xae01, 0xf)
+r17 = syz_kvm_setup_syzos_vm$riscv64(r16, &(0x7f0000c00000/0x400000)=nil)
+r18 = syz_kvm_add_vcpu$riscv64(r17, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+r19 = ioctl$KVM_GET_STATS_FD_cpu(r18, 0xaece)
+close(r19)
+r20 = eventfd2(0xd, 0x800)
+ioctl$KVM_IRQFD(r14, 0x4020ae76, &(0x7f0000000000)={r19, 0x5, 0x2, r20})
+mmap$KVM_VCPU(&(0x7f0000ffc000/0x1000)=nil, r10, 0x3, 0x11, r9, 0x0)
+mmap(&(0x7f0000000000/0xa000)=nil, 0xa000, 0x0, 0x32, 0xffffffffffffffff, 0x0)
+mmap(&(0x7f0000004000/0x4000)=nil, 0x4000, 0x3, 0x32, 0xffffffffffffffff, 0x0)
+mmap(&(0x7f0000003000/0x3000)=nil, 0x3000, 0x3000000, 0x11, r5, 0x39073000)
+executing program 1:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+mmap(&(0x7f0000000000/0xa000)=nil, 0xa000, 0xc, 0x1031, 0xffffffffffffffff, 0x64d81000)
+r2 = ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_GET_STATS_FD_cpu(0xffffffffffffffff, 0xaece)
+syz_kvm_setup_cpu$riscv64(r1, r2, &(0x7f0000e80000/0x180000)=nil, &(0x7f0000000000)=[{0x0, 0x0}], 0x1, 0x0, 0x0, 0x0)
+r3 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r4 = ioctl$KVM_CREATE_VM(r3, 0xae01, 0x2a)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r0, 0xae04)
+syz_kvm_setup_syzos_vm$riscv64(r4, &(0x7f0000c00000/0x400000)=nil)
+r5 = syz_kvm_setup_syzos_vm$riscv64(r4, &(0x7f0000a04000/0x400000)=nil)
+r6 = syz_kvm_add_vcpu$riscv64(r5, &(0x7f0000000080)={0x0, &(0x7f00000000c0)=[@csrr={0x14, 0x18}], 0x18}, 0x0, 0x0)
+ioctl$KVM_RUN(r6, 0xae80, 0x0)
+executing program 2:
+r0 = openat$kvm(0x0, &(0x7f0000000140), 0x2ec1c2, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000c00000/0x400000)=nil)
+r2 = syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000a04000/0x400000)=nil)
+syz_kvm_add_vcpu$riscv64(r2, &(0x7f0000000080)={0x0, &(0x7f00000000c0)=[@csrr={0x14, 0x18}], 0x18}, 0x0, 0x0)
+munmap(&(0x7f0000bd3000/0x400000)=nil, 0x400000)
+mmap(&(0x7f0000800000/0x800000)=nil, 0x800000, 0x4000005, 0x8010, 0xffffffffffffffff, 0xd7eb7000)
+r3 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+mmap(&(0x7f0000800000/0x800000)=nil, 0x800000, 0x2000002, 0x10031, 0xffffffffffffffff, 0x77af2000)
+r4 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r5 = ioctl$KVM_CREATE_VM(r4, 0xae01, 0x0)
+r6 = openat$kvm(0x0, 0xfffffffffffffffc, 0x531940, 0x0)
+r7 = syz_kvm_setup_syzos_vm$riscv64(r5, &(0x7f0000c00000/0x400000)=nil)
+r8 = syz_kvm_add_vcpu$riscv64(r7, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RUN(r8, 0xae80, 0x0)
+openat$kvm(0x0, &(0x7f0000000040), 0x4802, 0x0)
+ioctl$KVM_CREATE_VM(r4, 0xae01, 0x33)
+r9 = ioctl$KVM_CREATE_VM(r6, 0xae01, 0xc)
+r10 = syz_kvm_setup_syzos_vm$riscv64(r9, &(0x7f0000c00000/0x400000)=nil)
+r11 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+ioctl$KVM_CREATE_VM(r11, 0xae01, 0x8)
+ioctl$KVM_IRQFD(r3, 0x4020ae76, &(0x7f0000001140)={0xffffffffffffffff, 0x1, 0x5})
+r12 = syz_kvm_add_vcpu$riscv64(r10, &(0x7f0000000000)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RUN(r12, 0xae80, 0x0)
+r13 = openat$kvm(0x0, &(0x7f0000000040), 0x684c02, 0x0)
+r14 = ioctl$KVM_CREATE_VM(r13, 0xae01, 0x0)
+r15 = syz_kvm_setup_syzos_vm$riscv64(r14, &(0x7f0000c00000/0x400000)=nil)
+r16 = syz_kvm_add_vcpu$riscv64(r15, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_INTERRUPT(r16, 0x4004ae86, &(0x7f0000000000)=0x4a9d)
+ioctl$KVM_RUN(r16, 0xae80, 0x0)
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x29)
+r2 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r3 = ioctl$KVM_CREATE_VM(r2, 0xae01, 0x32)
+r4 = openat$kvm(0xffffffffffffff9c, &(0x7f00000000c0), 0x402802, 0x0)
+ioctl$KVM_CREATE_VM(r4, 0xae01, 0x33)
+ioctl$KVM_IRQFD(r3, 0x4020ae76, &(0x7f0000001240)={0xffffffffffffffff, 0x8000, 0x1})
+r5 = ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+dup3(r0, r5, 0x80000)
+r6 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r7 = ioctl$KVM_CREATE_VM(r6, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r7, 0xc00caee0, &(0x7f0000000080)={0xb, <r8=>0xffffffffffffffff})
+r9 = openat$kvm(0x0, &(0x7f0000000040), 0x109e02, 0x0)
+r10 = ioctl$KVM_CREATE_VM(r9, 0xae01, 0x8020)
+r11 = syz_kvm_setup_syzos_vm$riscv64(r10, &(0x7f0000993000/0x400000)=nil)
+r12 = syz_kvm_add_vcpu$riscv64(r11, &(0x7f0000000000)={0x0, 0x0}, 0x0, 0x0)
+r13 = ioctl$KVM_GET_VCPU_MMAP_SIZE(r9, 0xae04)
+mmap$KVM_VCPU(&(0x7f0000ffc000/0x1000)=nil, r13, 0x3, 0x11, r12, 0x0)
+mmap(&(0x7f0000000000/0xa000)=nil, 0xa000, 0x0, 0x32, 0xffffffffffffffff, 0x0)
+mmap(&(0x7f0000004000/0x4000)=nil, 0x4000, 0x3, 0x32, 0xffffffffffffffff, 0x0)
+mmap(&(0x7f0000003000/0x3000)=nil, 0x3000, 0x3000000, 0x11, r8, 0x39073000)
+close(r1)
+executing program 1:
+r0 = ioctl$KVM_GET_STATS_FD_cpu(0xffffffffffffffff, 0xaece)
+mmap(&(0x7f0000000000/0xa000)=nil, 0xa000, 0x2a, 0x4c833, 0xffffffffffffffff, 0x200000)
+mmap(&(0x7f0000000000/0xa000)=nil, 0xa000, 0x0, 0x48032, 0xffffffffffffffff, 0x0) (async)
+ioctl$KVM_GET_DEVICE_ATTR(r0, 0x4018aee2, &(0x7f0000000080)=@attr_arm64={0x0, 0x0, 0x0, &(0x7f0000000040)=0x7fffffffffffffff}) (async)
+r1 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r2 = ioctl$KVM_CREATE_VM(r1, 0xae01, 0x0) (async)
+r3 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r4 = ioctl$KVM_CREATE_VM(r3, 0xae01, 0x0)
+r5 = syz_kvm_setup_syzos_vm$riscv64(r4, &(0x7f0000c00000/0x400000)=nil)
+r6 = syz_kvm_add_vcpu$riscv64(r5, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_INTERRUPT(r6, 0x4004ae86, &(0x7f0000000000)=0xffffffff) (async)
+r7 = ioctl$KVM_CREATE_VCPU(r2, 0xae41, 0x1)
+ioctl$KVM_RUN(r7, 0xae80, 0x0) (async)
+ioctl$KVM_SET_ONE_REG(r7, 0x4010aeac, &(0x7f0000000680)=@riscv64_config={0x8030000001000003, &(0x7f00000006c0)=0x8})
+r8 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0) (async)
+r9 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r10 = ioctl$KVM_CREATE_VM(r9, 0xae01, 0x0)
+r11 = syz_kvm_setup_syzos_vm$riscv64(r10, &(0x7f0000c00000/0x400000)=nil)
+r12 = syz_kvm_add_vcpu$riscv64(r11, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+r13 = ioctl$KVM_GET_STATS_FD_cpu(r12, 0xaece)
+close(r13) (async)
+ioctl$KVM_CAP_PTP_KVM(r13, 0x4068aea3, &(0x7f0000000140)) (async)
+r14 = eventfd2(0x0, 0x80001) (async)
+r15 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r16 = ioctl$KVM_CREATE_VM(r15, 0xae01, 0x32)
+ioctl$KVM_IOEVENTFD(r16, 0x4040ae79, &(0x7f0000000100)={0x3, 0xfec00000, 0x8, r14}) (async)
+ioctl$KVM_IOEVENTFD(r16, 0x4040ae79, &(0x7f0000000000)={0x7fb, 0xfec00000, 0x0, r13, 0x5}) (async)
+r17 = ioctl$KVM_CREATE_VM(r8, 0xae01, 0x0)
+r18 = ioctl$KVM_CREATE_VCPU(r17, 0xae41, 0x0)
+ioctl$KVM_GET_REG_LIST(r18, 0xc008aeb0, &(0x7f0000000c00)={0x105})
+executing program 1:
+r0 = openat$kvm(0x0, &(0x7f0000000040), 0x40080, 0x0)
+r1 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r2 = ioctl$KVM_CREATE_VM(r1, 0xae01, 0x8) (async)
+r3 = eventfd2(0x1, 0x0)
+ioctl$KVM_IRQFD(r2, 0x4020ae76, &(0x7f0000000040)={r3, 0x9, 0x3, r3})
+r4 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+r5 = syz_kvm_setup_syzos_vm$riscv64(r4, &(0x7f0000c00000/0x400000)=nil)
+r6 = syz_kvm_add_vcpu$riscv64(r5, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RUN(r6, 0xae80, 0x0) (async)
+close(r6) (async)
+close(r4)
+executing program 3:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+executing program 2:
+r0 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+r2 = syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000c00000/0x400000)=nil)
+r3 = syz_kvm_add_vcpu$riscv64(r2, &(0x7f0000000200)={0x0, &(0x7f0000000b80)=[@code={0xa, 0x46, {"cc5e97cbcc0b8de774459c6455f5c84f7baccc62be0dba2a52235e571d1ccbfd6fd7783e302d826a65cd0000000000000000"}}], 0x46}, 0x0, 0x0)
+ioctl$KVM_RUN(r3, 0xae80, 0x0)
+executing program 0:
+r0 = ioctl$KVM_CREATE_VM(0xffffffffffffffff, 0xae01, 0x22)
+ioctl$KVM_GET_DEVICE_ATTR_vm(r0, 0x4018aee2, &(0x7f0000000040)=@attr_arm64={0x0, 0x0, 0x0, &(0x7f0000000000)={0x7, 0xa0}})
+r1 = ioctl$KVM_CREATE_VM(0xffffffffffffffff, 0xae01, 0x1d)
+ioctl$KVM_GET_DIRTY_LOG(r1, 0x4010ae42, &(0x7f0000000080)={0x5, 0x0, &(0x7f0000ffc000/0x4000)=nil})
+close(r1)
+ioctl$KVM_PPC_ALLOCATE_HTAB(0xffffffffffffffff, 0xc004aea7, &(0x7f00000000c0)=0xe)
+r2 = ioctl$KVM_CREATE_VM(0xffffffffffffffff, 0xae01, 0x2d)
+r3 = ioctl$KVM_CREATE_VM(0xffffffffffffffff, 0xae01, 0x11)
+ioctl$KVM_SET_GSI_ROUTING(r3, 0x4008ae6a, &(0x7f0000000100)={0x6, 0x0, [{0x400, 0x4, 0x0, 0x0, @irqchip={0x3, 0x7}}, {0x8001, 0x5, 0x0, 0x0, @msi={0xe, 0x7, 0x4, 0x40000}}, {0x0, 0x4, 0x0, 0x0, @irqchip={0x6, 0x1000}}, {0x1, 0x0, 0x0, 0x0, @sint={0x2, 0x40}}, {0xa, 0x2, 0x0, 0x0, @msi={0xcb, 0x619, 0x6, 0x7}}, {0x7, 0x1, 0x1, 0x0, @irqchip={0x0, 0x4}}]})
+r4 = eventfd2(0x2, 0x1)
+ioctl$KVM_IOEVENTFD(r2, 0x4040ae79, &(0x7f0000000240)={0x3, 0xb000, 0x0, r4, 0xc})
+ioctl$KVM_CAP_HALT_POLL(r1, 0x4068aea3, &(0x7f0000000280)={0xb6, 0x0, 0x2})
+ioctl$KVM_CAP_DIRTY_LOG_RING(r3, 0x4068aea3, &(0x7f0000000300)={0xc0, 0x0, 0x1000})
+ioctl$KVM_IOEVENTFD(r1, 0x4040ae79, &(0x7f0000000380)={0x7, 0xdddd1000, 0x4, r4, 0xd})
+r5 = syz_kvm_add_vcpu$riscv64(0x0, &(0x7f0000000580)={0x0, &(0x7f00000003c0)=[@csrw={0x1e, 0x20, {0x141, 0x65}}, @code={0xa, 0x46, {"270b94ea1ea7235d644e00f0feef52120cc7dfd5666584dc6d9d9fe6491a16515c651b7ab352b44554d03b54f23fb644665c"}}, @code={0xa, 0x46, {"61d01b52d0e88470acaec33a74c430068058f1275a1f29cf610e9a8f4c6a90a8a27a2bb5d669460a297ab95de022e91a165a"}}, @csrw={0x1e, 0x20, {0x141, 0x1}}, @csrw={0x1e, 0x20, {0x0, 0x269}}, @csrr={0x14, 0x18, {0x180}}, @csrw={0x1e, 0x20, {0x105, 0x2}}, @uexit={0x0, 0x18, 0x3}, @csrw={0x1e, 0x20, {0x104, 0x3}}, @uexit={0x0, 0x18, 0x77}, @code={0xa, 0x46, {"70277d65bec6e8b273feb4b091ab55abd599800c21461a3c798f1140b4b46d98fba65eb611099bd79c5d8cb7fa20f2e21491"}}], 0x1ba}, &(0x7f00000005c0)=[@featur2={0x1, 0x1}], 0x1)
+syz_kvm_setup_cpu$riscv64(r2, r5, &(0x7f0000fe8000/0x18000)=nil, &(0x7f0000000640)=[{0x0, &(0x7f0000000600)="46c114609747bfd4e3c300396e2cda02400cc4bc28629245c4ea73eb69dcf30f04915fc368649e229058f8009d81e6d6d51f", 0x32}], 0x1, 0x0, &(0x7f0000000680)=[@featur2={0x1, 0x4d}], 0x1)
+ioctl$KVM_SET_DEVICE_ATTR_vcpu(r5, 0x4018aee1, &(0x7f00000006c0)=@attr_pvtime_ipa={0x0, 0x1, 0x1, 0x7})
+ioctl$KVM_HAS_DEVICE_ATTR_vm(r0, 0x4018aee3, &(0x7f0000000740)=@attr_other={0x0, 0xeb89, 0x4, &(0x7f0000000700)=0xfffffffffffffffd})
+ioctl$KVM_CREATE_DEVICE(r3, 0xc00caee0, &(0x7f0000000780)={0x2})
+ioctl$KVM_SET_USER_MEMORY_REGION(r0, 0x4020ae46, &(0x7f00000007c0)={0x0, 0x0, 0xffff1000, 0x1000, &(0x7f0000ff4000/0x1000)=nil})
+r6 = dup3(r5, r0, 0x80000)
+ioctl$KVM_GET_DEVICE_ATTR_vm(r6, 0x4018aee2, &(0x7f0000000840)=@attr_arm64={0x0, 0x0, 0x0, &(0x7f0000000800)={0x7, 0x316f6548}})
+ioctl$KVM_IRQ_LINE(r2, 0x4008ae61, &(0x7f0000000880)={0x0, 0x9})
+ioctl$KVM_HAS_DEVICE_ATTR_vm(r3, 0x4018aee3, &(0x7f0000000900)=@attr_other={0x0, 0x100, 0x8, &(0x7f00000008c0)=0xffff})
+ioctl$KVM_CAP_PTP_KVM(r1, 0x4068aea3, &(0x7f0000000940))
+ioctl$KVM_HAS_DEVICE_ATTR_vm(r3, 0x4018aee3, &(0x7f0000000a00)=@attr_other={0x0, 0x64838203, 0x7, &(0x7f00000009c0)=0xfffffffffffffe00})
+ioctl$KVM_SET_USER_MEMORY_REGION2(r2, 0x40a0ae49, &(0x7f0000000a40)={0x10000, 0x1, 0x60000, 0x2000, &(0x7f0000ff0000/0x2000)=nil, 0x8, r6})
+ioctl$KVM_RUN(r6, 0xae80, 0x0)
+ioctl$KVM_SET_USER_MEMORY_REGION(r1, 0x4020ae46, &(0x7f0000000b00)={0x10000, 0x1, 0x5000, 0x1000, &(0x7f0000ffc000/0x1000)=nil})
+ioctl$KVM_CREATE_IRQCHIP(r3, 0xae60)
+executing program 3:
+mmap(&(0x7f0000800000/0x800000)=nil, 0x800000, 0x2000002, 0x10031, 0xffffffffffffffff, 0x77af2000) (async)
+r0 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+r2 = syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000c00000/0x400000)=nil)
+r3 = syz_kvm_add_vcpu$riscv64(r2, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RUN(r3, 0xae80, 0x0) (async)
+r4 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0) (async)
+r5 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x23) (async)
+r6 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r7 = ioctl$KVM_CREATE_VM(r6, 0xae01, 0x0)
+r8 = syz_kvm_setup_syzos_vm$riscv64(r7, &(0x7f0000c00000/0x400000)=nil)
+r9 = syz_kvm_add_vcpu$riscv64(r8, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+r10 = ioctl$KVM_GET_STATS_FD_cpu(r9, 0xaece)
+close(r10) (async)
+r11 = eventfd2(0x0, 0x80001) (async)
+r12 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r13 = ioctl$KVM_CREATE_VM(r12, 0xae01, 0x32)
+ioctl$KVM_IOEVENTFD(r13, 0x4040ae79, &(0x7f0000000100)={0x3, 0xfec00000, 0x8, r11}) (async)
+ioctl$KVM_IOEVENTFD(r13, 0x4040ae79, &(0x7f0000000000)={0x7fb, 0xfec00000, 0x0, r10, 0x5}) (async)
+ioctl$KVM_SET_USER_MEMORY_REGION2(r5, 0x40a0ae49, &(0x7f00000000c0)={0x0, 0x6, 0x30000, 0x1000, &(0x7f0000ffc000/0x1000)=nil, 0xffffffff00000001, r10}) (async)
+syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f00009d2000/0x400000)=nil)
+r14 = ioctl$KVM_CREATE_VM(r4, 0xae01, 0x26)
+r15 = syz_kvm_setup_syzos_vm$riscv64(r14, &(0x7f0000c00000/0x400000)=nil)
+r16 = syz_kvm_add_vcpu$riscv64(r15, &(0x7f0000000000)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RUN(r16, 0xae80, 0x0)
+executing program 2:
+r0 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r0, 0x801c581f)
+r1 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r2 = ioctl$KVM_CREATE_VM(r1, 0xae01, 0x0)
+r3 = syz_kvm_setup_syzos_vm$riscv64(r2, &(0x7f0000c00000/0x400000)=nil)
+r4 = syz_kvm_add_vcpu$riscv64(r3, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+r5 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r6 = ioctl$KVM_CREATE_VM(r5, 0xae01, 0x0)
+r7 = syz_kvm_setup_syzos_vm$riscv64(r6, &(0x7f0000c00000/0x400000)=nil)
+r8 = syz_kvm_add_vcpu$riscv64(r7, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RUN(r8, 0xae80, 0x0) (async)
+r9 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r10 = ioctl$KVM_CREATE_VM(r9, 0xae01, 0x0)
+r11 = syz_kvm_setup_syzos_vm$riscv64(r10, &(0x7f0000c00000/0x400000)=nil)
+r12 = syz_kvm_add_vcpu$riscv64(r11, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RUN(r12, 0xae80, 0x0) (async)
+r13 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r14 = ioctl$KVM_CREATE_VM(r13, 0xae01, 0x0)
+r15 = ioctl$KVM_CREATE_VCPU(r14, 0xae41, 0x0)
+syz_kvm_assert_reg$riscv64(r15, 0x8030000002000020, 0x80200000)
+ioctl$KVM_RUN(r4, 0xae80, 0x0)
+ioctl$KVM_CREATE_VM(0xffffffffffffffff, 0xae01, 0x0) (async)
+syz_kvm_setup_syzos_vm$riscv64(0xffffffffffffffff, &(0x7f0000c00000/0x400000)=nil) (async)
+mmap(&(0x7f0000800000/0x800000)=nil, 0x800000, 0x2000002, 0x10031, 0xffffffffffffffff, 0x77af2000) (async)
+r16 = syz_kvm_setup_syzos_vm$riscv64(0xffffffffffffffff, &(0x7f0000c00000/0x400000)=nil)
+r17 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+syz_kvm_add_vcpu$riscv64(r16, &(0x7f00000000c0)={0x0, &(0x7f0000000540)=[@csrr={0x14, 0x18, {0x104}}, @csrr={0x14, 0x18, {0x106}}, @csrr={0x14, 0x18, {0x104}}, @uexit={0x0, 0x18, 0x2}, @csrr={0x14, 0x18, {0x106}}, @code={0xa, 0x46, {"76929649bd947a361a1c09b248313e4fdceba08f3df104356f8685b977e8ad457a6985720e6e04c6c918e09d876c20e9d452"}}, @uexit={0x0, 0x18, 0xffffffffffffffff}, @uexit={0x0, 0x18, 0x82}, @csrw={0x1e, 0x20, {0x5, 0x5}}, @csrw={0x1e, 0x20, {0x140, 0x2}}, @csrw={0x1e, 0x20, {0x104, 0x4}}, @csrw={0x1e, 0x20, {0x106, 0xff}}, @csrw={0x1e, 0x20, {0x140, 0x3}}, @uexit={0x0, 0x18, 0x46f8030e}, @csrr={0x14, 0x18, {0x10a}}, @csrr={0x14, 0x18, {0x143}}, @code={0xa, 0x46, {"5e87aa72f7ec46d7f2b82903774645ee8b02344e2afec596a8f984e1cfcab8d197e4aaad2410c9960e6d2dd7a20ea70f2f38"}}, @uexit={0x0, 0x18, 0xffffffffffffffff}, @code={0xa, 0x46, {"ecb1468b16ff724586aa1f2448aa1ff744ace18a406c399233ad52a7b6297367ab13dd20f54cd8dc7f006fe40f84ed5de92b"}}, @code={0xa, 0x46, {"c5b9143167d7ab0ac44ded641415805d0ae2ee3c6da37e9498e6894b81c77551181264a754c85f991c04fb0610edd4b8594c"}}, @csrr={0x14, 0x18}, @code={0xa, 0x46, {"7cb23a4310a05863f98932027c37c0412a376452eeb00cb895f097ae8847cd505b8a16a0c1f73011c0aff251856583b031de"}}, @code={0xa, 0x46, {"e4a55b4d093531efb3595832207f6fac0014fc6eac61404462b797f1ad52ea335d652c5c09836d38dcd13440756835066ba5"}}, @csrw={0x1e, 0x20, {0x141, 0x7f}}, @csrr={0x14, 0x18, {0x100}}, @code={0xa, 0x46, {"defb43be791c399c5e45de1b365862de7470a08065999c2b8159ddbe2577691eded0a29cb5618df90d206e528dd814447849"}}, @csrr={0x14, 0x18, {0x10a}}, @csrr={0x14, 0x18, {0x249}}, @uexit={0x0, 0x18, 0x8}, @csrr={0x14, 0x18}], 0x442}, &(0x7f0000000100)=[@featur2={0x1, 0x4}], 0x1) (async)
+r18 = ioctl$KVM_CREATE_VM(r17, 0xae01, 0x0)
+syz_kvm_setup_cpu$riscv64(r18, 0xffffffffffffffff, &(0x7f0000e80000/0x180000)=nil, 0x0, 0x0, 0x0, 0x0, 0x0)
+executing program 1:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+ioctl$KVM_CAP_DIRTY_LOG_RING_ACQ_REL(r1, 0x4068aea3, &(0x7f0000000100)={0xdf, 0x0, 0x4000})
+r2 = openat$kvm(0x0, &(0x7f0000000040), 0x109e02, 0x0)
+r3 = ioctl$KVM_CREATE_VM(r2, 0xae01, 0x8020)
+r4 = syz_kvm_setup_syzos_vm$riscv64(r3, &(0x7f0000993000/0x400000)=nil)
+r5 = syz_kvm_add_vcpu$riscv64(r4, &(0x7f0000000000)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_SET_ONE_REG(r5, 0x4010aeac, &(0x7f0000000180)=@riscv64_v={0x8030000009000002, &(0x7f0000000140)=0x7})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x1)
+ioctl$KVM_SET_ONE_REG(r5, 0x4010aeac, &(0x7f00000001c0)=@riscv64_timer={0x8030000004000002, &(0x7f00000000c0)=0xf1})
+r6 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r7 = ioctl$KVM_CREATE_VM(r6, 0xae01, 0x0)
+ioctl$KVM_CREATE_DEVICE(r7, 0xc00caee0, &(0x7f0000000000)={0xb})
+ioctl$KVM_IRQ_LINE_STATUS(r7, 0xc008ae67, &(0x7f0000000000)={0x4, 0x1})
+r8 = syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000a7b000/0x400000)=nil)
+syz_kvm_add_vcpu$riscv64(r8, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RESET_DIRTY_RINGS(r1, 0xaec7)
+executing program 0:
+r0 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+r2 = syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000c00000/0x400000)=nil)
+r3 = syz_kvm_add_vcpu$riscv64(r2, &(0x7f0000000080)={0x0, &(0x7f0000000000)=[@csrr={0x14, 0x0, {0x143}}, @uexit={0x0, 0x18, 0x1ff}], 0x80}, 0x0, 0x0)
+r4 = ioctl$KVM_GET_VCPU_MMAP_SIZE(r0, 0xae04)
+r5 = mmap$KVM_VCPU(&(0x7f0000009000/0x1000)=nil, r4, 0x3, 0x11, r3, 0x0)
+ioctl$KVM_RUN(r3, 0xae80, 0x0)
+syz_kvm_assert_syzos_uexit$riscv64(r3, r5, 0x0)
+r6 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r7 = ioctl$KVM_CREATE_VM(r6, 0xae01, 0x0)
+syz_kvm_setup_syzos_vm$riscv64(r7, &(0x7f0000c00000/0x400000)=nil)
+ioctl$KVM_IRQ_LINE(r7, 0x4008ae61, &(0x7f00000000c0)={0x4, 0x6})
+r8 = ioctl$KVM_GET_VCPU_MMAP_SIZE(r6, 0xae04)
+mmap$KVM_VCPU(&(0x7f0000c96000/0x2000)=nil, r8, 0x1000008, 0x13, 0xffffffffffffffff, 0x0)
+ioctl$KVM_RUN(r3, 0xae80, 0x0)
+syz_kvm_assert_syzos_uexit$riscv64(r3, r5, 0xaaaa)
+syz_kvm_assert_syzos_kvm_exit$riscv64(r5, 0x6)
+syz_kvm_assert_syzos_uexit$riscv64(r3, r5, 0xffffffffffffffff)
+openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0) (async)
+ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0) (async)
+syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000c00000/0x400000)=nil) (async)
+syz_kvm_add_vcpu$riscv64(r2, &(0x7f0000000080)={0x0, &(0x7f0000000000)=[@csrr={0x14, 0x0, {0x143}}, @uexit={0x0, 0x18, 0x1ff}], 0x80}, 0x0, 0x0) (async)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r0, 0xae04) (async)
+mmap$KVM_VCPU(&(0x7f0000009000/0x1000)=nil, r4, 0x3, 0x11, r3, 0x0) (async)
+ioctl$KVM_RUN(r3, 0xae80, 0x0) (async)
+syz_kvm_assert_syzos_uexit$riscv64(r3, r5, 0x0) (async)
+openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0) (async)
+ioctl$KVM_CREATE_VM(r6, 0xae01, 0x0) (async)
+syz_kvm_setup_syzos_vm$riscv64(r7, &(0x7f0000c00000/0x400000)=nil) (async)
+ioctl$KVM_IRQ_LINE(r7, 0x4008ae61, &(0x7f00000000c0)={0x4, 0x6}) (async)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r6, 0xae04) (async)
+mmap$KVM_VCPU(&(0x7f0000c96000/0x2000)=nil, r8, 0x1000008, 0x13, 0xffffffffffffffff, 0x0) (async)
+ioctl$KVM_RUN(r3, 0xae80, 0x0) (async)
+syz_kvm_assert_syzos_uexit$riscv64(r3, r5, 0xaaaa) (async)
+syz_kvm_assert_syzos_kvm_exit$riscv64(r5, 0x6) (async)
+syz_kvm_assert_syzos_uexit$riscv64(r3, r5, 0xffffffffffffffff) (async)
+executing program 3:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0) (async)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_CAP_DIRTY_LOG_RING_ACQ_REL(r1, 0x4068aea3, &(0x7f0000000100)={0xdf, 0x0, 0x4000})
+r2 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r3 = ioctl$KVM_CREATE_VM(r2, 0xae01, 0x2d)
+r4 = ioctl$KVM_CREATE_VCPU(r3, 0xae41, 0x0)
+ioctl$KVM_SET_ONE_REG(r4, 0x4010aeac, &(0x7f00000000c0)=@riscv64_sbi_fwft={0x803000000a010002}) (async)
+ioctl$KVM_SET_ONE_REG(r4, 0x4010aeac, &(0x7f00000000c0)=@riscv64_sbi_fwft={0x803000000a010002})
+executing program 1:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r2 = ioctl$KVM_CREATE_VM(r1, 0xae01, 0x0)
+r3 = ioctl$KVM_CREATE_VCPU(r2, 0xae41, 0x0)
+mmap(&(0x7f0000000000/0xa000)=nil, 0xa000, 0x1000003, 0x11, r3, 0xe028d000) (async)
+openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0) (async)
+r4 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r5 = ioctl$KVM_CREATE_VM(r4, 0xae01, 0x0) (async)
+r6 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+dup3(r5, r6, 0x80000) (async)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r6, 0x541b) (async)
+r7 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r8 = ioctl$KVM_CREATE_VM(r7, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r8, 0xc00caee0, &(0x7f0000000080)={0xb, <r9=>0xffffffffffffffff})
+ioctl$KVM_GET_DEVICE_ATTR(r9, 0x4018aee2, &(0x7f00000001c0)=@attr_other={0x0, 0x3, 0x4, &(0x7f00000000c0)=0x5}) (async)
+r10 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r10, 0xc00caee0, &(0x7f0000000080)={0xb, <r11=>0xffffffffffffffff}) (async)
+r12 = openat$kvm(0x0, &(0x7f0000000040), 0x109e02, 0x0)
+r13 = ioctl$KVM_CREATE_VM(r12, 0xae01, 0x8020)
+r14 = syz_kvm_setup_syzos_vm$riscv64(r13, &(0x7f0000993000/0x400000)=nil)
+r15 = syz_kvm_add_vcpu$riscv64(r14, &(0x7f0000000000)={0x0, 0x0}, 0x0, 0x0) (async)
+r16 = ioctl$KVM_GET_VCPU_MMAP_SIZE(r12, 0xae04)
+mmap$KVM_VCPU(&(0x7f0000ffc000/0x1000)=nil, r16, 0x3, 0x11, r15, 0x0) (async)
+mmap(&(0x7f0000000000/0xa000)=nil, 0xa000, 0x0, 0x32, 0xffffffffffffffff, 0x0)
+mmap(&(0x7f0000004000/0x4000)=nil, 0x4000, 0x3, 0x32, 0xffffffffffffffff, 0x0) (async)
+mmap(&(0x7f0000003000/0x3000)=nil, 0x3000, 0x3000000, 0x11, r11, 0x39073000)
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x1)
+r2 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r3 = ioctl$KVM_CREATE_VM(r2, 0xae01, 0x8)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x2)
+ioctl$KVM_CREATE_DEVICE(r3, 0xc00caee0, &(0x7f0000000080)={0xb, <r4=>0xffffffffffffffff})
+mmap(&(0x7f0000004000/0x4000)=nil, 0x4000, 0x3, 0x32, 0xffffffffffffffff, 0x0)
+mmap(&(0x7f0000003000/0x3000)=nil, 0x3000, 0x3000000, 0x11, r4, 0x39073000)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb})
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0) (async)
+ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8) (async)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x1) (async)
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0) (async)
+ioctl$KVM_CREATE_VM(r2, 0xae01, 0x8) (async)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x2) (async)
+ioctl$KVM_CREATE_DEVICE(r3, 0xc00caee0, &(0x7f0000000080)={0xb}) (async)
+mmap(&(0x7f0000004000/0x4000)=nil, 0x4000, 0x3, 0x32, 0xffffffffffffffff, 0x0) (async)
+mmap(&(0x7f0000003000/0x3000)=nil, 0x3000, 0x3000000, 0x11, r4, 0x39073000) (async)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb}) (async)
+executing program 2:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r2 = ioctl$KVM_CREATE_VM(r1, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r2, 0xc00caee0, &(0x7f00000000c0)={0xb})
+r3 = ioctl$KVM_CREATE_GUEST_MEMFD(0xffffffffffffffff, 0xc040aed4, &(0x7f0000000080)={0x7fffffff, 0x6})
+ioctl$KVM_SET_USER_MEMORY_REGION2(r2, 0x40a0ae49, &(0x7f00000000c0)={0x10200, 0x0, 0xfec00000, 0x1000, &(0x7f0000ffe000/0x1000)=nil, 0x7, r3})
+r4 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0xc)
+ioctl$KVM_CREATE_VCPU(r4, 0xae41, 0x0)
+ioctl$KVM_CREATE_DEVICE(0xffffffffffffffff, 0xc00caee0, &(0x7f0000000040)={0x8, <r5=>0xffffffffffffffff})
+mmap(&(0x7f0000ffd000/0x3000)=nil, 0x3000, 0x200000a, 0x2010, r5, 0x0)
+executing program 3:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r0, 0xae04)
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000040), 0x42280, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x25)
+r2 = ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_GET_REG_LIST(r2, 0xc008aeb0, &(0x7f0000000c00)={0x105})
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0) (async)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r0, 0xae04) (async)
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000040), 0x42280, 0x0) (async)
+ioctl$KVM_CREATE_VM(r0, 0xae01, 0x25) (async)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0) (async)
+ioctl$KVM_GET_REG_LIST(r2, 0xc008aeb0, &(0x7f0000000c00)={0x105}) (async)
+executing program 1:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(r2, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000640), 0x1, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x6)
+ioctl$KVM_SIGNAL_MSI(r1, 0x4020aea5, 0x0)
+r2 = openat$kvm(0xffffffffffffff9c, &(0x7f00000004c0), 0x100, 0x0)
+r3 = ioctl$KVM_CREATE_VM(r2, 0xae01, 0x31)
+ioctl$KVM_GET_DIRTY_LOG(r3, 0x4010ae42, &(0x7f0000000640)={0xfe7f, 0x0, &(0x7f0000ffc000/0x2000)=nil})
+2026/01/24 09:51:50 pool: booting instance 7
+2026/01/24 10:00:21 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program did not crash
+2026/01/24 10:00:21 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': replaying the whole log did not cause a kernel crash
+2026/01/24 10:00:21 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': single: executing 1 programs separately with timeout 16m0s
+2026/01/24 10:00:21 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=16m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_VM-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_CREATE_VCPU-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 10:00:21 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(r2, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+2026/01/24 10:00:21 pool: booting instance 9
+2026/01/24 10:10:02 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program crashed: BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr
+2026/01/24 10:10:02 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': single: successfully extracted reproducer
+2026/01/24 10:10:02 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': found reproducer with 6 syscalls
+2026/01/24 10:10:02 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': minimizing guilty program
+2026/01/24 10:10:02 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=16m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_VM-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_CREATE_VCPU
+2026/01/24 10:10:02 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+2026/01/24 10:10:03 pool: booting instance 3
+2026/01/24 10:29:34 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program did not crash
+2026/01/24 10:29:34 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=16m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_VM-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 10:29:34 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_HAS_DEVICE_ATTR(r2, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+2026/01/24 10:29:34 pool: booting instance 4
+2026/01/24 10:49:09 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program did not crash
+2026/01/24 10:49:09 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=16m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_VM-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_CREATE_VCPU-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 10:49:09 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(r2, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+2026/01/24 10:49:09 pool: booting instance 8
+2026/01/24 11:08:46 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program did not crash
+2026/01/24 11:08:46 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=16m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_VM-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_CREATE_VCPU-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 11:08:46 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_SET_DEVICE_ATTR(0xffffffffffffffff, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(0xffffffffffffffff, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+2026/01/24 11:08:46 pool: booting instance 2
+2026/01/24 11:28:21 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program did not crash
+2026/01/24 11:28:21 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=16m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_CREATE_VCPU-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 11:28:21 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 0:
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+ioctl$KVM_CREATE_DEVICE(0xffffffffffffffff, 0xc00caee0, &(0x7f0000000080)={0xb, <r0=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r0, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_CREATE_VCPU(0xffffffffffffffff, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(r0, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+2026/01/24 11:28:21 pool: booting instance 6
+2026/01/24 11:46:44 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program did not crash
+2026/01/24 11:46:44 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=16m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ioctl$KVM_CREATE_VM-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_CREATE_VCPU-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 11:46:44 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 0:
+r0 = ioctl$KVM_CREATE_VM(0xffffffffffffffff, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r0, 0xc00caee0, &(0x7f0000000080)={0xb, <r1=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r1, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_CREATE_VCPU(r0, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(r1, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+2026/01/24 11:46:45 pool: booting instance 1
+2026/01/24 12:06:09 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program did not crash
+2026/01/24 12:06:09 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=16m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_VM-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_CREATE_VCPU-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 12:06:09 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, 0x0, 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(r2, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+2026/01/24 12:06:09 pool: booting instance 0
+2026/01/24 12:25:36 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program did not crash
+2026/01/24 12:25:36 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=16m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_VM-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_CREATE_VCPU-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 12:25:36 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, 0x0)
+ioctl$KVM_SET_DEVICE_ATTR(0xffffffffffffffff, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(0xffffffffffffffff, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+2026/01/24 12:25:36 pool: booting instance 5
+2026/01/24 12:45:08 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program did not crash
+2026/01/24 12:45:08 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=16m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_VM-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_CREATE_VCPU-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 12:45:08 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, 0x0)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(r2, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+2026/01/24 12:45:08 pool: booting instance 7
+2026/01/24 13:04:29 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program did not crash
+2026/01/24 13:04:29 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=16m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_VM-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_CREATE_VCPU-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 13:04:29 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(r2, 0x4018aee3, 0x0)
+2026/01/24 13:04:29 pool: booting instance 9
+2026/01/24 13:23:54 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program did not crash
+2026/01/24 13:23:54 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': extracting C reproducer
+2026/01/24 13:23:54 pool: booting instance 3
+2026/01/24 13:27:19 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing compiled C program (duration=16m0s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_VM-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_CREATE_VCPU-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 13:42:28 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program crashed: no output from test machine
+2026/01/24 13:42:28 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': a never seen crash title: no output from test machine, ignore
+2026/01/24 13:42:28 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': simplifying guilty program options
+2026/01/24 13:42:28 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=16m0s, {Threaded:false Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_VM-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_CREATE_VCPU-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 13:42:28 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(r2, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+2026/01/24 13:42:28 pool: booting instance 4
+2026/01/24 13:52:49 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program crashed: BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr
+2026/01/24 13:52:49 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': extracting C reproducer
+2026/01/24 13:52:49 pool: booting instance 8
+2026/01/24 13:56:23 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing compiled C program (duration=16m0s, {Threaded:false Repeat:true RepeatTimes:0 Procs:4 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_VM-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_CREATE_VCPU-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 14:11:32 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program crashed: no output from test machine
+2026/01/24 14:11:32 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': a never seen crash title: no output from test machine, ignore
+2026/01/24 14:11:32 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=16m0s, {Threaded:false Repeat:true RepeatTimes:0 Procs:1 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_VM-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_CREATE_VCPU-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 14:11:32 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(r2, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+2026/01/24 14:11:32 pool: booting instance 2
+2026/01/24 14:22:26 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program crashed: BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr
+2026/01/24 14:22:26 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': extracting C reproducer
+2026/01/24 14:22:26 pool: booting instance 6
+2026/01/24 14:25:58 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing compiled C program (duration=16m0s, {Threaded:false Repeat:true RepeatTimes:0 Procs:1 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_VM-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_CREATE_VCPU-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 14:27:18 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program did not crash
+2026/01/24 14:27:18 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=16m0s, {Threaded:false Repeat:true RepeatTimes:0 Procs:1 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_VM-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_CREATE_VCPU-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 14:27:18 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(r2, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+2026/01/24 14:27:18 pool: booting instance 1
+2026/01/24 14:37:47 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program crashed: BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr
+2026/01/24 14:37:47 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': validation run: crashed=true
+2026/01/24 14:37:47 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=16m0s, {Threaded:false Repeat:true RepeatTimes:0 Procs:1 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_VM-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_CREATE_VCPU-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 14:37:47 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(r2, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+2026/01/24 14:37:47 pool: booting instance 0
+2026/01/24 14:48:21 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program crashed: BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr
+2026/01/24 14:48:21 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': validation run: crashed=true
+2026/01/24 14:48:21 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=16m0s, {Threaded:false Repeat:true RepeatTimes:0 Procs:1 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_VM-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_CREATE_VCPU-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 14:48:21 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(r2, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+2026/01/24 14:48:21 pool: booting instance 5
+2026/01/24 15:03:06 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program crashed: BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr
+2026/01/24 15:03:06 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': validation run: crashed=true
+2026/01/24 15:03:06 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': reproducing took 5h31m21.492690728s
+2026/01/24 15:03:06 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': repro crashed as (corrupted=true):
+Unable to handle kernel paging request at virtual address dfffffff00000001
+Current syz.2.17 pgtable: 4K pagesize, 57-bit VAs, pgdp=0x00000001117e2000
+[dfffffff00000001] pgd=000000005fffe401, p4d=000000005fffe001, pud=0000000000000000
+Oops [#1]
+Modules linked in:
+CPU: 3 UID: 0 PID: 4101 Comm: syz.2.17 Not tainted 6.18.0-rc5-g0f226cf6026f-dirty #1 PREEMPT 
+Hardware name: riscv-virtio,qemu (DT)
+epc : kvm_riscv_aia_imsic_has_attr+0x464/0x50e arch/riscv/kvm/aia_imsic.c:998
+ ra : kvm_riscv_aia_imsic_has_attr+0x42e/0x50e arch/riscv/kvm/aia_imsic.c:997
+epc : ffffffff80108e36 ra : ffffffff80108e00 sp : ff20000002927c00
+ gp : ffffffff89edda40 tp : ff60000091c93500 t0 : ff20000002927d78
+ t1 : 0000000000000001 t2 : ffffffff86a06b38 s0 : ff20000002927d00
+ s1 : 0000000000000000 a0 : 000000000000000c a1 : 00000000000000ff
+ a2 : 0000000000000002 a3 : ffffffff80108e00 a4 : 0000000000000001
+ a5 : dfffffff00000001 a6 : 0000000000000003 a7 : ffffffff864ba8ce
+ s2 : 0000000000000070 s3 : fffffffffffffffe s4 : 0000000000000000
+ s5 : 0000000000000070 s6 : ff20000002927c80 s7 : 0000000000000000
+ s8 : 0000000000000000 s9 : 1fec0000126fc95a s10: 00000000003063a8
+ s11: 1fe4000000524f84 t3 : 4b952e4d00000000 t4 : 0000000000000000
+ t5 : 0000000000000000 t6 : 0000000000040000 ssp : 0000000000000000
+status: 0000000200000120 badaddr: dfffffff00000001 cause: 000000000000000d
+[<ffffffff80108e36>] kvm_riscv_aia_imsic_has_attr+0x464/0x50e arch/riscv/kvm/aia_imsic.c:998
+[<ffffffff800ff294>] aia_has_attr+0x128/0x2bc arch/riscv/kvm/aia_device.c:471
+[<ffffffff800d3180>] kvm_device_ioctl_attr virt/kvm/kvm_main.c:4722 [inline]
+[<ffffffff800d3180>] kvm_device_ioctl+0x296/0x374 virt/kvm/kvm_main.c:4739
+[<ffffffff80c9d6b0>] vfs_ioctl fs/ioctl.c:51 [inline]
+[<ffffffff80c9d6b0>] __do_sys_ioctl fs/ioctl.c:597 [inline]
+[<ffffffff80c9d6b0>] __se_sys_ioctl fs/ioctl.c:583 [inline]
+[<ffffffff80c9d6b0>] __riscv_sys_ioctl+0x180/0x1e4 fs/ioctl.c:583
+[<ffffffff80076ba8>] syscall_handler+0x94/0x118 arch/riscv/include/asm/syscall.h:112
+[<ffffffff864c25ee>] do_trap_ecall_u+0x39e/0x53a arch/riscv/kernel/traps.c:343
+[<ffffffff864ec1ae>] handle_exception+0x15e/0x16a arch/riscv/kernel/entry.S:232
+Code: 6d84 07b7 e000 17fd 8513 00c4 5713 0035 1782 97ba (8703) 0007 
+---[ end trace 0000000000000000 ]---
+----------------
+Code disassembly (best guess):
+   0:	6d84                	flw	fs1,24(a1)
+   2:	e00007b7          	lui	a5,0xe0000
+   6:	17fd                	addi	a5,a5,-1 # 0xffffffffdfffffff
+   8:	00c48513          	addi	a0,s1,12
+   c:	00355713          	srli	a4,a0,0x3
+  10:	1782                	slli	a5,a5,0x20
+  12:	97ba                	add	a5,a5,a4
+* 14:	00078703          	lb	a4,0(a5) <-- trapping instruction
+2026/01/24 15:03:06 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': report is corrupted, running repro again
+2026/01/24 15:03:06 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=16m0s, {Threaded:false Repeat:true RepeatTimes:0 Procs:1 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_VM-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_CREATE_VCPU-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 15:03:06 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(r2, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+2026/01/24 15:03:06 pool: booting instance 7
+2026/01/24 15:13:44 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program crashed: BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr
+2026/01/24 15:13:44 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': report is corrupted, running repro again
+2026/01/24 15:13:44 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=16m0s, {Threaded:false Repeat:true RepeatTimes:0 Procs:1 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_VM-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_CREATE_VCPU-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 15:13:44 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(r2, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+2026/01/24 15:13:44 pool: booting instance 9
+2026/01/24 15:24:29 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program crashed: BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr
+2026/01/24 15:24:29 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': report is corrupted, running repro again
+2026/01/24 15:24:29 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': testing program (duration=16m0s, {Threaded:false Repeat:true RepeatTimes:0 Procs:1 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat$kvm-ioctl$KVM_CREATE_VM-ioctl$KVM_CREATE_DEVICE-ioctl$KVM_SET_DEVICE_ATTR-ioctl$KVM_CREATE_VCPU-ioctl$KVM_HAS_DEVICE_ATTR
+2026/01/24 15:24:29 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': detailed listing:
+executing program 0:
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(r2, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+2026/01/24 15:24:29 pool: booting instance 3
+2026/01/24 15:35:12 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': program crashed: BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr
+2026/01/24 15:35:12 reproducing crash 'BUG: unable to handle kernel paging request in kvm_riscv_aia_imsic_has_attr': final repro crashed as (corrupted=true):
+Unable to handle kernel paging request at virtual address dfffffff00000001
+Current syz.2.17 pgtable: 4K pagesize, 57-bit VAs, pgdp=0x000000012a878000
+[dfffffff00000001] pgd=000000005fffe401, p4d=000000005fffe001, pud=0000000000000000
+Oops [#1]
+Modules linked in:
+CPU: 3 UID: 0 PID: 4083 Comm: syz.2.17 Not tainted 6.18.0-rc5-g0f226cf6026f-dirty #1 PREEMPT 
+Hardware name: riscv-virtio,qemu (DT)
+epc : kvm_riscv_aia_imsic_has_attr+0x464/0x50e arch/riscv/kvm/aia_imsic.c:998
+ ra : kvm_riscv_aia_imsic_has_attr+0x42e/0x50e arch/riscv/kvm/aia_imsic.c:997
+epc : ffffffff80108e36 ra : ffffffff80108e00 sp : ff20000002587c00
+ gp : ffffffff89edda40 tp : ff60000094691a80 t0 : ff20000002587d78
+ t1 : 0000000000000001 t2 : ffffffff86a06b38 s0 : ff20000002587d00
+ s1 : 0000000000000000 a0 : 000000000000000c a1 : 00000000000000ff
+ a2 : 0000000000000002 a3 : ffffffff80108e00 a4 : 0000000000000001
+ a5 : dfffffff00000001 a6 : 0000000000000003 a7 : ffffffff864ba8ce
+ s2 : 0000000000000070 s3 : fffffffffffffffe s4 : 0000000000000000
+ s5 : 0000000000000070 s6 : ff20000002587c80 s7 : 0000000000000000
+ s8 : 0000000000000000 s9 : 1fec00001304415a s10: 00000000003063a8
+ s11: 1fe40000004b0f84 t3 : 4b952e4d00000000 t4 : 0000000000000000
+ t5 : 0000000000000000 t6 : 0000000000040000 ssp : 0000000000000000
+status: 0000000200000120 badaddr: dfffffff00000001 cause: 000000000000000d
+[<ffffffff80108e36>] kvm_riscv_aia_imsic_has_attr+0x464/0x50e arch/riscv/kvm/aia_imsic.c:998
+[<ffffffff800ff294>] aia_has_attr+0x128/0x2bc arch/riscv/kvm/aia_device.c:471
+[<ffffffff800d3180>] kvm_device_ioctl_attr virt/kvm/kvm_main.c:4722 [inline]
+[<ffffffff800d3180>] kvm_device_ioctl+0x296/0x374 virt/kvm/kvm_main.c:4739
+[<ffffffff80c9d6b0>] vfs_ioctl fs/ioctl.c:51 [inline]
+[<ffffffff80c9d6b0>] __do_sys_ioctl fs/ioctl.c:597 [inline]
+[<ffffffff80c9d6b0>] __se_sys_ioctl fs/ioctl.c:583 [inline]
+[<ffffffff80c9d6b0>] __riscv_sys_ioctl+0x180/0x1e4 fs/ioctl.c:583
+[<ffffffff80076ba8>] syscall_handler+0x94/0x118 arch/riscv/include/asm/syscall.h:112
+[<ffffffff864c25ee>] do_trap_ecall_u+0x39e/0x53a arch/riscv/kernel/traps.c:343
+[<ffffffff864ec1ae>] handle_exception+0x15e/0x16a arch/riscv/kernel/entry.S:232
+Code: 6d84 07b7 e000 17fd 8513 00c4 5713 0035 1782 97ba (8703) 0007 
+---[ end trace 0000000000000000 ]---
+----------------
+Code disassembly (best guess):
+   0:	6d84                	flw	fs1,24(a1)
+   2:	e00007b7          	lui	a5,0xe0000
+   6:	17fd                	addi	a5,a5,-1 # 0xffffffffdfffffff
+   8:	00c48513          	addi	a0,s1,12
+   c:	00355713          	srli	a4,a0,0x3
+  10:	1782                	slli	a5,a5,0x20
+  12:	97ba                	add	a5,a5,a4
+* 14:	00078703          	lb	a4,0(a5) <-- trapping instruction
+extracting prog: 38m17.976988999s
+minimizing prog: 3h13m51.371804078s
+simplifying prog options: 44m49.891800613s
+extracting C: 4m52.443670155s
+simplifying C: 0s
+opts: {Threaded:false Repeat:true RepeatTimes:0 Procs:1 Slowdown:10 Sandbox:none SandboxArg:0 Leak:false NetInjection:true NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:true NicVF:true USB:true VhciInjection:true Wifi:true IEEE802154:true Sysctl:true Swap:true UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}} crepro: false
+
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(r2, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+
+program saved to repro.txt

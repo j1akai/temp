@@ -1,0 +1,52 @@
+Unable to handle kernel paging request at virtual address dfffffff00000001
+Current syz.1.179 pgtable: 4K pagesize, 57-bit VAs, pgdp=0x000000012e3c6000
+[dfffffff00000001] pgd=000000005fffe401, p4d=000000005fffe001, pud=0000000000000000
+Oops [#1]
+Modules linked in:
+CPU: 3 UID: 0 PID: 5733 Comm: syz.1.179 Not tainted 6.18.0-rc5-g0f226cf6026f-dirty #1 PREEMPT 
+Hardware name: riscv-virtio,qemu (DT)
+epc : kvm_riscv_aia_imsic_has_attr+0x464/0x50e arch/riscv/kvm/aia_imsic.c:998
+ ra : kvm_riscv_aia_imsic_has_attr+0x42e/0x50e arch/riscv/kvm/aia_imsic.c:997
+epc : ffffffff80108e36 ra : ffffffff80108e00 sp : ff20000020267c00
+ gp : ffffffff89edda40 tp : ff6000008135b500 t0 : ff20000020267d78
+ t1 : 0000000000000001 t2 : ffffffff86a06b38 s0 : ff20000020267d00
+ s1 : 0000000000000000 a0 : 000000000000000c a1 : 00000000000000ff
+ a2 : 0000000000080000 a3 : ffffffff80108e00 a4 : 0000000000000001
+ a5 : dfffffff00000001 a6 : 0000000000000003 a7 : ffffffff864ba8ce
+ s2 : 0000000000000070 s3 : fffffffffffffffe s4 : 0000000000000000
+ s5 : 0000000000000070 s6 : ff20000020267c80 s7 : 0000000000000000
+ s8 : 0000000000000000 s9 : 1fec00001579fd5a s10: 0000000000000000
+ s11: 1fe400000404cf84 t3 : 4b952e4d00000000 t4 : 0000000000000000
+ t5 : 0000000000000000 t6 : 0000000000040000 ssp : 0000000000000000
+status: 0000000200000120 badaddr: dfffffff00000001 cause: 000000000000000d
+[<ffffffff80108e36>] kvm_riscv_aia_imsic_has_attr+0x464/0x50e arch/riscv/kvm/aia_imsic.c:998
+[<ffffffff800ff294>] aia_has_attr+0x128/0x2bc arch/riscv/kvm/aia_device.c:471
+[<ffffffff800d3180>] kvm_device_ioctl_attr virt/kvm/kvm_main.c:4722 [inline]
+[<ffffffff800d3180>] kvm_device_ioctl+0x296/0x374 virt/kvm/kvm_main.c:4739
+[<ffffffff80c9d6b0>] vfs_ioctl fs/ioctl.c:51 [inline]
+[<ffffffff80c9d6b0>] __do_sys_ioctl fs/ioctl.c:597 [inline]
+[<ffffffff80c9d6b0>] __se_sys_ioctl fs/ioctl.c:583 [inline]
+[<ffffffff80c9d6b0>] __riscv_sys_ioctl+0x180/0x1e4 fs/ioctl.c:583
+[<ffffffff80076ba8>] syscall_handler+0x94/0x118 arch/riscv/include/asm/syscall.h:112
+[<ffffffff864c25ee>] do_trap_ecall_u+0x39e/0x53a arch/riscv/kernel/traps.c:343
+[<ffffffff864ec1ae>] handle_exception+0x15e/0x16a arch/riscv/kernel/entry.S:232
+Code: 6d84 07b7 e000 17fd 8513 00c4 5713 0035 1782 97ba (8703) 0007 
+---[ end trace 0000000000000000 ]---
+----------------
+Code disassembly (best guess):
+   0:	6d84                	flw	fs1,24(a1)
+   2:	e00007b7          	lui	a5,0xe0000
+   6:	17fd                	addi	a5,a5,-1 # 0xffffffffdfffffff
+   8:	00c48513          	addi	a0,s1,12
+   c:	00355713          	srli	a4,a0,0x3
+  10:	1782                	slli	a5,a5,0x20
+  12:	97ba                	add	a5,a5,a4
+* 14:	00078703          	lb	a4,0(a5) <-- trapping instruction
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

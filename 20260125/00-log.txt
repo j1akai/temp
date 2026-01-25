@@ -1,0 +1,1110 @@
+last executing test programs:
+
+31.68629031s ago: executing program 2 (id=154):
+r0 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+munmap(&(0x7f0000ffb000/0x4000)=nil, 0x4000)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0xe)
+r2 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r3 = ioctl$KVM_CREATE_VM(r2, 0xae01, 0x26)
+dup3(r1, r0, 0x80000)
+r4 = syz_kvm_setup_syzos_vm$riscv64(r3, &(0x7f0000c00000/0x400000)=nil)
+r5 = syz_kvm_add_vcpu$riscv64(r4, &(0x7f0000000000)={0x0, 0x0}, 0x0, 0x0)
+syz_kvm_setup_cpu$riscv64(r1, r5, &(0x7f0000fe8000/0x18000)=nil, 0x0, 0x0, 0x0, 0x0, 0x0)
+
+26.64486449s ago: executing program 2 (id=157):
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+r2 = ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_SET_ONE_REG(r2, 0x4010aeac, &(0x7f0000000a80)=@riscv64_timer={0x8030000004000001, &(0x7f0000000080)=0x40})
+r3 = eventfd2(0x2, 0x1)
+r4 = openat$kvm(0xffffffffffffff9c, &(0x7f00000004c0), 0x100, 0x0)
+r5 = ioctl$KVM_CREATE_VM(r4, 0xae01, 0x31)
+ioctl$KVM_IOEVENTFD(r5, 0x4040ae79, &(0x7f0000000700)={0xffffffff80000001, 0x54000, 0x1, 0xffffffffffffffff, 0x3})
+r6 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000080), 0x4201c0, 0x0)
+r7 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r8 = ioctl$KVM_GET_STATS_FD_vm(r7, 0xaece)
+mmap(&(0x7f0000ffe000/0x1000)=nil, 0x1000, 0x8, 0x10010, r8, 0x9000)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r7, 0x5460)
+r9 = ioctl$KVM_CREATE_VM(r6, 0xae01, 0x16)
+ioctl$KVM_IRQFD(r9, 0x4020ae76, &(0x7f00000000c0)={r3, 0x7, 0x2, r3})
+r10 = eventfd2(0xfdfffff5, 0x0)
+ioctl$KVM_IRQFD(r9, 0x4020ae76, &(0x7f0000000000)={r10, 0x0, 0x3, r3})
+r11 = openat$kvm(0x0, &(0x7f0000000100), 0x608441, 0x0)
+r12 = ioctl$KVM_CREATE_VM(r11, 0xae01, 0x0)
+ioctl$KVM_CAP_DIRTY_LOG_RING_ACQ_REL(r12, 0x4068aea3, &(0x7f0000000140)={0xdf, 0x0, 0x2000})
+ioctl$KVM_CLEAR_DIRTY_LOG(r9, 0xc018aec0, &(0x7f00000001c0)={0x1, 0x340, 0x0, 0x0})
+r13 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+ioctl$KVM_CREATE_VM(r13, 0xae01, 0x11)
+r14 = ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x10)
+syz_kvm_assert_reg$riscv64(r14, 0x8030000001000007, 0x4000000000000000)
+r15 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r16 = ioctl$KVM_CREATE_VM(r15, 0xae01, 0x8)
+dup(r11)
+ioctl$KVM_CREATE_DEVICE(r16, 0xc00caee0, &(0x7f0000000080)={0xb})
+ioctl$KVM_HAS_DEVICE_ATTR(r8, 0x4018aee3, &(0x7f00000000c0)=@attr_other={0x0, 0xfffffffd, 0x10000000000000, 0x0})
+
+26.08748585s ago: executing program 3 (id=158):
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f00000000c0)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, &(0x7f0000000180)=@attr_other={0x0, 0x1, 0x1, &(0x7f0000000080)=0x20704})
+r3 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x410002, 0x0)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r3, 0xc0045878)
+
+23.313944761s ago: executing program 0 (id=160):
+r0 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+r2 = syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000c00000/0x400000)=nil)
+r3 = syz_kvm_add_vcpu$riscv64(r2, &(0x7f0000000080)={0x0, &(0x7f00000004c0)=[@uexit={0x0, 0x18, 0x1000}, @code={0xa, 0x46, {"8398457712b5efb98bcba01c48d15c7eab954a9e5db80b1ec3cb2dd202db0f19df40fa936fde7a4a4ca88d2cdae331b89179"}}], 0x5e}, 0x0, 0x0)
+ioctl$KVM_RUN(r3, 0xae80, 0x0)
+r4 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r5 = ioctl$KVM_CREATE_VM(r4, 0xae01, 0x0)
+r6 = ioctl$KVM_CREATE_VCPU(r5, 0xae41, 0x0)
+ioctl$KVM_SET_ONE_REG(r6, 0x4010aeac, &(0x7f0000000b00)=@arm64_ccsidr={0x602000000011000b, 0x0})
+r7 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r8 = ioctl$KVM_CREATE_VM(r7, 0xae01, 0x8)
+ioctl$KVM_CAP_DIRTY_LOG_RING_ACQ_REL(r8, 0x4068aea3, &(0x7f0000000100)={0xdf, 0x0, 0x4000})
+r9 = syz_kvm_add_vcpu$riscv64(0x0, 0x0, &(0x7f0000000080)=[@featur2={0x1, 0x8}], 0x1)
+syz_kvm_setup_cpu$riscv64(r8, r9, &(0x7f0000fe5000/0x18000)=nil, 0x0, 0x0, 0x0, 0x0, 0x0)
+ioctl$KVM_RESET_DIRTY_RINGS(r8, 0xaec7)
+ioctl$KVM_RUN(r3, 0xae80, 0x0)
+ioctl$KVM_RUN(r3, 0xae80, 0x0)
+openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0) (async)
+ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0) (async)
+syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000c00000/0x400000)=nil) (async)
+syz_kvm_add_vcpu$riscv64(r2, &(0x7f0000000080)={0x0, &(0x7f00000004c0)=[@uexit={0x0, 0x18, 0x1000}, @code={0xa, 0x46, {"8398457712b5efb98bcba01c48d15c7eab954a9e5db80b1ec3cb2dd202db0f19df40fa936fde7a4a4ca88d2cdae331b89179"}}], 0x5e}, 0x0, 0x0) (async)
+ioctl$KVM_RUN(r3, 0xae80, 0x0) (async)
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0) (async)
+ioctl$KVM_CREATE_VM(r4, 0xae01, 0x0) (async)
+ioctl$KVM_CREATE_VCPU(r5, 0xae41, 0x0) (async)
+ioctl$KVM_SET_ONE_REG(r6, 0x4010aeac, &(0x7f0000000b00)=@arm64_ccsidr={0x602000000011000b, 0x0}) (async)
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0) (async)
+ioctl$KVM_CREATE_VM(r7, 0xae01, 0x8) (async)
+ioctl$KVM_CAP_DIRTY_LOG_RING_ACQ_REL(r8, 0x4068aea3, &(0x7f0000000100)={0xdf, 0x0, 0x4000}) (async)
+syz_kvm_add_vcpu$riscv64(0x0, 0x0, &(0x7f0000000080)=[@featur2={0x1, 0x8}], 0x1) (async)
+syz_kvm_setup_cpu$riscv64(r8, r9, &(0x7f0000fe5000/0x18000)=nil, 0x0, 0x0, 0x0, 0x0, 0x0) (async)
+ioctl$KVM_RESET_DIRTY_RINGS(r8, 0xaec7) (async)
+ioctl$KVM_RUN(r3, 0xae80, 0x0) (async)
+ioctl$KVM_RUN(r3, 0xae80, 0x0) (async)
+
+22.31479994s ago: executing program 3 (id=161):
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x29)
+r2 = ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+dup3(r0, r2, 0x80000)
+r3 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r4 = ioctl$KVM_CREATE_VM(r3, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r4, 0xc00caee0, &(0x7f0000000080)={0xb, <r5=>0xffffffffffffffff})
+r6 = openat$kvm(0x0, &(0x7f0000000040), 0x109e02, 0x0)
+r7 = ioctl$KVM_CREATE_VM(r6, 0xae01, 0x8020)
+r8 = syz_kvm_setup_syzos_vm$riscv64(r7, &(0x7f0000993000/0x400000)=nil)
+r9 = syz_kvm_add_vcpu$riscv64(r8, &(0x7f0000000000)={0x0, 0x0}, 0x0, 0x0)
+r10 = ioctl$KVM_GET_VCPU_MMAP_SIZE(r6, 0xae04)
+r11 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r12 = eventfd2(0x2, 0x1)
+r13 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000040), 0xa00, 0x0)
+r14 = ioctl$KVM_CREATE_VM(r13, 0xae01, 0x16)
+ioctl$KVM_IRQFD(r14, 0x4020ae76, &(0x7f00000000c0)={r12, 0x7, 0x2, r12})
+r15 = eventfd2(0xfdfffff5, 0x0)
+ioctl$KVM_IRQFD(r14, 0x4020ae76, &(0x7f0000000240)={r15, 0x200, 0x2, r12})
+r16 = ioctl$KVM_CREATE_VM(r11, 0xae01, 0xf)
+r17 = syz_kvm_setup_syzos_vm$riscv64(r16, &(0x7f0000c00000/0x400000)=nil)
+r18 = syz_kvm_add_vcpu$riscv64(r17, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+r19 = ioctl$KVM_GET_STATS_FD_cpu(r18, 0xaece)
+close(r19)
+r20 = eventfd2(0xd, 0x800)
+ioctl$KVM_IRQFD(r14, 0x4020ae76, &(0x7f0000000000)={r19, 0x5, 0x2, r20})
+mmap$KVM_VCPU(&(0x7f0000ffc000/0x1000)=nil, r10, 0x3, 0x11, r9, 0x0)
+mmap(&(0x7f0000000000/0xa000)=nil, 0xa000, 0x0, 0x32, 0xffffffffffffffff, 0x0)
+mmap(&(0x7f0000004000/0x4000)=nil, 0x4000, 0x3, 0x32, 0xffffffffffffffff, 0x0)
+mmap(&(0x7f0000003000/0x3000)=nil, 0x3000, 0x3000000, 0x11, r5, 0x39073000)
+
+21.375940809s ago: executing program 1 (id=162):
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+mmap(&(0x7f0000000000/0xa000)=nil, 0xa000, 0xc, 0x1031, 0xffffffffffffffff, 0x64d81000)
+r2 = ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_GET_STATS_FD_cpu(0xffffffffffffffff, 0xaece)
+syz_kvm_setup_cpu$riscv64(r1, r2, &(0x7f0000e80000/0x180000)=nil, &(0x7f0000000000)=[{0x0, 0x0}], 0x1, 0x0, 0x0, 0x0)
+r3 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r4 = ioctl$KVM_CREATE_VM(r3, 0xae01, 0x2a)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r0, 0xae04)
+syz_kvm_setup_syzos_vm$riscv64(r4, &(0x7f0000c00000/0x400000)=nil)
+r5 = syz_kvm_setup_syzos_vm$riscv64(r4, &(0x7f0000a04000/0x400000)=nil)
+r6 = syz_kvm_add_vcpu$riscv64(r5, &(0x7f0000000080)={0x0, &(0x7f00000000c0)=[@csrr={0x14, 0x18}], 0x18}, 0x0, 0x0)
+ioctl$KVM_RUN(r6, 0xae80, 0x0)
+
+21.152935521s ago: executing program 2 (id=163):
+r0 = openat$kvm(0x0, &(0x7f0000000140), 0x2ec1c2, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000c00000/0x400000)=nil)
+r2 = syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000a04000/0x400000)=nil)
+syz_kvm_add_vcpu$riscv64(r2, &(0x7f0000000080)={0x0, &(0x7f00000000c0)=[@csrr={0x14, 0x18}], 0x18}, 0x0, 0x0)
+munmap(&(0x7f0000bd3000/0x400000)=nil, 0x400000)
+mmap(&(0x7f0000800000/0x800000)=nil, 0x800000, 0x4000005, 0x8010, 0xffffffffffffffff, 0xd7eb7000)
+r3 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+mmap(&(0x7f0000800000/0x800000)=nil, 0x800000, 0x2000002, 0x10031, 0xffffffffffffffff, 0x77af2000)
+r4 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r5 = ioctl$KVM_CREATE_VM(r4, 0xae01, 0x0)
+r6 = openat$kvm(0x0, 0xfffffffffffffffc, 0x531940, 0x0)
+r7 = syz_kvm_setup_syzos_vm$riscv64(r5, &(0x7f0000c00000/0x400000)=nil)
+r8 = syz_kvm_add_vcpu$riscv64(r7, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RUN(r8, 0xae80, 0x0)
+openat$kvm(0x0, &(0x7f0000000040), 0x4802, 0x0)
+ioctl$KVM_CREATE_VM(r4, 0xae01, 0x33)
+r9 = ioctl$KVM_CREATE_VM(r6, 0xae01, 0xc)
+r10 = syz_kvm_setup_syzos_vm$riscv64(r9, &(0x7f0000c00000/0x400000)=nil)
+r11 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+ioctl$KVM_CREATE_VM(r11, 0xae01, 0x8)
+ioctl$KVM_IRQFD(r3, 0x4020ae76, &(0x7f0000001140)={0xffffffffffffffff, 0x1, 0x5})
+r12 = syz_kvm_add_vcpu$riscv64(r10, &(0x7f0000000000)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RUN(r12, 0xae80, 0x0)
+r13 = openat$kvm(0x0, &(0x7f0000000040), 0x684c02, 0x0)
+r14 = ioctl$KVM_CREATE_VM(r13, 0xae01, 0x0)
+r15 = syz_kvm_setup_syzos_vm$riscv64(r14, &(0x7f0000c00000/0x400000)=nil)
+r16 = syz_kvm_add_vcpu$riscv64(r15, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_INTERRUPT(r16, 0x4004ae86, &(0x7f0000000000)=0x4a9d)
+ioctl$KVM_RUN(r16, 0xae80, 0x0)
+
+16.878635847s ago: executing program 0 (id=164):
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x29)
+r2 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r3 = ioctl$KVM_CREATE_VM(r2, 0xae01, 0x32)
+r4 = openat$kvm(0xffffffffffffff9c, &(0x7f00000000c0), 0x402802, 0x0)
+ioctl$KVM_CREATE_VM(r4, 0xae01, 0x33)
+ioctl$KVM_IRQFD(r3, 0x4020ae76, &(0x7f0000001240)={0xffffffffffffffff, 0x8000, 0x1})
+r5 = ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+dup3(r0, r5, 0x80000)
+r6 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r7 = ioctl$KVM_CREATE_VM(r6, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r7, 0xc00caee0, &(0x7f0000000080)={0xb, <r8=>0xffffffffffffffff})
+r9 = openat$kvm(0x0, &(0x7f0000000040), 0x109e02, 0x0)
+r10 = ioctl$KVM_CREATE_VM(r9, 0xae01, 0x8020)
+r11 = syz_kvm_setup_syzos_vm$riscv64(r10, &(0x7f0000993000/0x400000)=nil)
+r12 = syz_kvm_add_vcpu$riscv64(r11, &(0x7f0000000000)={0x0, 0x0}, 0x0, 0x0)
+r13 = ioctl$KVM_GET_VCPU_MMAP_SIZE(r9, 0xae04)
+mmap$KVM_VCPU(&(0x7f0000ffc000/0x1000)=nil, r13, 0x3, 0x11, r12, 0x0)
+mmap(&(0x7f0000000000/0xa000)=nil, 0xa000, 0x0, 0x32, 0xffffffffffffffff, 0x0)
+mmap(&(0x7f0000004000/0x4000)=nil, 0x4000, 0x3, 0x32, 0xffffffffffffffff, 0x0)
+mmap(&(0x7f0000003000/0x3000)=nil, 0x3000, 0x3000000, 0x11, r8, 0x39073000)
+close(r1)
+
+16.625055191s ago: executing program 1 (id=165):
+r0 = ioctl$KVM_GET_STATS_FD_cpu(0xffffffffffffffff, 0xaece)
+mmap(&(0x7f0000000000/0xa000)=nil, 0xa000, 0x2a, 0x4c833, 0xffffffffffffffff, 0x200000)
+mmap(&(0x7f0000000000/0xa000)=nil, 0xa000, 0x0, 0x48032, 0xffffffffffffffff, 0x0) (async)
+ioctl$KVM_GET_DEVICE_ATTR(r0, 0x4018aee2, &(0x7f0000000080)=@attr_arm64={0x0, 0x0, 0x0, &(0x7f0000000040)=0x7fffffffffffffff}) (async)
+r1 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r2 = ioctl$KVM_CREATE_VM(r1, 0xae01, 0x0) (async)
+r3 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r4 = ioctl$KVM_CREATE_VM(r3, 0xae01, 0x0)
+r5 = syz_kvm_setup_syzos_vm$riscv64(r4, &(0x7f0000c00000/0x400000)=nil)
+r6 = syz_kvm_add_vcpu$riscv64(r5, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_INTERRUPT(r6, 0x4004ae86, &(0x7f0000000000)=0xffffffff) (async)
+r7 = ioctl$KVM_CREATE_VCPU(r2, 0xae41, 0x1)
+ioctl$KVM_RUN(r7, 0xae80, 0x0) (async)
+ioctl$KVM_SET_ONE_REG(r7, 0x4010aeac, &(0x7f0000000680)=@riscv64_config={0x8030000001000003, &(0x7f00000006c0)=0x8})
+r8 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0) (async)
+r9 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r10 = ioctl$KVM_CREATE_VM(r9, 0xae01, 0x0)
+r11 = syz_kvm_setup_syzos_vm$riscv64(r10, &(0x7f0000c00000/0x400000)=nil)
+r12 = syz_kvm_add_vcpu$riscv64(r11, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+r13 = ioctl$KVM_GET_STATS_FD_cpu(r12, 0xaece)
+close(r13) (async)
+ioctl$KVM_CAP_PTP_KVM(r13, 0x4068aea3, &(0x7f0000000140)) (async)
+r14 = eventfd2(0x0, 0x80001) (async)
+r15 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r16 = ioctl$KVM_CREATE_VM(r15, 0xae01, 0x32)
+ioctl$KVM_IOEVENTFD(r16, 0x4040ae79, &(0x7f0000000100)={0x3, 0xfec00000, 0x8, r14}) (async)
+ioctl$KVM_IOEVENTFD(r16, 0x4040ae79, &(0x7f0000000000)={0x7fb, 0xfec00000, 0x0, r13, 0x5}) (async)
+r17 = ioctl$KVM_CREATE_VM(r8, 0xae01, 0x0)
+r18 = ioctl$KVM_CREATE_VCPU(r17, 0xae41, 0x0)
+ioctl$KVM_GET_REG_LIST(r18, 0xc008aeb0, &(0x7f0000000c00)={0x105})
+
+13.765963611s ago: executing program 1 (id=166):
+r0 = openat$kvm(0x0, &(0x7f0000000040), 0x40080, 0x0)
+r1 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r2 = ioctl$KVM_CREATE_VM(r1, 0xae01, 0x8) (async)
+r3 = eventfd2(0x1, 0x0)
+ioctl$KVM_IRQFD(r2, 0x4020ae76, &(0x7f0000000040)={r3, 0x9, 0x3, r3})
+r4 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+r5 = syz_kvm_setup_syzos_vm$riscv64(r4, &(0x7f0000c00000/0x400000)=nil)
+r6 = syz_kvm_add_vcpu$riscv64(r5, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RUN(r6, 0xae80, 0x0) (async)
+close(r6) (async)
+close(r4)
+
+13.714237424s ago: executing program 3 (id=167):
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+
+12.548600823s ago: executing program 2 (id=168):
+r0 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+r2 = syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000c00000/0x400000)=nil)
+r3 = syz_kvm_add_vcpu$riscv64(r2, &(0x7f0000000200)={0x0, &(0x7f0000000b80)=[@code={0xa, 0x46, {"cc5e97cbcc0b8de774459c6455f5c84f7baccc62be0dba2a52235e571d1ccbfd6fd7783e302d826a65cd0000000000000000"}}], 0x46}, 0x0, 0x0)
+ioctl$KVM_RUN(r3, 0xae80, 0x0)
+
+11.112631845s ago: executing program 0 (id=169):
+r0 = ioctl$KVM_CREATE_VM(0xffffffffffffffff, 0xae01, 0x22)
+ioctl$KVM_GET_DEVICE_ATTR_vm(r0, 0x4018aee2, &(0x7f0000000040)=@attr_arm64={0x0, 0x0, 0x0, &(0x7f0000000000)={0x7, 0xa0}})
+r1 = ioctl$KVM_CREATE_VM(0xffffffffffffffff, 0xae01, 0x1d)
+ioctl$KVM_GET_DIRTY_LOG(r1, 0x4010ae42, &(0x7f0000000080)={0x5, 0x0, &(0x7f0000ffc000/0x4000)=nil})
+close(r1)
+ioctl$KVM_PPC_ALLOCATE_HTAB(0xffffffffffffffff, 0xc004aea7, &(0x7f00000000c0)=0xe)
+r2 = ioctl$KVM_CREATE_VM(0xffffffffffffffff, 0xae01, 0x2d)
+r3 = ioctl$KVM_CREATE_VM(0xffffffffffffffff, 0xae01, 0x11)
+ioctl$KVM_SET_GSI_ROUTING(r3, 0x4008ae6a, &(0x7f0000000100)={0x6, 0x0, [{0x400, 0x4, 0x0, 0x0, @irqchip={0x3, 0x7}}, {0x8001, 0x5, 0x0, 0x0, @msi={0xe, 0x7, 0x4, 0x40000}}, {0x0, 0x4, 0x0, 0x0, @irqchip={0x6, 0x1000}}, {0x1, 0x0, 0x0, 0x0, @sint={0x2, 0x40}}, {0xa, 0x2, 0x0, 0x0, @msi={0xcb, 0x619, 0x6, 0x7}}, {0x7, 0x1, 0x1, 0x0, @irqchip={0x0, 0x4}}]})
+r4 = eventfd2(0x2, 0x1)
+ioctl$KVM_IOEVENTFD(r2, 0x4040ae79, &(0x7f0000000240)={0x3, 0xb000, 0x0, r4, 0xc})
+ioctl$KVM_CAP_HALT_POLL(r1, 0x4068aea3, &(0x7f0000000280)={0xb6, 0x0, 0x2})
+ioctl$KVM_CAP_DIRTY_LOG_RING(r3, 0x4068aea3, &(0x7f0000000300)={0xc0, 0x0, 0x1000})
+ioctl$KVM_IOEVENTFD(r1, 0x4040ae79, &(0x7f0000000380)={0x7, 0xdddd1000, 0x4, r4, 0xd})
+r5 = syz_kvm_add_vcpu$riscv64(0x0, &(0x7f0000000580)={0x0, &(0x7f00000003c0)=[@csrw={0x1e, 0x20, {0x141, 0x65}}, @code={0xa, 0x46, {"270b94ea1ea7235d644e00f0feef52120cc7dfd5666584dc6d9d9fe6491a16515c651b7ab352b44554d03b54f23fb644665c"}}, @code={0xa, 0x46, {"61d01b52d0e88470acaec33a74c430068058f1275a1f29cf610e9a8f4c6a90a8a27a2bb5d669460a297ab95de022e91a165a"}}, @csrw={0x1e, 0x20, {0x141, 0x1}}, @csrw={0x1e, 0x20, {0x0, 0x269}}, @csrr={0x14, 0x18, {0x180}}, @csrw={0x1e, 0x20, {0x105, 0x2}}, @uexit={0x0, 0x18, 0x3}, @csrw={0x1e, 0x20, {0x104, 0x3}}, @uexit={0x0, 0x18, 0x77}, @code={0xa, 0x46, {"70277d65bec6e8b273feb4b091ab55abd599800c21461a3c798f1140b4b46d98fba65eb611099bd79c5d8cb7fa20f2e21491"}}], 0x1ba}, &(0x7f00000005c0)=[@featur2={0x1, 0x1}], 0x1)
+syz_kvm_setup_cpu$riscv64(r2, r5, &(0x7f0000fe8000/0x18000)=nil, &(0x7f0000000640)=[{0x0, &(0x7f0000000600)="46c114609747bfd4e3c300396e2cda02400cc4bc28629245c4ea73eb69dcf30f04915fc368649e229058f8009d81e6d6d51f", 0x32}], 0x1, 0x0, &(0x7f0000000680)=[@featur2={0x1, 0x4d}], 0x1)
+ioctl$KVM_SET_DEVICE_ATTR_vcpu(r5, 0x4018aee1, &(0x7f00000006c0)=@attr_pvtime_ipa={0x0, 0x1, 0x1, 0x7})
+ioctl$KVM_HAS_DEVICE_ATTR_vm(r0, 0x4018aee3, &(0x7f0000000740)=@attr_other={0x0, 0xeb89, 0x4, &(0x7f0000000700)=0xfffffffffffffffd})
+ioctl$KVM_CREATE_DEVICE(r3, 0xc00caee0, &(0x7f0000000780)={0x2})
+ioctl$KVM_SET_USER_MEMORY_REGION(r0, 0x4020ae46, &(0x7f00000007c0)={0x0, 0x0, 0xffff1000, 0x1000, &(0x7f0000ff4000/0x1000)=nil})
+r6 = dup3(r5, r0, 0x80000)
+ioctl$KVM_GET_DEVICE_ATTR_vm(r6, 0x4018aee2, &(0x7f0000000840)=@attr_arm64={0x0, 0x0, 0x0, &(0x7f0000000800)={0x7, 0x316f6548}})
+ioctl$KVM_IRQ_LINE(r2, 0x4008ae61, &(0x7f0000000880)={0x0, 0x9})
+ioctl$KVM_HAS_DEVICE_ATTR_vm(r3, 0x4018aee3, &(0x7f0000000900)=@attr_other={0x0, 0x100, 0x8, &(0x7f00000008c0)=0xffff})
+ioctl$KVM_CAP_PTP_KVM(r1, 0x4068aea3, &(0x7f0000000940))
+ioctl$KVM_HAS_DEVICE_ATTR_vm(r3, 0x4018aee3, &(0x7f0000000a00)=@attr_other={0x0, 0x64838203, 0x7, &(0x7f00000009c0)=0xfffffffffffffe00})
+ioctl$KVM_SET_USER_MEMORY_REGION2(r2, 0x40a0ae49, &(0x7f0000000a40)={0x10000, 0x1, 0x60000, 0x2000, &(0x7f0000ff0000/0x2000)=nil, 0x8, r6})
+ioctl$KVM_RUN(r6, 0xae80, 0x0)
+ioctl$KVM_SET_USER_MEMORY_REGION(r1, 0x4020ae46, &(0x7f0000000b00)={0x10000, 0x1, 0x5000, 0x1000, &(0x7f0000ffc000/0x1000)=nil})
+ioctl$KVM_CREATE_IRQCHIP(r3, 0xae60)
+
+10.423509658s ago: executing program 3 (id=170):
+mmap(&(0x7f0000800000/0x800000)=nil, 0x800000, 0x2000002, 0x10031, 0xffffffffffffffff, 0x77af2000) (async)
+r0 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+r2 = syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000c00000/0x400000)=nil)
+r3 = syz_kvm_add_vcpu$riscv64(r2, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RUN(r3, 0xae80, 0x0) (async)
+r4 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0) (async)
+r5 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x23) (async)
+r6 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r7 = ioctl$KVM_CREATE_VM(r6, 0xae01, 0x0)
+r8 = syz_kvm_setup_syzos_vm$riscv64(r7, &(0x7f0000c00000/0x400000)=nil)
+r9 = syz_kvm_add_vcpu$riscv64(r8, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+r10 = ioctl$KVM_GET_STATS_FD_cpu(r9, 0xaece)
+close(r10) (async)
+r11 = eventfd2(0x0, 0x80001) (async)
+r12 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r13 = ioctl$KVM_CREATE_VM(r12, 0xae01, 0x32)
+ioctl$KVM_IOEVENTFD(r13, 0x4040ae79, &(0x7f0000000100)={0x3, 0xfec00000, 0x8, r11}) (async)
+ioctl$KVM_IOEVENTFD(r13, 0x4040ae79, &(0x7f0000000000)={0x7fb, 0xfec00000, 0x0, r10, 0x5}) (async)
+ioctl$KVM_SET_USER_MEMORY_REGION2(r5, 0x40a0ae49, &(0x7f00000000c0)={0x0, 0x6, 0x30000, 0x1000, &(0x7f0000ffc000/0x1000)=nil, 0xffffffff00000001, r10}) (async)
+syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f00009d2000/0x400000)=nil)
+r14 = ioctl$KVM_CREATE_VM(r4, 0xae01, 0x26)
+r15 = syz_kvm_setup_syzos_vm$riscv64(r14, &(0x7f0000c00000/0x400000)=nil)
+r16 = syz_kvm_add_vcpu$riscv64(r15, &(0x7f0000000000)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RUN(r16, 0xae80, 0x0)
+
+9.840064029s ago: executing program 2 (id=171):
+r0 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r0, 0x801c581f)
+r1 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r2 = ioctl$KVM_CREATE_VM(r1, 0xae01, 0x0)
+r3 = syz_kvm_setup_syzos_vm$riscv64(r2, &(0x7f0000c00000/0x400000)=nil)
+r4 = syz_kvm_add_vcpu$riscv64(r3, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+r5 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r6 = ioctl$KVM_CREATE_VM(r5, 0xae01, 0x0)
+r7 = syz_kvm_setup_syzos_vm$riscv64(r6, &(0x7f0000c00000/0x400000)=nil)
+r8 = syz_kvm_add_vcpu$riscv64(r7, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RUN(r8, 0xae80, 0x0) (async)
+r9 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r10 = ioctl$KVM_CREATE_VM(r9, 0xae01, 0x0)
+r11 = syz_kvm_setup_syzos_vm$riscv64(r10, &(0x7f0000c00000/0x400000)=nil)
+r12 = syz_kvm_add_vcpu$riscv64(r11, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RUN(r12, 0xae80, 0x0) (async)
+r13 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r14 = ioctl$KVM_CREATE_VM(r13, 0xae01, 0x0)
+r15 = ioctl$KVM_CREATE_VCPU(r14, 0xae41, 0x0)
+syz_kvm_assert_reg$riscv64(r15, 0x8030000002000020, 0x80200000)
+ioctl$KVM_RUN(r4, 0xae80, 0x0)
+ioctl$KVM_CREATE_VM(0xffffffffffffffff, 0xae01, 0x0) (async)
+syz_kvm_setup_syzos_vm$riscv64(0xffffffffffffffff, &(0x7f0000c00000/0x400000)=nil) (async)
+mmap(&(0x7f0000800000/0x800000)=nil, 0x800000, 0x2000002, 0x10031, 0xffffffffffffffff, 0x77af2000) (async)
+r16 = syz_kvm_setup_syzos_vm$riscv64(0xffffffffffffffff, &(0x7f0000c00000/0x400000)=nil)
+r17 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+syz_kvm_add_vcpu$riscv64(r16, &(0x7f00000000c0)={0x0, &(0x7f0000000540)=[@csrr={0x14, 0x18, {0x104}}, @csrr={0x14, 0x18, {0x106}}, @csrr={0x14, 0x18, {0x104}}, @uexit={0x0, 0x18, 0x2}, @csrr={0x14, 0x18, {0x106}}, @code={0xa, 0x46, {"76929649bd947a361a1c09b248313e4fdceba08f3df104356f8685b977e8ad457a6985720e6e04c6c918e09d876c20e9d452"}}, @uexit={0x0, 0x18, 0xffffffffffffffff}, @uexit={0x0, 0x18, 0x82}, @csrw={0x1e, 0x20, {0x5, 0x5}}, @csrw={0x1e, 0x20, {0x140, 0x2}}, @csrw={0x1e, 0x20, {0x104, 0x4}}, @csrw={0x1e, 0x20, {0x106, 0xff}}, @csrw={0x1e, 0x20, {0x140, 0x3}}, @uexit={0x0, 0x18, 0x46f8030e}, @csrr={0x14, 0x18, {0x10a}}, @csrr={0x14, 0x18, {0x143}}, @code={0xa, 0x46, {"5e87aa72f7ec46d7f2b82903774645ee8b02344e2afec596a8f984e1cfcab8d197e4aaad2410c9960e6d2dd7a20ea70f2f38"}}, @uexit={0x0, 0x18, 0xffffffffffffffff}, @code={0xa, 0x46, {"ecb1468b16ff724586aa1f2448aa1ff744ace18a406c399233ad52a7b6297367ab13dd20f54cd8dc7f006fe40f84ed5de92b"}}, @code={0xa, 0x46, {"c5b9143167d7ab0ac44ded641415805d0ae2ee3c6da37e9498e6894b81c77551181264a754c85f991c04fb0610edd4b8594c"}}, @csrr={0x14, 0x18}, @code={0xa, 0x46, {"7cb23a4310a05863f98932027c37c0412a376452eeb00cb895f097ae8847cd505b8a16a0c1f73011c0aff251856583b031de"}}, @code={0xa, 0x46, {"e4a55b4d093531efb3595832207f6fac0014fc6eac61404462b797f1ad52ea335d652c5c09836d38dcd13440756835066ba5"}}, @csrw={0x1e, 0x20, {0x141, 0x7f}}, @csrr={0x14, 0x18, {0x100}}, @code={0xa, 0x46, {"defb43be791c399c5e45de1b365862de7470a08065999c2b8159ddbe2577691eded0a29cb5618df90d206e528dd814447849"}}, @csrr={0x14, 0x18, {0x10a}}, @csrr={0x14, 0x18, {0x249}}, @uexit={0x0, 0x18, 0x8}, @csrr={0x14, 0x18}], 0x442}, &(0x7f0000000100)=[@featur2={0x1, 0x4}], 0x1) (async)
+r18 = ioctl$KVM_CREATE_VM(r17, 0xae01, 0x0)
+syz_kvm_setup_cpu$riscv64(r18, 0xffffffffffffffff, &(0x7f0000e80000/0x180000)=nil, 0x0, 0x0, 0x0, 0x0, 0x0)
+
+9.36422193s ago: executing program 1 (id=172):
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+ioctl$KVM_CAP_DIRTY_LOG_RING_ACQ_REL(r1, 0x4068aea3, &(0x7f0000000100)={0xdf, 0x0, 0x4000})
+r2 = openat$kvm(0x0, &(0x7f0000000040), 0x109e02, 0x0)
+r3 = ioctl$KVM_CREATE_VM(r2, 0xae01, 0x8020)
+r4 = syz_kvm_setup_syzos_vm$riscv64(r3, &(0x7f0000993000/0x400000)=nil)
+r5 = syz_kvm_add_vcpu$riscv64(r4, &(0x7f0000000000)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_SET_ONE_REG(r5, 0x4010aeac, &(0x7f0000000180)=@riscv64_v={0x8030000009000002, &(0x7f0000000140)=0x7})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x1)
+ioctl$KVM_SET_ONE_REG(r5, 0x4010aeac, &(0x7f00000001c0)=@riscv64_timer={0x8030000004000002, &(0x7f00000000c0)=0xf1})
+r6 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r7 = ioctl$KVM_CREATE_VM(r6, 0xae01, 0x0)
+ioctl$KVM_CREATE_DEVICE(r7, 0xc00caee0, &(0x7f0000000000)={0xb})
+ioctl$KVM_IRQ_LINE_STATUS(r7, 0xc008ae67, &(0x7f0000000000)={0x4, 0x1})
+r8 = syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000a7b000/0x400000)=nil)
+syz_kvm_add_vcpu$riscv64(r8, &(0x7f0000000080)={0x0, 0x0}, 0x0, 0x0)
+ioctl$KVM_RESET_DIRTY_RINGS(r1, 0xaec7)
+
+8.685380987s ago: executing program 0 (id=173):
+r0 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+r2 = syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000c00000/0x400000)=nil)
+r3 = syz_kvm_add_vcpu$riscv64(r2, &(0x7f0000000080)={0x0, &(0x7f0000000000)=[@csrr={0x14, 0x0, {0x143}}, @uexit={0x0, 0x18, 0x1ff}], 0x80}, 0x0, 0x0)
+r4 = ioctl$KVM_GET_VCPU_MMAP_SIZE(r0, 0xae04)
+r5 = mmap$KVM_VCPU(&(0x7f0000009000/0x1000)=nil, r4, 0x3, 0x11, r3, 0x0)
+ioctl$KVM_RUN(r3, 0xae80, 0x0)
+syz_kvm_assert_syzos_uexit$riscv64(r3, r5, 0x0)
+r6 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r7 = ioctl$KVM_CREATE_VM(r6, 0xae01, 0x0)
+syz_kvm_setup_syzos_vm$riscv64(r7, &(0x7f0000c00000/0x400000)=nil)
+ioctl$KVM_IRQ_LINE(r7, 0x4008ae61, &(0x7f00000000c0)={0x4, 0x6})
+r8 = ioctl$KVM_GET_VCPU_MMAP_SIZE(r6, 0xae04)
+mmap$KVM_VCPU(&(0x7f0000c96000/0x2000)=nil, r8, 0x1000008, 0x13, 0xffffffffffffffff, 0x0)
+ioctl$KVM_RUN(r3, 0xae80, 0x0)
+syz_kvm_assert_syzos_uexit$riscv64(r3, r5, 0xaaaa)
+syz_kvm_assert_syzos_kvm_exit$riscv64(r5, 0x6)
+syz_kvm_assert_syzos_uexit$riscv64(r3, r5, 0xffffffffffffffff)
+openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0) (async)
+ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0) (async)
+syz_kvm_setup_syzos_vm$riscv64(r1, &(0x7f0000c00000/0x400000)=nil) (async)
+syz_kvm_add_vcpu$riscv64(r2, &(0x7f0000000080)={0x0, &(0x7f0000000000)=[@csrr={0x14, 0x0, {0x143}}, @uexit={0x0, 0x18, 0x1ff}], 0x80}, 0x0, 0x0) (async)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r0, 0xae04) (async)
+mmap$KVM_VCPU(&(0x7f0000009000/0x1000)=nil, r4, 0x3, 0x11, r3, 0x0) (async)
+ioctl$KVM_RUN(r3, 0xae80, 0x0) (async)
+syz_kvm_assert_syzos_uexit$riscv64(r3, r5, 0x0) (async)
+openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0) (async)
+ioctl$KVM_CREATE_VM(r6, 0xae01, 0x0) (async)
+syz_kvm_setup_syzos_vm$riscv64(r7, &(0x7f0000c00000/0x400000)=nil) (async)
+ioctl$KVM_IRQ_LINE(r7, 0x4008ae61, &(0x7f00000000c0)={0x4, 0x6}) (async)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r6, 0xae04) (async)
+mmap$KVM_VCPU(&(0x7f0000c96000/0x2000)=nil, r8, 0x1000008, 0x13, 0xffffffffffffffff, 0x0) (async)
+ioctl$KVM_RUN(r3, 0xae80, 0x0) (async)
+syz_kvm_assert_syzos_uexit$riscv64(r3, r5, 0xaaaa) (async)
+syz_kvm_assert_syzos_kvm_exit$riscv64(r5, 0x6) (async)
+syz_kvm_assert_syzos_uexit$riscv64(r3, r5, 0xffffffffffffffff) (async)
+
+4.617787539s ago: executing program 3 (id=174):
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x0)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0) (async)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_CAP_DIRTY_LOG_RING_ACQ_REL(r1, 0x4068aea3, &(0x7f0000000100)={0xdf, 0x0, 0x4000})
+r2 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r3 = ioctl$KVM_CREATE_VM(r2, 0xae01, 0x2d)
+r4 = ioctl$KVM_CREATE_VCPU(r3, 0xae41, 0x0)
+ioctl$KVM_SET_ONE_REG(r4, 0x4010aeac, &(0x7f00000000c0)=@riscv64_sbi_fwft={0x803000000a010002}) (async)
+ioctl$KVM_SET_ONE_REG(r4, 0x4010aeac, &(0x7f00000000c0)=@riscv64_sbi_fwft={0x803000000a010002})
+
+4.332766521s ago: executing program 1 (id=175):
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r2 = ioctl$KVM_CREATE_VM(r1, 0xae01, 0x0)
+r3 = ioctl$KVM_CREATE_VCPU(r2, 0xae41, 0x0)
+mmap(&(0x7f0000000000/0xa000)=nil, 0xa000, 0x1000003, 0x11, r3, 0xe028d000) (async)
+openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0) (async)
+r4 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+r5 = ioctl$KVM_CREATE_VM(r4, 0xae01, 0x0) (async)
+r6 = openat$kvm(0x0, &(0x7f0000000040), 0x0, 0x0)
+dup3(r5, r6, 0x80000) (async)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r6, 0x541b) (async)
+r7 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r8 = ioctl$KVM_CREATE_VM(r7, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r8, 0xc00caee0, &(0x7f0000000080)={0xb, <r9=>0xffffffffffffffff})
+ioctl$KVM_GET_DEVICE_ATTR(r9, 0x4018aee2, &(0x7f00000001c0)=@attr_other={0x0, 0x3, 0x4, &(0x7f00000000c0)=0x5}) (async)
+r10 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r10, 0xc00caee0, &(0x7f0000000080)={0xb, <r11=>0xffffffffffffffff}) (async)
+r12 = openat$kvm(0x0, &(0x7f0000000040), 0x109e02, 0x0)
+r13 = ioctl$KVM_CREATE_VM(r12, 0xae01, 0x8020)
+r14 = syz_kvm_setup_syzos_vm$riscv64(r13, &(0x7f0000993000/0x400000)=nil)
+r15 = syz_kvm_add_vcpu$riscv64(r14, &(0x7f0000000000)={0x0, 0x0}, 0x0, 0x0) (async)
+r16 = ioctl$KVM_GET_VCPU_MMAP_SIZE(r12, 0xae04)
+mmap$KVM_VCPU(&(0x7f0000ffc000/0x1000)=nil, r16, 0x3, 0x11, r15, 0x0) (async)
+mmap(&(0x7f0000000000/0xa000)=nil, 0xa000, 0x0, 0x32, 0xffffffffffffffff, 0x0)
+mmap(&(0x7f0000004000/0x4000)=nil, 0x4000, 0x3, 0x32, 0xffffffffffffffff, 0x0) (async)
+mmap(&(0x7f0000003000/0x3000)=nil, 0x3000, 0x3000000, 0x11, r11, 0x39073000)
+
+4.003645702s ago: executing program 0 (id=176):
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x1)
+r2 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r3 = ioctl$KVM_CREATE_VM(r2, 0xae01, 0x8)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x2)
+ioctl$KVM_CREATE_DEVICE(r3, 0xc00caee0, &(0x7f0000000080)={0xb, <r4=>0xffffffffffffffff})
+mmap(&(0x7f0000004000/0x4000)=nil, 0x4000, 0x3, 0x32, 0xffffffffffffffff, 0x0)
+mmap(&(0x7f0000003000/0x3000)=nil, 0x3000, 0x3000000, 0x11, r4, 0x39073000)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb})
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0) (async)
+ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8) (async)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x1) (async)
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0) (async)
+ioctl$KVM_CREATE_VM(r2, 0xae01, 0x8) (async)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x2) (async)
+ioctl$KVM_CREATE_DEVICE(r3, 0xc00caee0, &(0x7f0000000080)={0xb}) (async)
+mmap(&(0x7f0000004000/0x4000)=nil, 0x4000, 0x3, 0x32, 0xffffffffffffffff, 0x0) (async)
+mmap(&(0x7f0000003000/0x3000)=nil, 0x3000, 0x3000000, 0x11, r4, 0x39073000) (async)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb}) (async)
+
+2.032762036s ago: executing program 2 (id=177):
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+r1 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r2 = ioctl$KVM_CREATE_VM(r1, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r2, 0xc00caee0, &(0x7f00000000c0)={0xb})
+r3 = ioctl$KVM_CREATE_GUEST_MEMFD(0xffffffffffffffff, 0xc040aed4, &(0x7f0000000080)={0x7fffffff, 0x6})
+ioctl$KVM_SET_USER_MEMORY_REGION2(r2, 0x40a0ae49, &(0x7f00000000c0)={0x10200, 0x0, 0xfec00000, 0x1000, &(0x7f0000ffe000/0x1000)=nil, 0x7, r3})
+r4 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0xc)
+ioctl$KVM_CREATE_VCPU(r4, 0xae41, 0x0)
+ioctl$KVM_CREATE_DEVICE(0xffffffffffffffff, 0xc00caee0, &(0x7f0000000040)={0x8, <r5=>0xffffffffffffffff})
+mmap(&(0x7f0000ffd000/0x3000)=nil, 0x3000, 0x200000a, 0x2010, r5, 0x0)
+
+1.283474751s ago: executing program 3 (id=178):
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r0, 0xae04)
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000040), 0x42280, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x25)
+r2 = ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_GET_REG_LIST(r2, 0xc008aeb0, &(0x7f0000000c00)={0x105})
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x0, 0x0) (async)
+ioctl$KVM_GET_VCPU_MMAP_SIZE(r0, 0xae04) (async)
+openat$kvm(0xffffffffffffff9c, &(0x7f0000000040), 0x42280, 0x0) (async)
+ioctl$KVM_CREATE_VM(r0, 0xae01, 0x25) (async)
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0) (async)
+ioctl$KVM_GET_REG_LIST(r2, 0xc008aeb0, &(0x7f0000000c00)={0x105}) (async)
+
+723.112714ms ago: executing program 1 (id=179):
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x8)
+ioctl$KVM_CREATE_DEVICE(r1, 0xc00caee0, &(0x7f0000000080)={0xb, <r2=>0xffffffffffffffff})
+ioctl$KVM_SET_DEVICE_ATTR(r2, 0x4018aee1, &(0x7f0000000140)=@attr_other={0x0, 0x2, 0x0, 0x0})
+ioctl$KVM_CREATE_VCPU(r1, 0xae41, 0x0)
+ioctl$KVM_HAS_DEVICE_ATTR(r2, 0x4018aee3, &(0x7f0000000180)=@attr_other={0x0, 0x4, 0x70, 0x0})
+
+0s ago: executing program 0 (id=180):
+r0 = openat$kvm(0xffffffffffffff9c, &(0x7f0000000640), 0x1, 0x0)
+r1 = ioctl$KVM_CREATE_VM(r0, 0xae01, 0x6)
+ioctl$KVM_SIGNAL_MSI(r1, 0x4020aea5, 0x0)
+r2 = openat$kvm(0xffffffffffffff9c, &(0x7f00000004c0), 0x100, 0x0)
+r3 = ioctl$KVM_CREATE_VM(r2, 0xae01, 0x31)
+ioctl$KVM_GET_DIRTY_LOG(r3, 0x4010ae42, &(0x7f0000000640)={0xfe7f, 0x0, &(0x7f0000ffc000/0x2000)=nil})
+
+kernel console output (not intermixed with test programs):
+
+Warning: Permanently added '[localhost]:20188' (ED25519) to the list of known hosts.
+buildroot login: [  288.894035][ T3090] cgroup: Unknown subsys name 'net'
+[  289.521768][ T3090] cgroup: Unknown subsys name 'cpuset'
+[  289.632074][ T3090] cgroup: Unknown subsys name 'rlimit'
+Setting up swapspace version 1, size = 127995904 bytes
+[  324.159145][ T3090] Adding 124996k swap on ./swap-file.  Priority:0 extents:1 across:124996k 
+[  393.645409][ T3098] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  394.027354][ T3098] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  394.086766][ T3099] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  394.378087][ T3099] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  396.157309][ T3104] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  396.446387][ T3104] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  396.532032][ T3101] bond0: (slave bond_slave_0): Enslaving as an active interface with an up link
+[  396.923149][ T3101] bond0: (slave bond_slave_1): Enslaving as an active interface with an up link
+[  402.579362][ T3098] hsr_slave_0: entered promiscuous mode
+[  402.605088][ T3098] hsr_slave_1: entered promiscuous mode
+[  403.168272][ T3099] hsr_slave_0: entered promiscuous mode
+[  403.189048][ T3099] hsr_slave_1: entered promiscuous mode
+[  403.202935][ T3099] debugfs: 'hsr0' already exists in 'hsr'
+[  403.205377][ T3099] Cannot create hsr debugfs directory
+[  405.485145][ T3101] hsr_slave_0: entered promiscuous mode
+[  405.506547][ T3101] hsr_slave_1: entered promiscuous mode
+[  405.529550][ T3101] debugfs: 'hsr0' already exists in 'hsr'
+[  405.533269][ T3101] Cannot create hsr debugfs directory
+[  405.973984][ T3104] hsr_slave_0: entered promiscuous mode
+[  405.993300][ T3104] hsr_slave_1: entered promiscuous mode
+[  406.006652][ T3104] debugfs: 'hsr0' already exists in 'hsr'
+[  406.008198][ T3104] Cannot create hsr debugfs directory
+[  414.057161][ T3099] netdevsim netdevsim3 netdevsim0: renamed from eth0
+[  414.172899][ T3099] netdevsim netdevsim3 netdevsim1: renamed from eth1
+[  414.257265][ T3099] netdevsim netdevsim3 netdevsim2: renamed from eth2
+[  414.512591][ T3099] netdevsim netdevsim3 netdevsim3: renamed from eth3
+[  415.542134][ T3101] netdevsim netdevsim1 netdevsim0: renamed from eth0
+[  415.659029][ T3101] netdevsim netdevsim1 netdevsim1: renamed from eth1
+[  416.057001][ T3101] netdevsim netdevsim1 netdevsim2: renamed from eth2
+[  416.256412][ T3101] netdevsim netdevsim1 netdevsim3: renamed from eth3
+[  417.195362][ T3098] netdevsim netdevsim0 netdevsim0: renamed from eth0
+[  417.385757][ T3098] netdevsim netdevsim0 netdevsim1: renamed from eth1
+[  417.693583][ T3098] netdevsim netdevsim0 netdevsim2: renamed from eth2
+[  417.824445][ T3098] netdevsim netdevsim0 netdevsim3: renamed from eth3
+[  419.115480][ T3104] netdevsim netdevsim2 netdevsim0: renamed from eth0
+[  419.481232][ T3104] netdevsim netdevsim2 netdevsim1: renamed from eth1
+[  419.843534][ T3104] netdevsim netdevsim2 netdevsim2: renamed from eth2
+[  419.959527][ T3104] netdevsim netdevsim2 netdevsim3: renamed from eth3
+[  423.467477][ T3099] 8021q: adding VLAN 0 to HW filter on device bond0
+[  424.867429][ T3101] 8021q: adding VLAN 0 to HW filter on device bond0
+[  427.857711][ T3098] 8021q: adding VLAN 0 to HW filter on device bond0
+[  428.833056][ T3104] 8021q: adding VLAN 0 to HW filter on device bond0
+[  450.419674][ T3101] veth0_vlan: entered promiscuous mode
+[  451.234808][ T3099] veth0_vlan: entered promiscuous mode
+[  451.368307][ T3101] veth1_vlan: entered promiscuous mode
+[  451.966264][ T3099] veth1_vlan: entered promiscuous mode
+[  453.563473][ T3101] veth0_macvtap: entered promiscuous mode
+[  453.911375][ T3099] veth0_macvtap: entered promiscuous mode
+[  454.126700][ T3101] veth1_macvtap: entered promiscuous mode
+[  454.788526][ T3099] veth1_macvtap: entered promiscuous mode
+[  454.844697][ T3104] veth0_vlan: entered promiscuous mode
+[  455.479119][ T3098] veth0_vlan: entered promiscuous mode
+[  455.596421][ T3104] veth1_vlan: entered promiscuous mode
+[  456.343190][ T4208] netdevsim netdevsim1 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  456.436056][ T4208] netdevsim netdevsim1 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  456.439261][ T4208] netdevsim netdevsim1 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  456.467749][ T3098] veth1_vlan: entered promiscuous mode
+[  456.574046][ T4208] netdevsim netdevsim1 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  457.181056][   T25] netdevsim netdevsim3 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  457.183608][   T25] netdevsim netdevsim3 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  457.185605][   T25] netdevsim netdevsim3 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  457.187533][   T25] netdevsim netdevsim3 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  457.847385][ T3104] veth0_macvtap: entered promiscuous mode
+[  458.372534][ T3104] veth1_macvtap: entered promiscuous mode
+[  458.727513][ T3098] veth0_macvtap: entered promiscuous mode
+[  458.960888][ T3098] veth1_macvtap: entered promiscuous mode
+[  459.354199][ T3101] soft_limit_in_bytes is deprecated and will be removed. Please report your usecase to linux-mm@kvack.org if you depend on this functionality.
+[  460.479146][ T1999] netdevsim netdevsim2 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  460.526986][   T54] netdevsim netdevsim2 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  460.529152][   T54] netdevsim netdevsim2 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  460.532471][   T54] netdevsim netdevsim2 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  461.282664][   T54] netdevsim netdevsim0 netdevsim0: set [1, 0] type 2 family 0 port 6081 - 0
+[  461.285274][   T54] netdevsim netdevsim0 netdevsim1: set [1, 0] type 2 family 0 port 6081 - 0
+[  461.475053][   T54] netdevsim netdevsim0 netdevsim2: set [1, 0] type 2 family 0 port 6081 - 0
+[  461.621211][   T54] netdevsim netdevsim0 netdevsim3: set [1, 0] type 2 family 0 port 6081 - 0
+[  477.353696][ T4366] kvm [4366]: VCPU exit error -14
+[  477.406207][ T4366] kvm [4366]: SEPC=0x80008088 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  477.408196][ T4366] kvm [4366]: SCAUSE=0x14 STVAL=0x80008088 HTVAL=0x20002022 HTINST=0x0
+[  486.737163][ T4418] kvm [4418]: VCPU exit error -95
+[  486.757202][ T4418] kvm [4418]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  486.758654][ T4418] kvm [4418]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  495.457218][ T4438] KVM: debugfs: duplicate directory 4438-4
+[  501.386458][ T4463] kvm [4463]: VCPU exit error -14
+[  501.387943][ T4463] kvm [4463]: SEPC=0x80008088 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  501.389388][ T4463] kvm [4463]: SCAUSE=0x14 STVAL=0x80008088 HTVAL=0x20002022 HTINST=0x0
+[  517.553883][ T4559] kvm [4559]: VCPU exit error -95
+[  517.555367][ T4559] kvm [4559]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  517.556678][ T4559] kvm [4559]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  546.073565][ T4704] kvm [4704]: VCPU exit error -95
+[  546.075232][ T4704] kvm [4704]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  546.077060][ T4704] kvm [4704]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  553.543368][ T4753] kvm [4753]: VCPU exit error -95
+[  553.545057][ T4753] kvm [4753]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  553.546427][ T4753] kvm [4753]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  559.065197][ T4775] kvm [4775]: VCPU exit error -14
+[  559.076159][ T4775] kvm [4775]: SEPC=0x80008088 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  559.077636][ T4775] kvm [4775]: SCAUSE=0x14 STVAL=0x80008088 HTVAL=0x20002022 HTINST=0x0
+[  572.012835][ T4851] kvm [4851]: VCPU exit error -95
+[  572.014350][ T4851] kvm [4851]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  572.015695][ T4851] kvm [4851]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  575.389071][ T4872] kvm [4872]: VCPU exit error -95
+[  575.411447][ T4872] kvm [4872]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  575.413245][ T4872] kvm [4872]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  592.576263][ T4934] kvm [4934]: VCPU exit error -95
+[  592.577816][ T4934] kvm [4934]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  592.579166][ T4934] kvm [4934]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  622.557011][ T5117] kvm [5117]: VCPU exit error -95
+[  622.558684][ T5117] kvm [5117]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  622.565471][ T5117] kvm [5117]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  622.787726][ T5124] kvm [5124]: VCPU exit error -95
+[  622.789196][ T5124] kvm [5124]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  622.793063][ T5124] kvm [5124]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  622.797029][ T5124] kvm [5124]: VCPU exit error -95
+[  622.798260][ T5124] kvm [5124]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  622.799523][ T5124] kvm [5124]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  622.840908][ T5124] kvm [5124]: VCPU exit error -95
+[  622.842372][ T5124] kvm [5124]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  622.843801][ T5124] kvm [5124]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  622.869065][ T5124] kvm [5124]: VCPU exit error -95
+[  622.883148][ T5124] kvm [5124]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  622.884810][ T5124] kvm [5124]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  622.888271][ T5124] kvm [5124]: VCPU exit error -95
+[  622.889547][ T5124] kvm [5124]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  622.918002][ T5124] kvm [5124]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  622.965444][ T5124] kvm [5124]: VCPU exit error -95
+[  622.966913][ T5124] kvm [5124]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  622.968197][ T5124] kvm [5124]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  622.974780][ T5124] kvm [5124]: VCPU exit error -95
+[  622.976175][ T5124] kvm [5124]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  622.977482][ T5124] kvm [5124]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  622.985381][ T5124] kvm [5124]: VCPU exit error -95
+[  622.986825][ T5124] kvm [5124]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  622.988105][ T5124] kvm [5124]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  622.993031][ T5124] kvm [5124]: VCPU exit error -95
+[  622.996956][ T5124] kvm [5124]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  622.998256][ T5124] kvm [5124]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  623.002851][ T5124] kvm [5124]: VCPU exit error -95
+[  623.004213][ T5124] kvm [5124]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  623.005561][ T5124] kvm [5124]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  623.012761][ T5124] kvm [5124]: VCPU exit error -95
+[  623.014172][ T5124] kvm [5124]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  623.015444][ T5124] kvm [5124]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  623.019292][ T5124] kvm [5124]: VCPU exit error -95
+[  623.036339][ T5124] kvm [5124]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  623.037700][ T5124] kvm [5124]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  623.042438][ T5124] kvm [5124]: VCPU exit error -95
+[  623.043765][ T5124] kvm [5124]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  623.045083][ T5124] kvm [5124]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  623.048627][ T5124] kvm [5124]: VCPU exit error -95
+[  623.052098][ T5124] kvm [5124]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  623.053452][ T5124] kvm [5124]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  623.057413][ T5124] kvm [5124]: VCPU exit error -95
+[  623.058691][ T5124] kvm [5124]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  623.061400][ T5124] kvm [5124]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  623.083963][ T5124] kvm [5124]: VCPU exit error -95
+[  623.085437][ T5124] kvm [5124]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  623.086912][ T5124] kvm [5124]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  623.133524][ T5124] kvm [5124]: VCPU exit error -95
+[  623.134977][ T5124] kvm [5124]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  623.136254][ T5124] kvm [5124]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  623.263600][ T5124] kvm [5124]: VCPU exit error -95
+[  623.265117][ T5124] kvm [5124]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  623.266418][ T5124] kvm [5124]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  633.826972][ T5197] kvm [5197]: VCPU exit error -95
+[  633.828454][ T5197] kvm [5197]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  633.852722][ T5197] kvm [5197]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  641.307663][ T5247] FAULT_INJECTION: forcing a failure.
+[  641.307663][ T5247] name fail_usercopy, interval 1, probability 0, space 0, times 1
+[  641.312610][ T5247] CPU: 2 UID: 0 PID: 5247 Comm: syz.1.116 Not tainted 6.18.0-rc5-g0f226cf6026f-dirty #1 PREEMPT 
+[  641.313550][ T5247] Hardware name: riscv-virtio,qemu (DT)
+[  641.314135][ T5247] Call Trace:
+[  641.314532][ T5247] [<ffffffff8007903a>] dump_backtrace+0x2e/0x3c
+[  641.316424][ T5247] [<ffffffff8000329c>] show_stack+0x30/0x3c
+[  641.316909][ T5247] [<ffffffff8005faf8>] dump_stack_lvl+0x12a/0x1a2
+[  641.317522][ T5247] [<ffffffff8005fb8c>] dump_stack+0x1c/0x24
+[  641.318134][ T5247] [<ffffffff81a8a576>] should_fail_ex+0x48c/0x5ce
+[  641.318740][ T5247] [<ffffffff81a8a6c6>] should_fail+0xe/0x18
+[  641.319336][ T5247] [<ffffffff81a8a6ee>] should_fail_usercopy+0x1e/0x26
+[  641.319950][ T5247] [<ffffffff817b6324>] _copy_from_user+0x3e/0x3ac
+[  641.320416][ T5247] [<ffffffff800d3160>] kvm_device_ioctl+0x276/0x374
+[  641.320963][ T5247] [<ffffffff80c9d6b0>] __riscv_sys_ioctl+0x180/0x1e4
+[  641.321344][ T5247] [<ffffffff80076ba8>] syscall_handler+0x94/0x118
+[  641.321797][ T5247] [<ffffffff864c25ee>] do_trap_ecall_u+0x39e/0x53a
+[  641.322403][ T5247] [<ffffffff864ec1ae>] handle_exception+0x15e/0x16a
+[  646.693359][ T5272] kvm [5272]: VCPU exit error -95
+[  646.694925][ T5272] kvm [5272]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  646.696292][ T5272] kvm [5272]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  647.082533][ T5272] kvm [5272]: VCPU exit error -95
+[  647.084049][ T5272] kvm [5272]: SEPC=0x0 SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  647.085461][ T5272] kvm [5272]: SCAUSE=0x14 STVAL=0x0 HTVAL=0x0 HTINST=0x0
+[  651.034004][ T5310] FAULT_INJECTION: forcing a failure.
+[  651.034004][ T5310] name fail_usercopy, interval 1, probability 0, space 0, times 0
+[  651.041683][ T5310] CPU: 2 UID: 0 PID: 5310 Comm: syz.0.126 Not tainted 6.18.0-rc5-g0f226cf6026f-dirty #1 PREEMPT 
+[  651.042894][ T5310] Hardware name: riscv-virtio,qemu (DT)
+[  651.043369][ T5310] Call Trace:
+[  651.044015][ T5310] [<ffffffff8007903a>] dump_backtrace+0x2e/0x3c
+[  651.045740][ T5310] [<ffffffff8000329c>] show_stack+0x30/0x3c
+[  651.046144][ T5310] [<ffffffff8005faf8>] dump_stack_lvl+0x12a/0x1a2
+[  651.046712][ T5310] [<ffffffff8005fb8c>] dump_stack+0x1c/0x24
+[  651.047260][ T5310] [<ffffffff81a8a576>] should_fail_ex+0x48c/0x5ce
+[  651.047821][ T5310] [<ffffffff81a8a6c6>] should_fail+0xe/0x18
+[  651.048398][ T5310] [<ffffffff81a8a6ee>] should_fail_usercopy+0x1e/0x26
+[  651.048978][ T5310] [<ffffffff817b6a6e>] _copy_to_user+0x3e/0x388
+[  651.049437][ T5310] [<ffffffff80d0ab02>] simple_read_from_buffer+0xd4/0x16c
+[  651.049913][ T5310] [<ffffffff80e9bccc>] proc_fail_nth_read+0x198/0x244
+[  651.050446][ T5310] [<ffffffff80c4645a>] vfs_read+0x2ee/0xb44
+[  651.050906][ T5310] [<ffffffff80c48652>] ksys_read+0x126/0x228
+[  651.051367][ T5310] [<ffffffff80c487c2>] __riscv_sys_read+0x6e/0x94
+[  651.051846][ T5310] [<ffffffff80076ba8>] syscall_handler+0x94/0x118
+[  651.052306][ T5310] [<ffffffff864c25ee>] do_trap_ecall_u+0x39e/0x53a
+[  651.052927][ T5310] [<ffffffff864ec1ae>] handle_exception+0x15e/0x16a
+[  664.737949][ T5408] kvm [5408]: Failed to find VMA for hva 0x200000c07000
+[  664.748353][ T5408] kvm [5408]: VCPU exit error -14
+[  664.753289][ T5408] kvm [5408]: SEPC=0x800080ca SSTATUS=0x200004520 HSTATUS=0x2002001c0
+[  664.754949][ T5408] kvm [5408]: SCAUSE=0x15 STVAL=0x80000000 HTVAL=0x20000000 HTINST=0x3781
+[  715.852548][ T5733] Unable to handle kernel paging request at virtual address dfffffff00000001
+[  715.855446][ T5733] Current syz.1.179 pgtable: 4K pagesize, 57-bit VAs, pgdp=0x000000012e3c6000
+[  715.856988][ T5733] [dfffffff00000001] pgd=000000005fffe401, p4d=000000005fffe001, pud=0000000000000000
+[  715.867901][ T5733] Oops [#1]
+[  715.868816][ T5733] Modules linked in:
+[  715.869852][ T5733] CPU: 3 UID: 0 PID: 5733 Comm: syz.1.179 Not tainted 6.18.0-rc5-g0f226cf6026f-dirty #1 PREEMPT 
+[  715.871168][ T5733] Hardware name: riscv-virtio,qemu (DT)
+[  715.871977][ T5733] epc : kvm_riscv_aia_imsic_has_attr+0x464/0x50e
+[  715.873295][ T5733]  ra : kvm_riscv_aia_imsic_has_attr+0x42e/0x50e
+[  715.874566][ T5733] epc : ffffffff80108e36 ra : ffffffff80108e00 sp : ff20000020267c00
+[  715.875597][ T5733]  gp : ffffffff89edda40 tp : ff6000008135b500 t0 : ff20000020267d78
+[  715.876640][ T5733]  t1 : 0000000000000001 t2 : ffffffff86a06b38 s0 : ff20000020267d00
+[  715.877652][ T5733]  s1 : 0000000000000000 a0 : 000000000000000c a1 : 00000000000000ff
+[  715.878816][ T5733]  a2 : 0000000000080000 a3 : ffffffff80108e00 a4 : 0000000000000001
+[  715.879956][ T5733]  a5 : dfffffff00000001 a6 : 0000000000000003 a7 : ffffffff864ba8ce
+[  715.880992][ T5733]  s2 : 0000000000000070 s3 : fffffffffffffffe s4 : 0000000000000000
+[  715.882082][ T5733]  s5 : 0000000000000070 s6 : ff20000020267c80 s7 : 0000000000000000
+[  715.883219][ T5733]  s8 : 0000000000000000 s9 : 1fec00001579fd5a s10: 0000000000000000
+[  715.884471][ T5733]  s11: 1fe400000404cf84 t3 : 4b952e4d00000000 t4 : 0000000000000000
+[  715.885501][ T5733]  t5 : 0000000000000000 t6 : 0000000000040000 ssp : 0000000000000000
+[  715.886553][ T5733] status: 0000000200000120 badaddr: dfffffff00000001 cause: 000000000000000d
+[  715.887716][ T5733] [<ffffffff80108e36>] kvm_riscv_aia_imsic_has_attr+0x464/0x50e
+[  715.889151][ T5733] [<ffffffff800ff294>] aia_has_attr+0x128/0x2bc
+[  715.890324][ T5733] [<ffffffff800d3180>] kvm_device_ioctl+0x296/0x374
+[  715.891801][ T5733] [<ffffffff80c9d6b0>] __riscv_sys_ioctl+0x180/0x1e4
+[  715.892952][ T5733] [<ffffffff80076ba8>] syscall_handler+0x94/0x118
+[  715.894067][ T5733] [<ffffffff864c25ee>] do_trap_ecall_u+0x39e/0x53a
+[  715.895361][ T5733] [<ffffffff864ec1ae>] handle_exception+0x15e/0x16a
+[  715.897410][ T5733] Code: 6d84 07b7 e000 17fd 8513 00c4 5713 0035 1782 97ba (8703) 0007 
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+[  715.901266][ T5733] ---[ end trace 0000000000000000 ]---
+[  715.961582][ T5733] Kernel panic - not syncing: Fatal exception
+[  715.963219][ T5733] SMP: stopping secondary CPUs
+[  715.965465][ T5733] Rebooting in 86400 seconds..
+
+VM DIAGNOSIS:
+13:33:28  Registers:
+info registers vcpu 0
+
+CPU#0
+ V      =   0
+ pc       ffffffff805010f8
+ mhartid  0000000000000000
+ mstatus  0000004a000000a2
+ hstatus  0000000200000000
+ vsstatus 0000000200000120
+ mip      0000000000000000
+ mie      000000000000322a
+ mideleg  0000000000003666
+ hideleg  0000000000000444
+ medeleg  0000000000f4b559
+ hedeleg  000000000000b10d
+ mtvec    00000000800004f8
+ stvec    ffffffff864ec050
+ vstvec   0000000000001000
+ mepc     ffffffff8008f46a
+ sepc     ffffffff802de44c
+ vsepc    0000000000000000
+ mcause   0000000000000009
+ scause   8000000000000005
+ vscause  0000000000000000
+ mtval    0000000000000000
+ stval    0000000000000000
+ htval    0000000000000000
+ mtval2   0000000000000000
+ mscratch 000000008004b000
+ sscratch 0000000000000000
+ satp     a00900000012abc0
+ x0/zero  0000000000000000 x1/ra    ffffffff80bf5b42 x2/sp    ff200000017674b0 x3/gp    ffffffff89edda40
+ x4/tp    ff60000084bfcf80 x5/t0    ff20000001767790 x6/t1    ffebffff10b4da43 x7/t2    0000000000000000
+ x8/s0    ff20000001767830 x9/s1    000000004bf0e4d7 x10/a0   0000000000000001 x11/a1   ffffffff912a8728
+ x12/a2   0000000000000000 x13/a3   0000000000000140 x14/a4   0000000000000000 x15/a5   0000000000000002
+ x16/a6   ffebffff101d60d6 x17/a7   ff60000080eb06ab x18/s2   ffffffff8685f708 x19/s3   0000000000000011
+ x20/s4   ff1c000002bf0e40 x21/s5   ff1c000002bf0e70 x22/s6   1fe380000057e1cb x23/s7   ff600000944e3200
+ x24/s8   ff60000088c627f0 x25/s9   dfffffff00000000 x26/s10  00000000002fe000 x27/s11  ff20000001767b20
+ x28/t3   8649a3b800000000 x29/t4   ffe37fff0057e1ce x30/t5   ffe37fff0057e1cf x31/t6   0000000000000002
+ fcsr     0000000000000000
+ f0/ft0   0000000000000000 f1/ft1   0000000000000000 f2/ft2   0000000000000000 f3/ft3   0000000000000000
+ f4/ft4   0000000000000000 f5/ft5   0000000000000000 f6/ft6   0000000000000000 f7/ft7   0000000000000000
+ f8/fs0   0000000000000000 f9/fs1   0000000000000000 f10/fa0  0000000000000000 f11/fa1  0000000000000000
+ f12/fa2  0000000000000000 f13/fa3  0000000000000000 f14/fa4  0000000000000000 f15/fa5  0000000000000000
+ f16/fa6  0000000000000000 f17/fa7  0000000000000000 f18/fs2  0000000000000000 f19/fs3  0000000000000000
+ f20/fs4  0000000000000000 f21/fs5  0000000000000000 f22/fs6  0000000000000000 f23/fs7  0000000000000000
+ f24/fs8  0000000000000000 f25/fs9  0000000000000000 f26/fs10 0000000000000000 f27/fs11 0000000000000000
+ f28/ft8  0000000000000000 f29/ft9  0000000000000000 f30/ft10 0000000000000000 f31/ft11 0000000000000000
+ vstart   0000000000000000
+ vxsat    0000000000000000
+ vxrm     0000000000000000
+ vcsr     0000000000000000
+ vl       000000000000001c
+ vtype    00000000000000c3
+ vlenb    0000000000000010
+ v0       06000000060806060171f23d8004088a
+ v1       00000000000000011c08000000000008
+ v2       00000000000000000000000000000000
+ v3       00000000000000000000000000000000
+ v4       00000000000000000000000000000000
+ v5       00000000000000000000000000000000
+ v6       00000000000000000000000000000000
+ v7       85b992080001080006011cdc00020007
+ v8       ffffffffffffffffffffffffffffffff
+ v9       ffffffffffffffffffffffffffffffff
+ v10      ffffffffffffffffffffffffffffffff
+ v11      ffffffffffffffffffffffffffffffff
+ v12      ffffffffffffffffffffffffffffffff
+ v13      ffffffffffffffffffffffffffffffff
+ v14      ffffffffffffffffffffffffffffffff
+ v15      ffffffffffffffffffffffffffffffff
+ v16      ffffffffffffffffffffffffffffffff
+ v17      ffffffffffffffffffffffffffffffff
+ v18      ffffffffffffffffffffffffffffffff
+ v19      ffffffffffffffffffffffffffffffff
+ v20      ffffffffffffffffffffffffffffffff
+ v21      ffffffffffffffffffffffffffffffff
+ v22      ffffffffffffffffffffffffffffffff
+ v23      ffffffffffffffffffffffffffffffff
+ v24      ffffffffffffffffffffffffffffffff
+ v25      ffffffffffffffffffffffffffffffff
+ v26      ffffffffffffffffffffffffffffffff
+ v27      ffffffffffffffffffffffffffffffff
+ v28      ffffffffffffffffffffffffffffffff
+ v29      ffffffffffffffffffffffffffffffff
+ v30      ffffffffffffffffffffffffffffffff
+ v31      ffffffffffffffffffffffffffffffff
+info registers vcpu 1
+
+CPU#1
+ V      =   0
+ pc       ffffffff803f9920
+ mhartid  0000000000000001
+ mstatus  0000004a000001a0
+ hstatus  0000000200000000
+ vsstatus 0000000200000120
+ mip      0000000000000000
+ mie      000000000000322a
+ mideleg  0000000000003666
+ hideleg  0000000000000444
+ medeleg  0000000000f4b559
+ hedeleg  000000000000b10d
+ mtvec    00000000800004f8
+ stvec    ffffffff864ec050
+ vstvec   0000000000001000
+ mepc     ffffffff8008f46a
+ sepc     ffffffff802de44c
+ vsepc    0000000000000000
+ mcause   0000000000000009
+ scause   8000000000000005
+ vscause  0000000000000000
+ mtval    0000000000000000
+ stval    0000000000000000
+ htval    0000000000000000
+ mtval2   0000000000000000
+ mscratch 0000000080049000
+ sscratch 0000000000000000
+ satp     a02300000012af98
+ x0/zero  0000000000000000 x1/ra    ffffffff802b3cfe x2/sp    ff200000000279d0 x3/gp    ffffffff89edda40
+ x4/tp    ff600000906f8000 x5/t0    7fffffffffffffff x6/t1    fffffffef221d51d x7/t2    00000000000002ca
+ x8/s0    ff20000000027a50 x9/s1    ff600000906f8000 x10/a0   ff600000906f8008 x11/a1   ffffffff86d69060
+ x12/a2   0000000000989680 x13/a3   0000000000000001 x14/a4   1fec000015983d0f x15/a5   ffebffff15890821
+ x16/a6   0000000000ff0100 x17/a7   ffffffff910ea8eb x18/s2   ff600000ac484000 x19/s3   0000000000989680
+ x20/s4   ff600000ac484000 x21/s5   0000000000989680 x22/s6   0000000000000002 x23/s7   ff20000000027ba0
+ x24/s8   0000000000000000 x25/s9   ff600000f9b101c0 x26/s10  0000000000000000 x27/s11  1fe4000000004f6c
+ x28/t3   0000010200000002 x29/t4   fffffffef221d51d x30/t5   fffffffef221d51e x31/t6   ffffffff910ea7d0
+ fcsr     0000000000000000
+ f0/ft0   0000000000000000 f1/ft1   0000000000000000 f2/ft2   0000000000000000 f3/ft3   0000000000000000
+ f4/ft4   0000000000000000 f5/ft5   0000000000000000 f6/ft6   0000000000000000 f7/ft7   0000000000000000
+ f8/fs0   0000000000000000 f9/fs1   0000000000000000 f10/fa0  0000000000000000 f11/fa1  0000000000000000
+ f12/fa2  0000000000000000 f13/fa3  0000000000000000 f14/fa4  0000000000000000 f15/fa5  0000000000000000
+ f16/fa6  0000000000000000 f17/fa7  0000000000000000 f18/fs2  0000000000000000 f19/fs3  0000000000000000
+ f20/fs4  0000000000000000 f21/fs5  0000000000000000 f22/fs6  0000000000000000 f23/fs7  0000000000000000
+ f24/fs8  0000000000000000 f25/fs9  0000000000000000 f26/fs10 0000000000000000 f27/fs11 0000000000000000
+ f28/ft8  0000000000000000 f29/ft9  0000000000000000 f30/ft10 0000000000000000 f31/ft11 0000000000000000
+ vstart   0000000000000000
+ vxsat    0000000000000000
+ vxrm     0000000000000000
+ vcsr     0000000000000000
+ vl       0000000000000080
+ vtype    00000000000000c3
+ vlenb    0000000000000010
+ v0       ffffffffffffffffffffffffffffffff
+ v1       ffffffffffffffffffffffffffffffff
+ v2       ffffffffffffffffffffffffffffffff
+ v3       ffffffffffffffffffffffffffffffff
+ v4       ffffffffffffffffffffffffffffffff
+ v5       ffffffffffffffffffffffffffffffff
+ v6       ffffffffffffffffffffffffffffffff
+ v7       ffffffffffffffffffffffffffffffff
+ v8       ffffffffffffffffffffffffffffffff
+ v9       ffffffffffffffffffffffffffffffff
+ v10      ffffffffffffffffffffffffffffffff
+ v11      ffffffffffffffffffffffffffffffff
+ v12      ffffffffffffffffffffffffffffffff
+ v13      ffffffffffffffffffffffffffffffff
+ v14      ffffffffffffffffffffffffffffffff
+ v15      ffffffffffffffffffffffffffffffff
+ v16      ffffffffffffffffffffffffffffffff
+ v17      ffffffffffffffffffffffffffffffff
+ v18      ffffffffffffffffffffffffffffffff
+ v19      ffffffffffffffffffffffffffffffff
+ v20      ffffffffffffffffffffffffffffffff
+ v21      ffffffffffffffffffffffffffffffff
+ v22      ffffffffffffffffffffffffffffffff
+ v23      ffffffffffffffffffffffffffffffff
+ v24      ffffffffffffffffffffffffffffffff
+ v25      ffffffffffffffffffffffffffffffff
+ v26      ffffffffffffffffffffffffffffffff
+ v27      ffffffffffffffffffffffffffffffff
+ v28      ffffffffffffffffffffffffffffffff
+ v29      ffffffffffffffffffffffffffffffff
+ v30      ffffffffffffffffffffffffffffffff
+ v31      ffffffffffffffffffffffffffffffff
+info registers vcpu 2
+
+CPU#2
+ V      =   0
+ pc       ffffffff802d667c
+ mhartid  0000000000000002
+ mstatus  0000004a000000a0
+ hstatus  0000000200000000
+ vsstatus 0000000200000120
+ mip      0000000000000000
+ mie      000000000000322a
+ mideleg  0000000000003666
+ hideleg  0000000000000444
+ medeleg  0000000000f4b559
+ hedeleg  000000000000b10d
+ mtvec    00000000800004f8
+ stvec    ffffffff864ec050
+ vstvec   0000000000001000
+ mepc     ffffffff81f89470
+ sepc     ffffffff8030b3ca
+ vsepc    0000000000000000
+ mcause   8000000000000003
+ scause   8000000000000005
+ vscause  0000000000000000
+ mtval    0000000000000000
+ stval    0000000000000000
+ htval    0000000000000000
+ mtval2   0000000000000000
+ mscratch 0000000080047000
+ sscratch 0000000000000000
+ satp     a02310000012e3c6
+ x0/zero  0000000000000000 x1/ra    ffffffff80500cb0 x2/sp    ff20000020267440 x3/gp    ffffffff89edda40
+ x4/tp    ff6000008135b500 x5/t0    ff200000202675b4 x6/t1    fffffffef13dc41c x7/t2    6666666666666664
+ x8/s0    ff20000020267560 x9/s1    ffffffff8006e448 x10/a0   0000000000000007 x11/a1   ffffffff864ec050
+ x12/a2   0000000000000002 x13/a3   ffffffff8006e346 x14/a4   0000000000000002 x15/a5   ffffffffffff8000
+ x16/a6   0000000000000003 x17/a7   0000000000000003 x18/s2   ff20000020267670 x19/s3   0000000000000002
+ x20/s4   ff20000020267670 x21/s5   ff200000202674e0 x22/s6   0000000000000000 x23/s7   0000000000000001
+ x24/s8   dfffffff00000000 x25/s9   ff6000008135b500 x26/s10  ff20000020267688 x27/s11  1fe400000404ce90
+ x28/t3   0acc964400000000 x29/t4   fffffffef13dc41c x30/t5   fffffffef13dc41d x31/t6   ff20000020267018
+ fcsr     0000000000000000
+ f0/ft0   0000000000000000 f1/ft1   0000000000000000 f2/ft2   0000000000000000 f3/ft3   0000000000000000
+ f4/ft4   0000000000000000 f5/ft5   0000000000000000 f6/ft6   0000000000000000 f7/ft7   0000000000000000
+ f8/fs0   0000000000000000 f9/fs1   0000000000000000 f10/fa0  0000000000000000 f11/fa1  0000000000000000
+ f12/fa2  0000000000000000 f13/fa3  0000000000000000 f14/fa4  0000000000000000 f15/fa5  0000000000000000
+ f16/fa6  0000000000000000 f17/fa7  0000000000000000 f18/fs2  0000000000000000 f19/fs3  0000000000000000
+ f20/fs4  0000000000000000 f21/fs5  0000000000000000 f22/fs6  0000000000000000 f23/fs7  0000000000000000
+ f24/fs8  0000000000000000 f25/fs9  0000000000000000 f26/fs10 0000000000000000 f27/fs11 0000000000000000
+ f28/ft8  0000000000000000 f29/ft9  0000000000000000 f30/ft10 0000000000000000 f31/ft11 0000000000000000
+ vstart   0000000000000000
+ vxsat    0000000000000000
+ vxrm     0000000000000000
+ vcsr     0000000000000000
+ vl       0000000000000058
+ vtype    00000000000000c3
+ vlenb    0000000000000010
+ v0       00000000000000000000000000000000
+ v1       00524f52524500400000000000000000
+ v2       00000000000000000000000000000000
+ v3       000000524f5252450000000000000000
+ v4       00000000000000000000000000000000
+ v5       00000000000000000000000000000000
+ v6       00000000000000000000000000000000
+ v7       00e800a8000000000000000000000000
+ v8       ffffffffffffffffffffffffffffffff
+ v9       ffffffffffffffffffffffffffffffff
+ v10      ffffffffffffffffffffffffffffffff
+ v11      ffffffffffffffffffffffffffffffff
+ v12      ffffffffffffffffffffffffffffffff
+ v13      ffffffffffffffffffffffffffffffff
+ v14      ffffffffffffffffffffffffffffffff
+ v15      ffffffffffffffffffffffffffffffff
+ v16      ffffffffffffffffffffffffffffffff
+ v17      ffffffffffffffffffffffffffffffff
+ v18      ffffffffffffffffffffffffffffffff
+ v19      ffffffffffffffffffffffffffffffff
+ v20      ffffffffffffffffffffffffffffffff
+ v21      ffffffffffffffffffffffffffffffff
+ v22      ffffffffffffffffffffffffffffffff
+ v23      ffffffffffffffffffffffffffffffff
+ v24      ffffffffffffffffffffffffffffffff
+ v25      ffffffffffffffffffffffffffffffff
+ v26      ffffffffffffffffffffffffffffffff
+ v27      ffffffffffffffffffffffffffffffff
+ v28      ffffffffffffffffffffffffffffffff
+ v29      ffffffffffffffffffffffffffffffff
+ v30      ffffffffffffffffffffffffffffffff
+ v31      ffffffffffffffffffffffffffffffff
+info registers vcpu 3
+
+CPU#3
+ V      =   0
+ pc       ffffffff80852c52
+ mhartid  0000000000000003
+ mstatus  0000004a000400a2
+ hstatus  0000000200000000
+ vsstatus 0000000200000120
+ mip      0000000000000000
+ mie      000000000000322a
+ mideleg  0000000000003666
+ hideleg  0000000000000444
+ medeleg  0000000000f4b559
+ hedeleg  000000000000b10d
+ mtvec    00000000800004f8
+ stvec    ffffffff864ec050
+ vstvec   0000000000001000
+ mepc     ffffffff809bffa4
+ sepc     ffffffff802de44c
+ vsepc    0000000000000000
+ mcause   8000000000000003
+ scause   8000000000000005
+ vscause  0000000000000000
+ mtval    0000000000000000
+ stval    0000000000000000
+ htval    0000000000000000
+ mtval2   0000000000000000
+ mscratch 0000000080045000
+ sscratch 0000000000000000
+ satp     a00800000010e865
+ x0/zero  0000000000000000 x1/ra    ffffffff8007876a x2/sp    ff20000004ad7c30 x3/gp    ffffffff89edda40
+ x4/tp    ff6000008dee3500 x5/t0    ff20000004ad7d40 x6/t1    0000000000000001 x7/t2    0000000000000000
+ x8/s0    ff20000004ad7d50 x9/s1    ffffffff8006e448 x10/a0   0000000000000000 x11/a1   0000000000000002
+ x12/a2   ff20000004ad7e20 x13/a3   ffffffff80078786 x14/a4   0000000000000000 x15/a5   ff6000008dee4500
+ x16/a6   0000000000000003 x17/a7   ffffffff8099c12e x18/s2   ff20000004ad7e90 x19/s3   0000000000000003
+ x20/s4   ff20000004ad7e80 x21/s5   ff20000004ad7ce0 x22/s6   0000000000000000 x23/s7   0000000000000001
+ x24/s8   0000000000000004 x25/s9   0000000000000007 x26/s10  0000000000000004 x27/s11  1fe400000095af90
+ x28/t3   6083e94b00000000 x29/t4   0000000000000000 x30/t5   0000000000000000 x31/t6   ff5fffffffe81990
+ fcsr     0000000000000000
+ f0/ft0   0000000000000000 f1/ft1   0000000000000000 f2/ft2   0000000000000000 f3/ft3   0000000000000000
+ f4/ft4   0000000000000000 f5/ft5   0000000000000000 f6/ft6   0000000000000000 f7/ft7   0000000000000000
+ f8/fs0   0000000000000000 f9/fs1   0000000000000000 f10/fa0  0000000000000000 f11/fa1  0000000000000000
+ f12/fa2  0000000000000000 f13/fa3  0000000000000000 f14/fa4  0000000000000000 f15/fa5  0000000000000000
+ f16/fa6  0000000000000000 f17/fa7  0000000000000000 f18/fs2  0000000000000000 f19/fs3  0000000000000000
+ f20/fs4  0000000000000000 f21/fs5  0000000000000000 f22/fs6  0000000000000000 f23/fs7  0000000000000000
+ f24/fs8  0000000000000000 f25/fs9  0000000000000000 f26/fs10 0000000000000000 f27/fs11 0000000000000000
+ f28/ft8  0000000000000000 f29/ft9  0000000000000000 f30/ft10 0000000000000000 f31/ft11 0000000000000000
+ vstart   0000000000000000
+ vxsat    0000000000000000
+ vxrm     0000000000000000
+ vcsr     0000000000000000
+ vl       0000000000000058
+ vtype    00000000000000c3
+ vlenb    0000000000000010
+ v0       000000000000000000ffffffffffffff
+ v1       ffffffffffffffffffffffffffffffff
+ v2       ffffffffffffffffffffffffffffffff
+ v3       ffffffffffffffffffffffffffffffff
+ v4       ffffffffffffffffffffffffffffffff
+ v5       ffffffffffffffffffffffffffffffff
+ v6       ffffffffffffffffffffffffffffffff
+ v7       ffffffffffffffffffffffffffffffff
+ v8       ffffffffffffffffffffffffffffffff
+ v9       ffffffffffffffffffffffffffffffff
+ v10      ffffffffffffffffffffffffffffffff
+ v11      ffffffffffffffffffffffffffffffff
+ v12      ffffffffffffffffffffffffffffffff
+ v13      ffffffffffffffffffffffffffffffff
+ v14      ffffffffffffffffffffffffffffffff
+ v15      ffffffffffffffffffffffffffffffff
+ v16      ffffffffffffffffffffffffffffffff
+ v17      ffffffffffffffffffffffffffffffff
+ v18      ffffffffffffffffffffffffffffffff
+ v19      ffffffffffffffffffffffffffffffff
+ v20      ffffffffffffffffffffffffffffffff
+ v21      ffffffffffffffffffffffffffffffff
+ v22      ffffffffffffffffffffffffffffffff
+ v23      ffffffffffffffffffffffffffffffff
+ v24      ffffffffffffffffffffffffffffffff
+ v25      ffffffffffffffffffffffffffffffff
+ v26      ffffffffffffffffffffffffffffffff
+ v27      ffffffffffffffffffffffffffffffff
+ v28      ffffffffffffffffffffffffffffffff
+ v29      ffffffffffffffffffffffffffffffff
+ v30      ffffffffffffffffffffffffffffffff
+ v31      ffffffffffffffffffffffffffffffff
